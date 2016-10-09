@@ -1,0 +1,23 @@
+/.bundle
+/db/*.sqlite3
+/db/*.sqlite3-journal
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+# Ignore Byebug command history file.
+.byebug_history
+/tmp
+.idea
+public/assets
+public/sitemaps
+public/system
+# если установлен Paperclip
+Procfile
+# про него я еще расскажу
+config/deploy/
+# файлы Capistrano
+/shared/
+# файлы, которых нет в репозитории, но они будут скопированы на сервер при первом деплое приложения
+coverage
