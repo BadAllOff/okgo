@@ -21,3 +21,5 @@ config/deploy/
 /shared/
 # файлы, которых нет в репозитории, но они будут скопированы на сервер при первом деплое приложения
 coverage
+config/database.yml
+config/secrets.yml

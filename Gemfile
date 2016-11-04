@@ -21,6 +21,8 @@ gem 'font-awesome-sass', '~> 4.7.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :development do
