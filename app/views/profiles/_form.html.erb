@@ -1,0 +1,45 @@
+<%= form_for(profile) do |f| %>
+  <div class="box-body">
+    <% if profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+        <ul>
+        <% profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :firstname %>
+      <%= f.text_field :firstname, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :lastname %>
+      <%= f.text_field :lastname, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.radio_button(:gender, 'Female') %>
+      <%= label_tag :gender_Female, 'Female' %>
+
+      <%= f.radio_button(:gender, 'Male') %>
+      <%= label_tag :gender_Male, 'Male' %>
+
+      <%= f.radio_button(:gender, 'Other') %>
+      <%= label_tag :gender_Other, 'Other' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :credo %>
+      <%= f.text_area :credo, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="box-footer">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

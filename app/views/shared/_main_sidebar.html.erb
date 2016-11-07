@@ -37,7 +37,11 @@
             <i class="fa fa-circle-o"></i> <span>Events</span>
         <% end %>
       </li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> <span>Another Link</span></a></li>
+      <li>
+        <%= link_to profiles_path do %>
+            <i class="fa fa-circle-o"></i> <span>Profile</span>
+        <% end %>
+      </li>
       <li class="treeview">
         <a href="#"><i class="fa fa-circle-o"></i> <span>Multilevel</span>
           <span class="pull-right-container">
