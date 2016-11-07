@@ -8,7 +8,7 @@
         <h5 class="widget-user-desc"><%= @profile.user.email %></h5>
       </div>
       <div class="widget-user-image">
-        <%= image_tag("skins/user0-160x160.png", class: "img-circle", alt: 'User Avatar') %>
+        <%= image_tag(@profile.photo.url('medium'), class: "img-circle", alt: 'User Avatar') %>
       </div>
       <div class="box-footer">
         <div class="row">
