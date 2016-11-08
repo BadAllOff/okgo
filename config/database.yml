@@ -13,3 +13,11 @@ test:
   pool: 5
   username: <%= ENV["PG_DB_USER"] %>
   password: <%= ENV["PG_DB_PASS"] %>
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: okgo_production
+  pool: 5
+  username: <%= ENV["PG_DB_USER"] %>
+  password: <%= ENV["PG_DB_PASS"] %>
