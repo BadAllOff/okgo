@@ -2,7 +2,7 @@
   <!-- Menu Toggle Button -->
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
     <!-- The user image in the navbar-->
-    <% if @profile  %>
+    <% if @profile.photo?  %>
         <%= image_tag(@profile.photo.url('micro'), class: "user-image", alt: 'User Image') %>
     <% else %>
         <%= image_tag('micro_missing.png', class: "user-image", alt: 'User Image') %>
@@ -16,14 +16,14 @@
   <ul class="dropdown-menu">
     <!-- The user image in the menu -->
     <li class="user-header">
-      <% if @profile  %>
+      <% if @profile.photo?  %>
           <%= image_tag(@profile.photo.url('medium'), class: "img-circle", alt: 'User Image') %>
       <% else %>
           <%= image_tag('medium_missing.png', class: "img-circle", alt: 'User Image') %>
       <% end %>
       <p>
-        Alexander Pierce - Web Developer
-        <small>Member since Nov. 2012</small>
+        <%= @profile.firstname %> <%= @profile.lastname %>
+        <small>Member since <%= current_user.created_at.strftime('%B %d, %Y') %></small>
       </p>
     </li>
     <!-- Menu Body -->

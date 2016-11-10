@@ -1,11 +1,11 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_or_create_profile, only: [ :show, :edit, :update ]
+  before_action :set_or_create_profile, only: [ :index, :show, :edit, :update ]
   #
   # # GET /profiles
   # # GET /profiles.json
-  # def index
-  # end
+  def index
+  end
 
   # GET /profiles/1
   # GET /profiles/1.json
@@ -55,6 +55,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:firstname, :lastname, :gender, :credo, :photo)
+      params.require(:profile).permit(:firstname, :lastname, :gender, :credo, :photo, :cover_image)
     end
 end

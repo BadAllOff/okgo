@@ -28,6 +28,11 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :cover_image %>
+      <%= f.file_field :cover_image %>
+    </div>
+
+    <div class="form-group">
       <%= f.radio_button(:gender, 'Female') %>
       <%= label_tag :gender_Female, 'Female' %>
 
