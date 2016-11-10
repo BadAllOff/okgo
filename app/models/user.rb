@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # User can only edit profile but not DELETE it.
   # Profile is crucial for app
   after_create :create_profile
+  has_many :events, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
