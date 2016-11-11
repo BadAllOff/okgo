@@ -50,48 +50,40 @@
 
   </div>
 </div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">Profile</h3>
+        <div class="box-tools pull-right">
+          <!-- Buttons, labels, and many other things can be placed here! -->
+          <!-- Here is a label for example -->
+          <span class="label label-primary">Label</span>
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+      <div class="box-body">
 
+      <dl class="dl-horizontal">
+        <dt>Firstname:</dt>
+          <dd><%= @profile.firstname %></dd>
 
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title">Profile</h3>
-    <div class="box-tools pull-right">
-      <!-- Buttons, labels, and many other things can be placed here! -->
-      <!-- Here is a label for example -->
-      <span class="label label-primary">Label</span>
-    </div><!-- /.box-tools -->
-  </div><!-- /.box-header -->
-  <div class="box-body">
+        <dt>Lastname:</dt>
+          <dd><%= @profile.lastname %></dd>
 
+        <dt>Gender:</dt>
+          <dd><%= @profile.gender %></dd>
 
-    <p>
-      <strong>Firstname:</strong>
-      <%= @profile.firstname %>
-    </p>
+        <dt>Credo:</dt>
+          <dd><%= @profile.credo %></dd>
 
-    <p>
-      <strong>Lastname:</strong>
-      <%= @profile.lastname %>
-    </p>
+        <dt>User:</dt>
+          <dd><%= @profile.user.email %></dd>
+      </dl>
 
-    <p>
-      <strong>Gender:</strong>
-      <%= @profile.gender %>
-    </p>
-
-    <p>
-      <strong>Credo:</strong>
-      <%= @profile.credo %>
-    </p>
-
-    <p>
-      <strong>User:</strong>
-      <%= @profile.user.email %>
-    </p>
-
-
-  </div><!-- /.box-body -->
-  <div class="box-footer">
-    <%= link_to 'Edit', edit_profile_path(@profile), class: 'btn btn-primary' %>
-  </div><!-- box-footer -->
-</div><!-- /.box -->
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+        <%= link_to 'Edit', edit_profile_path(@profile), class: 'btn btn-primary' %>
+      </div><!-- box-footer -->
+    </div><!-- /.box -->
+  </div><!--/.col-md-6-->
+</div><!--/.row-->
