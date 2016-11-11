@@ -23,15 +23,19 @@
               <%= profile_form.text_field :lastname, placeholder: 'Lastname', class: 'form-control' %>
             </div>
 
-            <div class="form-group">
+            <div class="radio-inline">
               <%= profile_form.radio_button(:gender, 'Female') %>
-              <%= label_tag :gender_Female, 'Female' %>
+              <%= profile_form.label :gender_female, 'Female' %>
+            </div>
 
+            <div class="radio-inline">
               <%= profile_form.radio_button(:gender, 'Male') %>
-              <%= label_tag :gender_Male, 'Male' %>
+              <%= profile_form.label :gender_male, 'Male' %>
+            </div>
 
+            <div class="radio-inline">
               <%= profile_form.radio_button(:gender, 'Other') %>
-              <%= label_tag :gender_Other, 'Other' %>
+              <%= profile_form.label :gender_other, 'Other' %>
             </div>
         <% end %>
 

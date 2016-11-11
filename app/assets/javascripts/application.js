@@ -5,4 +5,12 @@
 // user experience. Slimscroll is required when using the fixed layout.
 //= require plugins/slimScroll/jquery.slimscroll.min
 //= require plugins/fastclick/fastclick.min
+//= require plugins/icheck/icheck.min
 //= require app
+
+$(document).ready(function(){
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue'
+    });
+});
