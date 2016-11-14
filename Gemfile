@@ -21,6 +21,9 @@ gem 'font-awesome-sass', '~> 4.7.0'
 gem 'devise'
 gem 'paperclip', '~> 5.0.0'
 gem 'activerecord-session_store'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri

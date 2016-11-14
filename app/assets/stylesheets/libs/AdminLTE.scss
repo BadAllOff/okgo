@@ -2953,6 +2953,40 @@ table.text-center th {
   font-size: 12px;
 }
 /*
+ * Component: Group Members list
+ * -------------------
+ */
+.members-list > li {
+  //width: 25%;
+  float: left;
+  padding: 10px;
+  text-align: center;
+}
+.members-list > li img {
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
+.members-list > li > a:hover,
+.members-list > li > a:hover .members-list-name {
+  color: #999;
+}
+.members-list-name,
+.members-list-date {
+  display: block;
+}
+.members-list-name {
+  font-weight: 600;
+  color: #444;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.members-list-date {
+  color: #999;
+  font-size: 12px;
+}
+/*
  * Component: Carousel
  * -------------------
  */
@@ -4609,6 +4643,7 @@ table.text-center th {
 .chart-legend,
 .contacts-list,
 .users-list,
+.members-list,
 .mailbox-attachments {
   list-style: none;
   margin: 0;

@@ -13,5 +13,7 @@ module Okgo
     # -- all .rb files in that directory are automatically loaded.
 
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| "<span class='field_with_errors'>#{html_tag}</span>".html_safe }
+    config.time_zone = 'Asia/Baku'
+    config.active_record.default_timezone = :local # Or :utc
   end
 end
