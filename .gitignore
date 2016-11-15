@@ -23,3 +23,4 @@ config/deploy/
 coverage
 config/database.yml
 config/secrets.yml
+TODO.txt

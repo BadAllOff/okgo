@@ -11,9 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= f.label :language, 'Language' %>
-    <%=  collection_select(:event, :language_id, Language.all, :id, :description, {}, { class: 'form-control' }) %>
+  <div class="row">
+    <div class="field form-group col-sm-12 col-md-6">
+      <%= f.label :language, 'Language' %>
+      <%=  collection_select(:event, :language_id, Language.all, :id, :description, {}, { class: 'form-control' }) %>
+    </div>
+
+    <div class="field form-group col-sm-12 col-md-6">
+      <%= f.label :max_members, 'Maximum number of participants' %>
+      <%= f.number_field :max_members, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="field form-group">
