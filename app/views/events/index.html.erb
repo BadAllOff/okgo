@@ -1,42 +1,46 @@
 <div class="row">
 <%= render 'events/info_boxes' %>
 </div>
-
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title">Create new event</h3>
-    <div class="box-tools pull-right">
-      <!-- Buttons, labels, and many other things can be placed here! -->
-      <%= link_to 'Create Event', new_event_path, class: 'btn btn-sm btn-primary' %>
-    </div><!-- /.box-tools -->
-  </div><!-- /.box-header -->
-</div><!-- /.box -->
-
 <div class="row">
+  <div class="col-md-8">
+    <div class="box ">
+      <div class="box-header with-border">
+        <h3 class="box-title">Create new event</h3>
+        <div class="box-tools pull-right">
+          <!-- Buttons, labels, and many other things can be placed here! -->
+          <%= link_to 'Create Event', new_event_path, class: 'btn btn-sm btn-primary' %>
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+    </div><!-- /.box -->
+  </div>
+
   <!-- /.timeline-label -->
   <% @events.each do |event| %>
-    <div class="col-md-12">
+    <div class="col-md-8">
       <!-- Box Comment -->
       <div class="box box-widget">
         <div class="box-header with-border">
           <div class="user-block">
                 <%= link_to profile_path(event.user.profile) do %>
-                  <% if @profile.photo?  %>
-                      <%= image_tag(@profile.photo.url('medium'), class: "img-circle",  alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}", data: { toggle: 'tooltip', original_title: "#{event.user.profile.firstname} #{event.user.profile.lastname}" }) %>
+                  <% if event.user.profile.photo?  %>
+                      <%= image_tag(event.user.profile.photo.url('medium'), class: "img-circle",  alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}", data: { toggle: 'tooltip', original_title: "#{event.user.profile.firstname} #{event.user.profile.lastname}" }) %>
                   <% else %>
                       <%= image_tag('medium_missing.png', class: "img-circle", alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}") %>
                   <% end %>
                 <% end %>
-              <span class="username">
+            <span class="username">
                 <%= link_to profile_path(event.user.profile) do %>
                   <%= event.user.profile.firstname %> <%= event.user.profile.lastname %></a>
                 <% end %>
               </span>
               <span class="description"><%= event.starts_at.strftime('%B %d, Starts at %H:%M') %></span>
               <span class="description"><%= event.title %></span>
+              <span class="description">Language: <%= event.language.description %>
+              </span>
           </div>
           <!-- /.user-block -->
           <div class="box-tools">
+            <%= image_tag(event.language.flag_image.url(:micro), class: 'flag-micro') if  event.language.flag_image? %>
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -47,55 +51,55 @@
         <div class="box-body">
           <!-- post text -->
           <%= event.description %>
-            <div class="box-body no-padding">
-              <ul class="members-list clearfix">
-                <li class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                  <img src="<%= image_path 'skins/faces/user1-128x128.jpg' %>" alt="User Image" data-toggle="tooltip" data-original-title="Alexander Pierce">
-                  <a class="members-list-name" href="#">Alexander Pierce</a>
-                  <span class="members-list-date">Today</span>
-                </li>
-                <li class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                  <img src="<%= image_path "skins/faces/user8-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Norman">
-                  <a class="members-list-name" href="#">Norman</a>
-                  <span class="members-list-date">Yesterday</span>
-                </li>
-                <li class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                  <img src="<%= image_path "skins/faces/user7-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Jane">
-                  <a class="members-list-name" href="#">Jane</a>
-                  <span class="members-list-date">12 Jan</span>
-                </li>
-                <li class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                  <img src="<%= image_path "skins/faces/user6-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="John">
-                  <a class="members-list-name" href="#">John</a>
-                  <span class="members-list-date">12 Jan</span>
-                </li>
-                <li class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                  <img src="<%= image_path "skins/faces/user2-160x160.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Alexander">
-                  <a class="members-list-name" href="#">Alexander</a>
-                  <span class="members-list-date">13 Jan</span>
-                </li>
-                <li class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                  <img src="<%= image_path "skins/faces/user5-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Sarah">
-                  <a class="members-list-name" href="#">Sarah</a>
-                  <span class="members-list-date">14 Jan</span>
-                </li>
-                <li class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                  <img src="<%= image_path "skins/faces/user4-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Nora">
-                  <a class="members-list-name" href="#">Nora</a>
-                  <span class="members-list-date">15 Jan</span>
-                </li>
-                <li class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                  <img src="<%= image_path "skins/faces/user3-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Nadia">
-                  <a class="members-list-name" href="#">Nadia</a>
-                  <span class="members-list-date">15 Jan</span>
-                </li>
-              </ul>
-              <!-- /.members-list -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-              <a href="javascript:void(0)" class="uppercase">View All members</a>
-            </div>
+          <div class="no-padding">
+            <ul class="members-list clearfix"> <!-- members list-->
+              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <img src="<%= image_path 'skins/faces/user1-128x128.jpg' %>" alt="User Image" data-toggle="tooltip" data-original-title="Alexander Pierce">
+                <a class="members-list-name" href="#">Alexander Pierce</a>
+                <span class="members-list-date">Today</span>
+              </li>
+              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <img src="<%= image_path "skins/faces/user8-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Norman">
+                <a class="members-list-name" href="#">Norman</a>
+                <span class="members-list-date">Yesterday</span>
+              </li>
+              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <img src="<%= image_path "skins/faces/user7-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Jane">
+                <a class="members-list-name" href="#">Jane</a>
+                <span class="members-list-date">12 Jan</span>
+              </li>
+              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <img src="<%= image_path "skins/faces/user6-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="John">
+                <a class="members-list-name" href="#">John</a>
+                <span class="members-list-date">12 Jan</span>
+              </li>
+              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <img src="<%= image_path "skins/faces/user2-160x160.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Alexander">
+                <a class="members-list-name" href="#">Alexander</a>
+                <span class="members-list-date">13 Jan</span>
+              </li>
+              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <img src="<%= image_path "skins/faces/user5-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Sarah">
+                <a class="members-list-name" href="#">Sarah</a>
+                <span class="members-list-date">14 Jan</span>
+              </li>
+              <!--<li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                <!--<img src="<%= image_path "skins/faces/user4-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Nora">-->
+                <!--<a class="members-list-name" href="#">Nora</a>-->
+                <!--<span class="members-list-date">15 Jan</span>-->
+              <!--</li>-->
+              <!--<li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
+                <!--<img src="<%= image_path "skins/faces/user3-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Nadia">-->
+                <!--<a class="members-list-name" href="#">Nadia</a>-->
+                <!--<span class="members-list-date">15 Jan</span>-->
+              <!--</li>-->
+            </ul>
+            <!-- /.members-list -->
+          </div>
+          <div class="text-center">
+            <a href="javascript:void(0)" class="uppercase">View All members</a>
+          </div>
+        </div><!-- /.box-body -->
         <!-- /.box-body -->
         <div class="box-footer">
           <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Join</button>
@@ -109,6 +113,5 @@
       </div>
       <!-- /.box -->
     </div>
-  </div>
   <% end %>
 </div>

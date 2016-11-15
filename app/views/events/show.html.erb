@@ -10,6 +10,7 @@
     <p>
       <strong>Language:</strong>
       <%= @event.language.description %>
+      <%= image_tag(@event.language.flag_image.url(:micro)) if  @event.language.flag_image? %>
     </p>
 
     <p>
