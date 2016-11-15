@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field form-group">
+    <%= f.label :language, 'Language' %>
+    <%=  collection_select(:event, :language_id, Language.all, :id, :description, {}, { class: 'form-control' }) %>
+  </div>
+
+  <div class="field form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>

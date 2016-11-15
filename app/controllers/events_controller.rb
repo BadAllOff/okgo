@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_profile
+  before_action :set_event, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_count_events, only: [ :index ]
 
+  include Profiled
 
   # GET /events
   # GET /events.json
@@ -69,13 +70,12 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = Profile.where(user_id: current_user).first
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at)
+      params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id)
+    end
+
+    def set_count_events
+      @count_events = Event.where('starts_at > ?', DateTime.now).count
     end
 end

@@ -1,32 +1,5 @@
 <div class="row">
-  <div class="col-lg-6 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-aqua">
-      <div class="inner">
-        <h3>150</h3>
-
-        <p>Active Events</p>
-      </div>
-      <div class="icon">
-        <i class="fa fa-comments-o"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-6 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-yellow">
-      <div class="inner">
-        <h3>220</h3>
-
-        <p>Joined Members</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-person-add"></i>
-      </div>
-    </div>
-  </div>
-
+<%= render 'events/info_boxes' %>
 </div>
 
 <div class="box">
@@ -47,13 +20,20 @@
       <div class="box box-widget">
         <div class="box-header with-border">
           <div class="user-block">
-            <% if @profile.photo?  %>
-                <%= image_tag(@profile.photo.url('medium'), class: "img-circle",  alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}", data: { toggle: 'tooltip', original_title: "#{event.user.profile.firstname} #{event.user.profile.lastname}" }) %>
-            <% else %>
-                <%= image_tag('medium_missing.png', class: "img-circle", alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}") %>
-            <% end %>
-            <span class="username"><a href="#"><%= event.user.profile.firstname %> <%= event.user.profile.lastname %></a></span>
-            <span class="description"><%= event.starts_at.strftime('%B %d, Starts at %H:%M') %></span>
+                <%= link_to profile_path(event.user.profile) do %>
+                  <% if @profile.photo?  %>
+                      <%= image_tag(@profile.photo.url('medium'), class: "img-circle",  alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}", data: { toggle: 'tooltip', original_title: "#{event.user.profile.firstname} #{event.user.profile.lastname}" }) %>
+                  <% else %>
+                      <%= image_tag('medium_missing.png', class: "img-circle", alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}") %>
+                  <% end %>
+                <% end %>
+              <span class="username">
+                <%= link_to profile_path(event.user.profile) do %>
+                  <%= event.user.profile.firstname %> <%= event.user.profile.lastname %></a>
+                <% end %>
+              </span>
+              <span class="description"><%= event.starts_at.strftime('%B %d, Starts at %H:%M') %></span>
+              <span class="description"><%= event.title %></span>
           </div>
           <!-- /.user-block -->
           <div class="box-tools">
