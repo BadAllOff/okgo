@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115101324) do
+ActiveRecord::Schema.define(version: 20161115122732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,12 @@ ActiveRecord::Schema.define(version: 20161115101324) do
 
   create_table "languages", force: :cascade do |t|
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "flag_image_file_name"
+    t.string   "flag_image_content_type"
+    t.integer  "flag_image_file_size"
+    t.datetime "flag_image_updated_at"
   end
 
   create_table "profiles", force: :cascade do |t|

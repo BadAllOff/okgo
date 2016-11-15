@@ -1,9 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">Language</h3>
+      </div>
+      <div class="box-body">
+        <dl class="dl-horizontal">
+          <dt>Description:</dt>
+            <dd><%= @language.description %></dd>
 
-<p>
-  <strong>Description:</strong>
-  <%= @language.description %>
-</p>
+          <dt>Micro image:</dt>
+            <dd><%= image_tag(@language.flag_image.url(:micro)) if @language.flag_image? %></dd>
 
-<%= link_to 'Edit', edit_language_path(@language) %> |
-<%= link_to 'Back', languages_path %>
+          <dt>Small:</dt>
+            <dd><%= image_tag(@language.flag_image.url(:small)) if @language.flag_image? %></dd>
+
+
+          <dt>Medium:</dt>
+            <dd><%= image_tag(@language.flag_image.url(:medium)) if @language.flag_image? %></dd>
+
+
+          <dt>Original:</dt>
+            <dd><%= image_tag(@language.flag_image.url(:original)) if @language.flag_image? %></dd>
+
+        </dl>
+      </div>
+      <div class="box-footer">
+        <%= link_to 'Edit', edit_language_path(@language) %> |
+        <%= link_to 'Back', languages_path %>
+      </div><!-- box-footer -->
+    </div><!-- /.box -->
+  </div><!--/.col-md-6-->
+</div><!--/.row-->

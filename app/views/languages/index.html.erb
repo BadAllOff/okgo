@@ -1,27 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Languages</h1>
+<div class="box">
+  <div class="box-header with-border">
+    <h3 class="box-title">Add new language</h3>
+    <div class="box-tools pull-right">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <%= link_to 'New Language', new_language_path, class: 'btn btn-sm btn-primary' %>
+    </div><!-- /.box-tools -->
+  </div><!-- /.box-header -->
+</div><!-- /.box -->
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
 
-  <tbody>
     <% @languages.each do |language| %>
-      <tr>
-        <td><%= language.description %></td>
-        <td><%= link_to 'Show', language %></td>
-        <td><%= link_to 'Edit', edit_language_path(language) %></td>
-        <td><%= link_to 'Destroy', language, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+      <div class="col-md-6">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Language</h3>
+          </div>
+          <div class="box-body">
+            <dl class="dl-horizontal">
+              <dt>Description:</dt>
+              <dd><%= language.description %></dd>
+
+              <dt>Micro image:</dt>
+              <dd><%= image_tag(language.flag_image.url(:micro)) if language.flag_image? %></dd>
+
+              <dt>Small:</dt>
+              <dd><%= image_tag(language.flag_image.url(:small)) if language.flag_image? %></dd>
+
+
+              <dt>Medium:</dt>
+              <dd><%= image_tag(language.flag_image.url(:medium)) if language.flag_image? %></dd>
+
+
+              <dt>Original:</dt>
+              <dd><%= image_tag(language.flag_image.url(:original)) if language.flag_image? %></dd>
+
+            </dl>
+          </div>
+          <div class="box-footer">
+            <%= language.description %> |
+            <%= link_to 'Show', language %> |
+            <%= link_to 'Edit', edit_language_path(language) %> |
+            <%= link_to 'Destroy', language, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div><!-- box-footer -->
+        </div><!-- /.box -->
+      </div><!--/.col-md-6-->
+
     <% end %>
-  </tbody>
-</table>
+</div><!--/.row-->
 
 <br>
 
-<%= link_to 'New Language', new_language_path %>

@@ -1,22 +1,22 @@
-<%= form_for(language) do |f| %>
-  <% if language.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(language.errors.count, "error") %> prohibited this language from being saved:</h2>
+<%= form_for(language, html: { multipart: true }) do |f| %>
+  <div class="box-body">
 
-      <ul>
-      <% language.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if language.errors.any? %>
+        <%= render 'shared/errors', object: language %>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+    <div class="form-group">
+      <%= f.label :flag_image %>
+      <%= f.file_field :flag_image %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="box-footer">
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
