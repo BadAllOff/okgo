@@ -8,6 +8,7 @@
 //= require plugins/icheck/icheck.min
 //= require moment
 //= require bootstrap-datetimepicker
+//= require md_simple_editor
 //= require app
 
 $(document).ready(function(){
@@ -32,3 +33,4 @@ $(document).ready(function(){
         });
     });
 });
+

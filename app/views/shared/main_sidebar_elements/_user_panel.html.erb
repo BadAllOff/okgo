@@ -9,12 +9,12 @@
   <div class="pull-left info">
     <% if user_signed_in? %>
         <% if !@profile.firstname.blank? %>
-          <p>Hello <%= @profile.firstname %></p>
+          <p><%= @profile.firstname %></p>
         <% else %>
           <p><%= current_user.email %></p>
         <% end %>
     <% else %>
-        <p>Hello Friend</p>
+        <p>Hello</p>
     <% end %>
     <!-- Status -->
     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>

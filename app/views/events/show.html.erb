@@ -1,6 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-
 <div class="box">
   <div class="box-header with-border">
     <h3 class="box-title">Default Box Example</h3>
@@ -25,7 +22,7 @@
 
     <p>
       <strong>Description:</strong>
-      <%= @event.description %>
+      <%= markdown(@event.description) %>
     </p>
 
     <p>

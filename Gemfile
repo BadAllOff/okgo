@@ -23,6 +23,9 @@ gem 'paperclip', '~> 5.0.0'
 gem 'activerecord-session_store'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'redcarpet'
+# gem 'markitup-rails'
+gem 'md_simple_editor', git: 'https://github.com/BadAllOff/md_simple_editor', ref: 'f926c9f'
 
 
 group :development, :test do

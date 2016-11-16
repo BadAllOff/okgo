@@ -30,7 +30,9 @@
 
   <div class="field form-group">
     <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
+    <%= md_simple_editor  do %>
+      <%= f.text_area :description, class: 'form-control' %>
+    <% end %>
   </div>
 
   <div class="field form-group">
