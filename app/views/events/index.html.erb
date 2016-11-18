@@ -55,46 +55,26 @@
           <%= markdown(event.description) %>
           <div class="no-padding">
             <ul class="members-list clearfix"> <!-- members list-->
-              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                <img src="<%= image_path 'skins/faces/user1-128x128.jpg' %>" alt="User Image" data-toggle="tooltip" data-original-title="Alexander Pierce">
-                <a class="members-list-name" href="#">Alexander Pierce</a>
-                <span class="members-list-date">Today</span>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                <img src="<%= image_path "skins/faces/user8-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Norman">
-                <a class="members-list-name" href="#">Norman</a>
-                <span class="members-list-date">Yesterday</span>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                <img src="<%= image_path "skins/faces/user7-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Jane">
-                <a class="members-list-name" href="#">Jane</a>
-                <span class="members-list-date">12 Jan</span>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                <img src="<%= image_path "skins/faces/user6-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="John">
-                <a class="members-list-name" href="#">John</a>
-                <span class="members-list-date">12 Jan</span>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                <img src="<%= image_path "skins/faces/user2-160x160.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Alexander">
-                <a class="members-list-name" href="#">Alexander</a>
-                <span class="members-list-date">13 Jan</span>
-              </li>
-              <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                <img src="<%= image_path "skins/faces/user5-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Sarah">
-                <a class="members-list-name" href="#">Sarah</a>
-                <span class="members-list-date">14 Jan</span>
-              </li>
-              <!--<li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                <!--<img src="<%= image_path "skins/faces/user4-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Nora">-->
-                <!--<a class="members-list-name" href="#">Nora</a>-->
-                <!--<span class="members-list-date">15 Jan</span>-->
-              <!--</li>-->
-              <!--<li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">-->
-                <!--<img src="<%= image_path "skins/faces/user3-128x128.jpg" %>" alt="User Image" data-toggle="tooltip" data-original-title="Nadia">-->
-                <!--<a class="members-list-name" href="#">Nadia</a>-->
-                <!--<span class="members-list-date">15 Jan</span>-->
-              <!--</li>-->
+              <% event.memberships.each do |member| %>
+
+
+                  <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <% if member.user.profile.photo?  %>
+                        <%= image_tag(member.user.profile.photo.url('medium'),
+                                      class: "img-circle",
+                                      alt: member.user.profile.firstname,
+                                      data: { original_title: member.user.profile.firstname,
+                                              toggle: 'tooltip'
+                                      }) %>
+                    <% else %>
+                        <%= image_tag('medium_missing.png', class: "img-circle", alt: 'User Image') %>
+                    <% end %>
+                    <%= link_to profile_path(member.user), class: 'members-list-name' do  %>
+                      <%= member.user.profile.firstname %>
+                    <% end %>
+                    <span class="members-list-date">Member since <%= current_user.created_at.strftime('%b %d, %Y') %></span>
+                  </li>
+              <% end %>
             </ul>
             <!-- /.members-list -->
           </div>
@@ -104,7 +84,12 @@
         </div><!-- /.box-body -->
         <!-- /.box-body -->
         <div class="box-footer">
-          <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Join</button>
+          <%= link_to join_event_path(event), class: 'btn btn-success btn-xs', method: :post do %>
+              <i class="fa fa-plus"></i> Join
+          <% end %>
+          <%= link_to leave_event_path(event), class: 'btn btn-default btn-xs', method: :delete do %>
+              <i class="fa fa-plus"></i> Leave
+          <% end %>
           <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
           <%= link_to 'Show', event %> |
           <%= link_to 'Edit', edit_event_path(event) %> |

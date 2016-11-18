@@ -42,7 +42,12 @@
 
   </div><!-- /.box-body -->
   <div class="box-footer">
-
+    <%= link_to join_event_path(@event), class: 'btn btn-success btn-xs', method: :post do %>
+        <i class="fa fa-plus"></i> Join
+    <% end %>
+    <%= link_to leave_event_path(@event), class: 'btn btn-default btn-xs', method: :delete do %>
+        <i class="fa fa-plus"></i> Leave
+    <% end %>
     <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-primary' %>
     <%= link_to 'Back', events_path, class: 'btn btn-default pull-right' %>
 

@@ -1,0 +1,1 @@
+json.array! @event_memberships, partial: 'event_memberships/event_membership', as: :event_membership
