@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # Profile is crucial for app
   after_create :create_profile
   has_many :events, dependent: :destroy
+  has_many :memberships,  class_name: 'EventMembership', dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
