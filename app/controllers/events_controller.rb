@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all.includes(:memberships)
+    @events = Event.where("starts_at >= ?", Time.zone.now).includes(:memberships)
   end
 
   # GET /events/1

@@ -26,6 +26,7 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'redcarpet'
 # gem 'markitup-rails'
 gem 'md_simple_editor', git: 'https://github.com/BadAllOff/md_simple_editor', ref: 'f926c9f'
+gem 'validates_timeliness'
 
 
 group :development, :test do

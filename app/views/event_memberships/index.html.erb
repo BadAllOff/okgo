@@ -1,62 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Event Memberships</h1>
-
-<% @event_memberships.each do |event_membership| %>
-
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title">Default Box Example</h3>
-  </div><!-- /.box-header -->
-  <div class="box-body">
-
-    <p>
-      <strong>Language:</strong>
-      <%= event_membership.event.language.description %>
-      <%= image_tag(event_membership.event.language.flag_image.url(:micro)) if  event_membership.event.language.flag_image? %>
-    </p>
-
-    <p>
-      <strong>Max participants:</strong>
-      <%= event_membership.event.max_members %>
-    </p>
-
-    <p>
-      <strong>Title:</strong>
-      <%= event_membership.event.title %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= markdown(event_membership.event.description) %>
-    </p>
-
-    <p>
-      <strong>Address:</strong>
-      <%= event_membership.event.address %>
-    </p>
-
-    <p>
-      <strong>Starts at:</strong>
-      <%= event_membership.event.starts_at %>
-    </p>
-
-    <p>
-      <strong>Ends at:</strong>
-      <%= event_membership.event.ends_at %>
-    </p>
-
-  </div><!-- /.box-body -->
-  <div class="box-footer">
-    <%= link_to join_event_path(event_membership.event), class: 'btn btn-success btn-xs', method: :post do %>
-        <i class="fa fa-plus"></i> Join
-    <% end %>
-    <%= link_to leave_event_path(event_membership.event), class: 'btn btn-default btn-xs', method: :delete do %>
-        <i class="fa fa-plus"></i> Leave
-    <% end %>
-    <%= link_to 'Edit', edit_event_path(event_membership.event), class: 'btn btn-primary' %>
-    <%= link_to 'Back', events_path, class: 'btn btn-default pull-right' %>
-
-  </div><!-- box-footer -->
-</div><!-- /.box -->
-<% end %>
+<div class="row">
+  <div class="col-md-10">
+    <% @event_memberships.each do |event_membership| %>
+    <%= render partial: 'events/event', locals: {event: event_membership.event}%>
+  <% end %>
+  </div>
+</div>
