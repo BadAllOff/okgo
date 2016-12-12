@@ -10,7 +10,7 @@ class SocializationsController < ApplicationController
                    likers_count: @socializable.likers_count,
                    btn_class: 'btn-primary',
                    link:  event_unlike_path(@socializable),
-                   method: 'delete'}
+                   method: 'delete' }
   end
 
   def unlike
@@ -21,7 +21,7 @@ class SocializationsController < ApplicationController
                    likers_count: @socializable.likers_count,
                    btn_class: 'btn-default',
                    link:  event_like_path(@socializable),
-                   method: 'post'}
+                   method: 'post' }
   end
 
   private
@@ -31,7 +31,7 @@ class SocializationsController < ApplicationController
           when id = params[:event_id] # Must be before :item_id, since it's nested under it.
             Event.find(id)
           else
-            raise ArgumentError, "Unsupported socializable model, params: " +
+            raise ArgumentError, 'Unsupported socializable model, params: ' +
                 params.keys.inspect
         end
     raise ActiveRecord::RecordNotFound unless @socializable

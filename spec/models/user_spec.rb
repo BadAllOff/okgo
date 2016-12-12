@@ -13,4 +13,9 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :password }
   end # Validations
 
+  # it "create new profile in database for user" do
+  #   user = FactoryGirl.build(:user)
+  #   Profile.should_receive(:create).with(user_id: user.id)
+  #   user.save
+  # end
 end

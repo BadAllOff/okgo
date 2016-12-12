@@ -36,6 +36,7 @@ class EventMembershipsController < ApplicationController
     def set_event
       @event = Event.find(params[:event_id])
     end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_event_membership
       @event_membership = EventMembership.where(user: current_user, event: @event).first

@@ -1,20 +1,20 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [ :create, :edit, :update, :destroy ]
-  before_action :set_event, only: [ :show, :edit, :update, :destroy ]
-  before_action :set_count_events, only: [ :index ]
-  before_action :set_count_memberships, only: [ :index ]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_count_events, only: [:index]
+  before_action :set_count_memberships, only: [:index]
   before_action :set_page_title
 
   include Profiled
   include Breadcrumbed
-  before_action :set_event_index_breadcrumb, only: [ :index, :show, :edit, :new]
+  before_action :set_event_index_breadcrumb, only: [:index, :show, :edit, :new]
 
 
   # GET /events  before_action :set_page_title
 
   # GET /events.json
   def index
-    @events = Event.where("starts_at >= ?", Time.zone.now).includes(:memberships)
+    @events = Event.where('starts_at >= ?', Time.zone.now).includes(:memberships)
   end
 
   # GET /events/1

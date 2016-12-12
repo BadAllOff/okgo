@@ -7,6 +7,6 @@ class CreateEventMemberships < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :event_memberships, [ :event_id, :user_id ]
+    add_index :event_memberships, [:event_id, :user_id]
   end
 end

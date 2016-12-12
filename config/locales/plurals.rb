@@ -1,8 +1,5 @@
-{:ru =>
-     { :i18n =>
-           { :plural =>
-                 { :keys => [:zero, :one, :few, :many],
-                   :rule => lambda { |n|
+{ ru:      { i18n:            { plural:                  { keys: [:zero, :one, :few, :many],
+                   rule: lambda do |n|
                      if n == 0
                        :zero
                      elsif
@@ -20,7 +17,7 @@
                        # 0, 5-20, 25-30, 35-40...
                        :many
                      end
-                   }
+                   end
                  }
            }
      }

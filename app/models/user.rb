@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def member_of?(event)
-     EventMembership.where(event_id: event, user_id: id).first
+    EventMembership.where(event_id: event, user_id: id).first
   end
 
   private

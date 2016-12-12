@@ -20,29 +20,29 @@ RSpec.describe Event, type: :model do
     it { should validate_presence_of :language }
 
     context 'when starts_at is the current time, or less than one day before event, or 1 day and more' do
-      it {should_not allow_value(DateTime.current).
-          for(:starts_at)}
+      it do should_not allow_value(DateTime.current).
+          for(:starts_at) end
 
-      it {should_not allow_value(DateTime.current + 23.hours).
-          for(:starts_at)}
+      it do should_not allow_value(DateTime.current + 23.hours).
+          for(:starts_at) end
     end
 
     context 'when starts_at is on 1 day and more before event' do
-      it {should allow_value(DateTime.current + 1.day).
-          for(:starts_at)}
+      it do should allow_value(DateTime.current + 1.day).
+          for(:starts_at) end
     end
 
     context 'when end date is before or on start date' do
-      it {should_not allow_value(event.starts_at - 1.minute).
-          for(:ends_at)}
+      it do should_not allow_value(event.starts_at - 1.minute).
+          for(:ends_at) end
 
-      it {should_not allow_value(event.starts_at).
-          for(:ends_at)}
+      it do should_not allow_value(event.starts_at).
+          for(:ends_at) end
     end
 
     context 'when the end date is after the start date' do
-      it {should allow_value(event.starts_at + 1.minute).
-          for(:ends_at)}
+      it do should allow_value(event.starts_at + 1.minute).
+          for(:ends_at) end
     end
   end # Validations
 end

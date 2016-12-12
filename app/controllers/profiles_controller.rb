@@ -1,10 +1,10 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_or_create_profile, only: [ :index, :show, :edit, :update ]
+  before_action :set_or_create_profile, only: [:index, :show, :edit, :update]
   before_action :set_page_title
 
   include Breadcrumbed
-  before_action :set_profile_index_breadcrumb, only: [ :index, :show, :edit]
+  before_action :set_profile_index_breadcrumb, only: [:index, :show, :edit]
 
 
   #

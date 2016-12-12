@@ -48,9 +48,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
   # gem 'guard'
+  gem 'guard-rails', require: false
   gem 'guard-rspec', require: false
   gem 'guard-bundler', require: false
-  gem 'guard-rails', require: false
   # gem 'capistrano-rails'
 end
 
