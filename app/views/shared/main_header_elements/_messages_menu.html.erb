@@ -13,7 +13,7 @@
           <a href="#">
             <div class="pull-left">
               <!-- User Image -->
-              <% if @profile.photo?  %>
+              <% if @profile && @profile.photo?  %>
                   <%= image_tag(@profile.photo.url('micro'), class: "img-circle", alt: 'User Image') %>
               <% else %>
                   <%= image_tag('micro_missing.png', class: "img-circle", alt: 'User Image') %>

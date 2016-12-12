@@ -6,20 +6,20 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to join clubs</p>
+    <p class="login-box-msg"><%= t('devise.sign_in_to_join_clubs') %></p>
 
 
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field form-group has-feedback">
           <%= f.label :email %><br />
-          <%= f.email_field :email, class: 'form-control', placeholder: 'Email',autofocus: true %>
+          <%= f.email_field :email, class: 'form-control', placeholder: true,autofocus: true %>
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
 
         <div class="field form-group has-feedback">
           <%= f.label :password %><br />
-          <%= f.password_field :password, class: 'form-control', placeholder: 'Password',autocomplete: "off" %>
+          <%= f.password_field :password, class: 'form-control', placeholder: true, autocomplete: "off" %>
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 
         </div>
@@ -32,21 +32,11 @@
         <% end %>
 
         <div class="actions">
-          <%= f.submit "Log in", class: 'btn btn-primary btn-block btn-flat' %>
+          <%= f.submit t('.sign_in'), class: 'btn btn-primary btn-block btn-flat' %>
         </div>
     <% end %>
 
-
-
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-    </div>
-    <!-- /.social-auth-links -->
-    <%= render "devise/shared/links" %>
+    <%= render partial: 'devise/shared/alternative_registration' %>
   </div>
   <!-- /.login-box-body -->
 </div>

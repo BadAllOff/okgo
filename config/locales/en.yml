@@ -1,23 +1,79 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  log_in: "Log in"
+  show: 'Show'
+  back: 'Back'
+  are_you_sure: 'Are you sure?'
+  page_titles:
+    events: 'Events'
+    profiles: 'Profile'
+  breadcrumbs:
+    homepage: 'Home'
+    events:
+      index: 'Events list'
+      show: 'Event'
+      new: 'Create new event'
+      edit: 'Edit event'
+    profiles:
+      index: 'Profile'
+      show: 'Profile'
+      edit: 'Edit Profile'
+  sidebar_navigation:
+    search: 'Search'
+    navigation: 'NAVIGATION'
+    events: 'Events'
+    profile: 'Profile'
+    languages: 'Languages'
+    event_memberships: 'Memberships'
+    activities: 'Activities'
+  events:
+    create_new_event: 'Create new event'
+    join: 'Join'
+    leave: 'Not going'
+    you_have_joined_to_the_event: 'You have joined to the event'
+    you_have_left_the_event: 'You have left the event'
+    something_went_wrong: 'Something went wrong. Try to join another event.'
+    active_events:
+      zero: "No events"
+      few: "events"
+      many: "events"
+      one: "event"
+      other: "events"
+    joined_members:
+      zero: "No members"
+      few: "members"
+      many: "members"
+      one: "member"
+      other: "members"
+    event:
+      new_event: 'New Event'
+      starts_at: 'Starts at'
+      ends_at: 'Ends at'
+      maximum_participants: 'Maximum participants'
+  profiles:
+      editing_profile: 'Editing Profile'
+      created_at: 'Registration date'
+      count_events: 'Total Events'
+      count_memberships: 'Total Participations'
+  activerecord:
+      attributes:
+        profile:
+          gender_female: 'Female'
+          gender_male: 'Male'
+          gender_other: 'Other'
+        event:
+          title: 'Title'
+          description: 'Description'
+          address: 'Address'
+          starts_at: 'Starts at'
+          ends_at: 'Ends at'
+          max_members: 'Maximum number of participants'
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y, %H:%M:%S %z"
+      long: "%d %B %Y, %H:%M"
+      short: "%d %b, %H:%M"
+      without_time: "%d %B %Y"
+    pm: pm
+
+

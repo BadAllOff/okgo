@@ -17,7 +17,8 @@
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
             <!-- Messages: style can be found in dropdown.less-->
-            <%= render partial: 'shared/main_header_elements/messages_menu' %>
+            <%= #render partial: 'shared/main_header_elements/messages_menu'
+            %>
             <!-- /.messages-menu -->
             <!-- Notifications Menu -->
             <%= render partial: 'shared/main_header_elements/notifications_menu' %>
@@ -31,9 +32,14 @@
             </li>
         <% else %>
             <li>
-              <%= link_to 'Log in', new_user_session_path %>
+              <%= link_to t('log_in'), new_user_session_path %>
             </li>
         <% end %>
+        <li>
+          <%= link_to_unless_current("En", { locale: 'en' }) do \
+  link_to("Ru", { locale: 'ru' })                 \
+  end  %>
+        </li>
       </ul>
     </div>
   </nav>

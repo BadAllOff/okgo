@@ -6,7 +6,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg"><%= t('devise.sign_in_to_start_your_session') %></p>
 
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -15,60 +15,56 @@
         <%= f.fields_for :profile do |profile_form| %>
             <div class="field form-group has-feedback">
               <%= profile_form.label :firstname %><br />
-              <%= profile_form.text_field :firstname, placeholder: 'Firstname', class: 'form-control' %>
+              <%= profile_form.text_field :firstname, placeholder: true, class: 'form-control' %>
             </div>
 
             <div class="field form-group has-feedback">
               <%= profile_form.label :lastname %><br />
-              <%= profile_form.text_field :lastname, placeholder: 'Lastname', class: 'form-control' %>
+              <%= profile_form.text_field :lastname, placeholder: true, class: 'form-control' %>
             </div>
 
             <div class="radio-inline">
               <%= profile_form.radio_button(:gender, 'Female') %>
-              <%= profile_form.label :gender_female, 'Female' %>
+              <%= profile_form.label :gender_female %>
             </div>
 
             <div class="radio-inline">
               <%= profile_form.radio_button(:gender, 'Male') %>
-              <%= profile_form.label :gender_male, 'Male' %>
+              <%= profile_form.label :gender_male %>
             </div>
 
             <div class="radio-inline">
               <%= profile_form.radio_button(:gender, 'Other') %>
-              <%= profile_form.label :gender_other, 'Other' %>
+              <%= profile_form.label :gender_other %>
             </div>
         <% end %>
 
         <div class="field form-group has-feedback">
           <%= f.label :email %><br />
-          <%= f.email_field :email, class: 'form-control', placeholder: 'Email', autofocus: true %>
+          <%= f.email_field :email, class: 'form-control', placeholder: true, autofocus: true %>
         </div>
 
         <div class="field form-group has-feedback">
           <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control', placeholder: true, autocomplete: "off" %>
           <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, class: 'form-control', placeholder: 'Password', autocomplete: "off" %>
+              <p class="help-block">
+                <em>(<%= @minimum_password_length %> <%= t('devise.characters_minimum') %>)</em>
+              </p>
+          <% end %>
         </div>
 
         <div class="field form-group has-feedback">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation', autocomplete: "off" %>
+          <%= f.password_field :password_confirmation, class: 'form-control', placeholder: true, autocomplete: "off" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up", class: 'btn btn-primary btn-block btn-flat' %>
+          <%= f.submit t('.sign_up'), class: 'btn btn-primary btn-block btn-flat' %>
         </div>
     <% end %>
 
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-    </div>
+
     <!-- /.social-auth-links -->
     <%= render "devise/shared/links" %>
   </div>

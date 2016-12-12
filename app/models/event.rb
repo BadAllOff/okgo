@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
   belongs_to :user, counter_cache: true
   belongs_to :language
   has_many :memberships,  class_name: 'EventMembership', dependent: :destroy
@@ -8,4 +10,7 @@ class Event < ApplicationRecord
   validates_datetime :ends_at, after: :starts_at
 
   default_scope { order(starts_at: :asc) }
+
+  acts_as_likeable
+
 end

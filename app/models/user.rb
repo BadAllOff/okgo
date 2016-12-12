@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
+  acts_as_liker
+
   def profile
     super || build_profile
   end
@@ -23,6 +25,10 @@ class User < ApplicationRecord
 
   def non_author_of?(object)
     !author_of?(object)
+  end
+
+  def member_of?(event)
+     EventMembership.where(event_id: event, user_id: id).first
   end
 
   private

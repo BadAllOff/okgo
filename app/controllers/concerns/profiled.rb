@@ -1,4 +1,4 @@
-# Ability to vote for something
+# Ability to get profile information
 module Profiled
   extend ActiveSupport::Concern
 

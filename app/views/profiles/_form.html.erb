@@ -26,15 +26,23 @@
     </div>
 
     <div class="form-group">
-      <%= f.radio_button(:gender, 'Female') %>
-      <%= label_tag :gender_Female, 'Female' %>
+      <div class="radio-inline">
+        <%= f.radio_button(:gender, 'Female') %>
+        <%= f.label :gender_female %>
+      </div>
 
-      <%= f.radio_button(:gender, 'Male') %>
-      <%= label_tag :gender_Male, 'Male' %>
+      <div class="radio-inline">
+        <%= f.radio_button(:gender, 'Male') %>
+        <%= f.label :gender_male %>
+      </div>
 
-      <%= f.radio_button(:gender, 'Other') %>
-      <%= label_tag :gender_Other, 'Other' %>
+      <div class="radio-inline">
+        <%= f.radio_button(:gender, 'Other') %>
+        <%= f.label :gender_other %>
+      </div>
     </div>
+
+
 
     <div class="form-group">
       <%= f.label :credo %>

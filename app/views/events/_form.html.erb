@@ -5,10 +5,9 @@
 
   <div class="row">
     <div class="field form-group col-sm-12 col-md-6">
-      <%= f.label :language, 'Language' %>
+      <%= f.label :language %>
       <%=  collection_select(:event, :language_id, Language.all, :id, :description, {}, { class: 'form-control' }) %>
     </div>
-
   </div>
 
   <div class="field form-group">
@@ -41,7 +40,7 @@
 
 
     <div class="field form-group col-sm-12 col-md-4">
-      <%= f.label :max_members, 'Maximum number of participants' %>
+      <%= f.label :max_members %>
       <%= f.number_field :max_members, class: 'form-control' %>
     </div>
   </div>

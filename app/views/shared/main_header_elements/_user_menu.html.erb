@@ -2,7 +2,7 @@
   <!-- Menu Toggle Button -->
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
     <!-- The user image in the navbar-->
-    <% if @profile.photo?  %>
+    <% if @profile && @profile.photo?  %>
         <%= image_tag(@profile.photo.url('micro'), class: "user-image", alt: 'User Image') %>
     <% else %>
         <%= image_tag('micro_missing.png', class: "user-image", alt: 'User Image') %>
@@ -15,7 +15,7 @@
   <ul class="dropdown-menu">
     <!-- The user image in the menu -->
     <li class="user-header">
-      <% if @profile.photo?  %>
+      <% if @profile && @profile.photo?  %>
           <%= image_tag(@profile.photo.url('medium'), class: "img-circle", alt: 'User Image') %>
       <% else %>
           <%= image_tag('medium_missing.png', class: "img-circle", alt: 'User Image') %>
@@ -28,14 +28,13 @@
     <!-- Menu Body -->
     <li class="user-body">
       <div class="row">
-        <div class="col-xs-4 text-center">
-          <a href="#">Followers</a>
+        <div class="col-xs-6 text-center">
+          <span class="description-text"><%= t 'profiles.count_events' %></span><br>
+          <a href="#"><%= @profile.user.events.count %></a>
         </div>
-        <div class="col-xs-4 text-center">
-          <a href="#">Sales</a>
-        </div>
-        <div class="col-xs-4 text-center">
-          <a href="#">Friends</a>
+        <div class="col-xs-6 text-center">
+          <span class="description-text"><%= t 'profiles.count_memberships' %></span><br>
+          <a href="#"><%= @profile.user.event_memberships.count %></a>
         </div>
       </div>
       <!-- /.row -->

@@ -4,8 +4,9 @@
     <div class="small-box bg-aqua">
       <div class="inner">
         <h3><%= @count_events %></h3>
-
-        <p> Active <%= 'Event'.pluralize(@count_events) %></p>
+        <p>
+          <%= t("events.active_events",count: @count_events) %>
+        </p>
       </div>
       <div class="icon">
         <i class="fa fa-comments-o"></i>
@@ -17,9 +18,10 @@
     <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
-        <h3>220</h3>
-
-        <p>Joined Members</p>
+        <h3><%= @count_memberships %></h3>
+        <p>
+          <%= t("events.joined_members",count: @count_memberships) %>
+        </p>
       </div>
       <div class="icon">
         <i class="fa fa-users"></i>

@@ -1,0 +1,58 @@
+<div class="user-block">
+  <%= link_to profile_path(event.user.profile) do %>
+      <% if event.user.profile.photo?  %>
+          <%= image_tag(event.user.profile.photo.url('medium'),
+                        class: "img-circle",
+                        alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}",
+                        data: {
+                            toggle: 'tooltip',
+                            original_title: "#{event.user.profile.firstname} #{event.user.profile.lastname}"
+                        }
+              )
+          %>
+      <% else %>
+          <%= image_tag('medium_missing.png',
+                        class: "img-circle",
+                        alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}"
+              )
+          %>
+      <% end %>
+  <% end %>
+  <span class="username">
+        <%= link_to profile_path(event.user.profile) do %>
+          <%= event.user.profile.firstname %> <%= event.user.profile.lastname %></a>
+        <% end %>
+      </span>
+  <div class="clearfix"></div>
+  <dl class="dl-horizontal description">
+
+    <dt><%= t 'events.event.title' %>: </dt>
+    <dd><%= event.title %></dd>
+
+    <dt><%= t 'events.event.language' %>: </dt>
+    <dd><%= event.language.description %></dd>
+
+    <dt><%= t 'events.event.max_members' %>: </dt>
+    <dd><%= event.max_members %></dd>
+
+    <dt>
+      <%= t 'events.event.starts_at' %>:
+    </dt>
+    <dd>
+      <%= I18n.l event.starts_at, format: ("%b %d") %>,
+      <%= t ('starts_at') %>
+      <%= I18n.l event.starts_at, format: ("%H:%M") %>
+    </dd>
+
+  </dl>
+</div>
+<!-- /.user-block -->
+<div class="box-tools">
+  <button class="btn btn-flat btn-sm" style="background: none;">
+    <%= image_tag(event.language.flag_image.url(:micro), class: 'flag-micro') if  event.language.flag_image? %>
+  </button>
+  <button type="button" class="btn btn-sm" data-widget="collapse" style="background: none;"><i class="fa fa-plus"></i>
+  </button>
+  <button type="button" class="btn btn-sm" data-widget="remove" style="background: none;"><i class="fa fa-times"></i></button>
+</div>
+<!-- /.box-tools -->

@@ -7,11 +7,13 @@
 //= require plugins/fastclick/fastclick.min
 //= require plugins/icheck/icheck.min
 //= require moment
+//= require handlebars-v4.0.5
 //= require bootstrap-datetimepicker
 //= require md_simple_editor
 //= require app
+var ready;
 
-$(document).ready(function(){
+$(document).ready(function() {
     $('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
         radioClass: 'iradio_square-blue'
@@ -32,5 +34,40 @@ $(document).ready(function(){
             $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
         });
     });
+
+    $(".like-btn").on("ajax:success", function(e, data, status, xhr) {
+        var source   = $("#eventLikeBtnTemplate").html();
+        var template = Handlebars.compile(source);
+        var context = {
+            btn_class: data.btn_class,
+            method: data.method,
+            link: data.link,
+            likers_count: data.likers_count
+        };
+        var eventLikeBtn = template(context);
+        $('#event_like_btn_'+data.object_id).html("");
+        $('#event_like_btn_'+data.object_id).html(eventLikeBtn);
+    }).on("ajax:error", function(e, xhr, status, error) {
+        console.log('error like btn');
+    });
+
+    function compileEventLikeBtnTemplate(){
+        eventLikebtnSource = $("#eventLikeBtnTemplate").html();
+        if ( eventLikebtnSource !== undefined ) {
+            eventLikebtnSource = Handlebars.compile(eventLikebtnSource);
+        }
+    }
+
+    function compileEventUnlikeBtnTemplate(){
+        eventUnlikebtnSource = $("#eventUnlikeBtnTemplate").html();
+        if ( eventUnlikebtnSource !== undefined ) {
+            eventUnlikebtnSource = Handlebars.compile(eventUnlikebtnSource);
+        }
+    }
+
 });
+//
+// $(document).ready(ready);
+// $(document).on('page:load', ready);
+// $(document).on('page:update', ready);
 

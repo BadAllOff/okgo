@@ -1,27 +1,32 @@
 <ul class="sidebar-menu">
-  <li class="header">NAVIGATION</li>
+  <li class="header"><%= t 'sidebar_navigation.navigation' %></li>
   <!-- Optionally, you can add icons to the links -->
-  <li class="active">
+  <li class="<%= active_link_to_class(events_path, :active => :inclusive) %>">
     <%= link_to events_path do %>
-        <i class="fa fa-circle-o"></i> <span>Events</span>
+        <i class="fa fa-circle-o"></i> <span><%= t 'sidebar_navigation.events' %></span>
     <% end %>
   </li>
-  <li>
+  <li class="<%= active_link_to_class(profiles_path, :active => :inclusive) %>" >
     <%= link_to profiles_path do %>
-        <i class="fa fa-circle-o"></i> <span>Profile</span>
+        <i class="fa fa-circle-o"></i> <span><%= t 'sidebar_navigation.profile' %></span>
     <% end %>
   </li>
-  <li>
+  <li class="<%= active_link_to_class(languages_path, :active => :inclusive) %>" >
     <%= link_to languages_path do %>
-        <i class="fa fa-circle-o"></i> <span>Languages</span>
+        <i class="fa fa-circle-o"></i> <span><%= t 'sidebar_navigation.languages' %></span>
     <% end %>
   </li>
-  <li>
+  <li class="<%= active_link_to_class(event_memberships_path, :active => :inclusive) %>" >
     <%= link_to event_memberships_path do %>
-        <i class="fa fa-circle-o"></i> <span>Event Memberships</span>
+        <i class="fa fa-circle-o"></i> <span><%= t 'sidebar_navigation.event_memberships' %></span>
     <% end %>
   </li>
-  <li class="treeview">
+  <li class="<%= active_link_to_class(activities_path, :active => :inclusive) %>" >
+    <%= link_to activities_path do %>
+        <i class="fa fa-circle-o"></i> <span><%= t 'sidebar_navigation.activities' %></span>
+    <% end %>
+  </li>
+<!--  <li class="treeview">
     <a href="#"><i class="fa fa-circle-o"></i> <span>Multilevel</span>
       <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -31,5 +36,5 @@
       <li><a href="#">Link in level 2</a></li>
       <li><a href="#">Link in level 2</a></li>
     </ul>
-  </li>
+  </li>-->
 </ul>

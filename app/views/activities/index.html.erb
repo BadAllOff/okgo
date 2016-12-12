@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-10">
+
+    <% @activities.each do |activity| %>
+        <%= render_activity activity %>
+      <%= # render partial: 'activities/activity', locals: {activity: activity}
+      %>
+    <% end %>
+  </div>
+</div>

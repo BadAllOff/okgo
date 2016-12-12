@@ -8,3 +8,11 @@
 @import "libs/icheck/blue";
 @import 'bootstrap-datetimepicker';
 @import "md_simple_editor";
+
+.user-block dl.description{
+  font-size: 14px;
+  color: black;
+}
+.profile-username{
+  word-break: break-all;
+}

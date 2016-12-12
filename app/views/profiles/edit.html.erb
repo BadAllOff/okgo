@@ -1,12 +1,12 @@
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Editing Profile</h3>
+    <h3 class="box-title"><%= t('profiles.editing_profile') %></h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
   <%= render 'form', profile: @profile %>
   <div class="box-footer">
-    <%= link_to 'Show', @profile %> |
-    <%= link_to 'Back', profiles_path %>
+    <%= link_to t('show'), @profile %> |
+    <%= link_to t('back'), profiles_path %>
   </div>
 </div>

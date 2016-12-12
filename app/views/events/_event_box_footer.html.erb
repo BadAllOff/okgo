@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+    <% if current_user.member_of?(event) %>
+      <%= link_to leave_event_path(event), class: 'btn btn-warning', method: :delete, data: { confirm: t('are_you_sure') } do %>
+          <i class="fa fa-minus"></i> <%= t'events.leave' %>
+      <% end %>
+    <% else %>
+      <%= link_to join_event_path(event), class: 'btn btn-default', method: :post do %>
+          <i class="fa fa-plus"></i> <%= t'events.join' %>
+      <% end %>
+    <% end %>
+    <span id="event_like_btn_<%= event.id %>" class="like-btn">
+      <%= render partial: 'events/like_btn', locals: {event: event} %>
+    </span>
+<% end %>
+<%= link_to 'Show', event %> |
+<%= link_to 'Edit', edit_event_path(event) %> |
+<%= link_to 'Destroy', event, method: :delete, data: { confirm: t('are_you_sure')} %>
+<span class="pull-right text-muted">
+  <%=  %> <%= t('events.likes', count: event.likers(User).count) %> -
+  <%=  %> <%= t('events.joined', count: event.memberships.count) %>
+</span>

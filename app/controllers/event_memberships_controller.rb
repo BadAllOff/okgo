@@ -1,4 +1,5 @@
 class EventMembershipsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_event, only: [:join, :leave]
   before_action :set_event_membership, only: [:leave]
 
@@ -10,18 +11,17 @@ class EventMembershipsController < ApplicationController
 
   def join
     @event_membership = EventMembership.new(user: current_user, event: @event)
-
       if @event_membership.save
-        redirect_to @event, notice: 'You have joined to the event.'
+        redirect_to @event, notice: t('events.you_have_joined_to_the_event')
       else
-        redirect_to @event, alert: 'Something went wrong. Try to join another event.'
+        redirect_to @event, alert: t('events.something_went_wrong')
       end
   end
 
   def leave
     @event_membership.destroy if !@event_membership.nil?
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'You have left the event.' }
+      format.html { redirect_to events_url, notice: t('events.you_have_left_the_event') }
       format.json { head :no_content }
     end
     #

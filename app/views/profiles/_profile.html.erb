@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-md-12">
     <!-- Widget: user widget style 1 -->
     <div class="box box-widget widget-user">
       <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -10,34 +10,31 @@
           image_path('skins/original_cover_image_missing.jpg')
         end
        %>') center center;">
-        <h3 class="widget-user-username"><%= @profile.firstname %> <%= @profile.lastname %></h3>
-        <h5 class="widget-user-desc"><%= @profile.user.email %></h5>
-      </div>
-      <div class="widget-user-image">
-        <%= image_tag(@profile.photo.url('medium'), class: "img-circle", alt: 'User Avatar') %>
       </div>
       <div class="box-footer">
         <div class="row">
           <div class="col-sm-4 border-right">
             <div class="description-block">
-              <span class="description-text">Created at</span>
-              <h5 class="description-header"><%= @profile.user.created_at.strftime('%B %d, %Y') %></h5>
+              <span class="description-text"><%= t('profiles.created_at') %></span>
+              <h5 class="description-header">
+                <%= I18n.l @profile.user.created_at, format: ('%B %d, %Y') %>
+              </h5>
             </div>
             <!-- /.description-block -->
           </div>
           <!-- /.col -->
           <div class="col-sm-4 border-right">
             <div class="description-block">
-              <span class="description-text">Events</span>
-              <h5 class="description-header">13,000</h5>
+              <span class="description-text"><%= t 'profiles.count_events' %></span>
+              <h5 class="description-header"><%= @profile.user.events.count %></h5>
             </div>
             <!-- /.description-block -->
           </div>
           <!-- /.col -->
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <div class="description-block">
-              <h5 class="description-header">35</h5>
-              <span class="description-text">PRODUCTS</span>
+              <span class="description-text"><%= t 'profiles.count_memberships' %></span>
+              <h5 class="description-header"><%= @profile.user.event_memberships.count %></h5>
             </div>
             <!-- /.description-block -->
           </div>
@@ -51,39 +48,91 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
-    <div class="box box-info">
-      <div class="box-header with-border">
-        <h3 class="box-title">Profile</h3>
-        <div class="box-tools pull-right">
-          <!-- Buttons, labels, and many other things can be placed here! -->
-          <!-- Here is a label for example -->
-          <span class="label label-primary">Label</span>
-        </div><!-- /.box-tools -->
-      </div><!-- /.box-header -->
-      <div class="box-body">
+  <div class="col-md-3">
+    <div class="box box-primary">
+      <div class="box-body box-profile">
+        <%= image_tag(@profile.photo.url('medium'), class: 'img-circle profile-user-img img-responsive', alt: 'User Avatar') %>
+        <h3 class="profile-username text-center"><%= @profile.firstname %> <%= @profile.lastname %></h3>
 
-      <dl class="dl-horizontal">
-        <dt>Firstname:</dt>
-          <dd><%= @profile.firstname %></dd>
+        <p class="text-muted text-center">Software Engineer</p>
 
-        <dt>Lastname:</dt>
-          <dd><%= @profile.lastname %></dd>
+        <!--<ul class="list-group list-group-unbordered">-->
+          <!--<li class="list-group-item">-->
+            <!--<b>Followers</b> <a class="pull-right">1,322</a>-->
+          <!--</li>-->
+          <!--<li class="list-group-item">-->
+            <!--<b>Following</b> <a class="pull-right">543</a>-->
+          <!--</li>-->
+          <!--<li class="list-group-item">-->
+            <!--<b>Friends</b> <a class="pull-right">13,287</a>-->
+          <!--</li>-->
+        <!--</ul>-->
 
-        <dt>Gender:</dt>
-          <dd><%= @profile.gender %></dd>
+        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+  <div class="col-md-9">
 
-        <dt>Credo:</dt>
-          <dd><%= @profile.credo %></dd>
+      <!-- Custom Tabs -->
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><%= t'profiles.profile' %></a></li>
+          <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true">Activity</a></li>
+          <!--<li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>-->
+          <!--<li class="dropdown">-->
+            <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">-->
+              <!--Dropdown <span class="caret"></span>-->
+            <!--</a>-->
+            <!--<ul class="dropdown-menu">-->
+              <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>-->
+              <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>-->
+              <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>-->
+              <!--<li role="presentation" class="divider"></li>-->
+              <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>-->
+            <!--</ul>-->
+          <!--</li>-->
+          <!--<li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>-->
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab_1">
+            <dl class="dl-horizontal">
+              <dt><%= t'profiles.firstname' %> :</dt>
+              <dd><%= @profile.firstname %></dd>
 
-        <dt>User:</dt>
-          <dd><%= @profile.user.email %></dd>
-      </dl>
+              <dt><%= t'profiles.lastname' %> :</dt>
+              <dd><%= @profile.lastname %></dd>
 
-      </div><!-- /.box-body -->
-      <div class="box-footer">
-        <%= link_to 'Edit', edit_profile_path(@profile), class: 'btn btn-primary' %>
-      </div><!-- box-footer -->
-    </div><!-- /.box -->
-  </div><!--/.col-md-6-->
+              <dt><%= t'profiles.gender' %> :</dt>
+              <dd><%= @profile.gender %></dd>
+
+              <dt><%= t'profiles.credo' %> :</dt>
+              <dd><%= @profile.credo %></dd>
+
+              <dt><%= t'profiles.email' %> :</dt>
+              <dd><%= @profile.user.email %></dd>
+            </dl>
+
+            <%= link_to t('edit',), edit_profile_path(@profile), class: 'btn btn-primary' %>
+          </div>
+          <!-- /.tab-pane -->
+          <div class="tab-pane" id="tab_2">
+            <% if @my_activities %>
+                <% @my_activities.each do |activity| %>
+                    <%= render_activity activity %>
+                <% end %>
+            <% end %>
+          </div>
+          <!-- /.tab-pane -->
+          <!--<div class="tab-pane" id="tab_3">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          </div>-->
+          <!-- /.tab-pane -->
+        </div>
+        <!-- /.tab-content -->
+      </div>
+      <!-- nav-tabs-custom -->
+
+  </div><!--/.col-md-9-->
 </div><!--/.row-->

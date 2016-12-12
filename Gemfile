@@ -27,6 +27,10 @@ gem 'redcarpet'
 # gem 'markitup-rails'
 gem 'md_simple_editor', git: 'https://github.com/BadAllOff/md_simple_editor', ref: 'f926c9f'
 gem 'validates_timeliness'
+gem 'public_activity'
+gem 'active_link_to'
+gem 'socialization'
+gem 'breadcrumbs_on_rails'
 
 
 group :development, :test do

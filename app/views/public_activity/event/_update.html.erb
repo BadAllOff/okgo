@@ -1,0 +1,64 @@
+<!--<div class="box box-info">-->
+  <!--<div class="box-header with-border">-->
+    <!--<h3 class="box-title">Profile</h3>-->
+    <!--<div class="box-tools pull-right">-->
+      <!--&lt;!&ndash; Buttons, labels, and many other things can be placed here! &ndash;&gt;-->
+      <!--&lt;!&ndash; Here is a label for example &ndash;&gt;-->
+      <!--<span class="label label-primary">Label</span>-->
+    <!--</div>&lt;!&ndash; /.box-tools &ndash;&gt;-->
+  <!--</div>&lt;!&ndash; /.box-header &ndash;&gt;-->
+  <!--<div class="box-body">-->
+
+
+    <!--<dl class="dl-horizontal">-->
+      <!--<dt>Activity Owner firstname :</dt>-->
+      <!--<dd>-->
+        <!--<% if  activity.owner %>-->
+            <!--<%= link_to activity.owner.profile.firstname, profile_path(activity.owner) %>-->
+        <!--<% end %>-->
+      <!--</dd>-->
+
+      <!--<dt>Added event :</dt>-->
+      <!--<dd><%= link_to activity.trackable.title, event_path(activity.trackable) %></dd>-->
+    <!--</dl>-->
+
+  <!--</div>&lt;!&ndash; /.box-body &ndash;&gt;-->
+  <!--<div class="box-footer">-->
+    <!--<%= link_to 'Edit', '#', class: 'btn btn-primary' %>-->
+  <!--</div>&lt;!&ndash; box-footer &ndash;&gt;-->
+<!--</div>&lt;!&ndash; /.box &ndash;&gt;-->
+
+<!--<%= activity.inspect %>-->
+
+
+<div class="post">
+  <div class="user-block">
+    <%= image_tag(activity.owner.profile.photo.url('medium'), class: 'img-circle img-bordered-sm', alt: 'User Avatar') %>
+
+    <span class="username">
+                          <%= link_to activity.owner.profile.firstname, profile_path(activity.owner) %>
+                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        </span>
+    <span class="description">Shared publicly - <%= time_ago_in_words(activity.created_at, include_seconds: true) %> </span>
+  </div>
+  <!-- /.user-block -->
+  <p>
+
+    <% if activity.trackable %>
+        UPDATED an event <%= activity.trackable.title %>
+    <% else %>
+        UPDATED an event, which has since been removed.
+    <% end %>
+
+  </p>
+  <ul class="list-inline">
+    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
+    </li>
+    <li class="pull-right">
+      <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
+        (5)</a></li>
+  </ul>
+
+  <input class="form-control input-sm" placeholder="Type a comment" type="text">
+</div>
