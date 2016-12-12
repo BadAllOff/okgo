@@ -3,7 +3,8 @@ FactoryGirl.define do
     title "MyString"
     description "MyText"
     address "MyString"
-    starts_at "2016-11-04 15:37:27"
-    ends_at "2016-11-04 15:37:27"
+    starts_at (DateTime.current + 24.hours)
+    ends_at (DateTime.current + 25.hours)
+    language
   end
 end
