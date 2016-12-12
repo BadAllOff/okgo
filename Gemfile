@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'rubocop', require: false
 end
 
 group :development do
@@ -45,8 +46,11 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rubocop'
   gem 'annotate'
+  # gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'guard-bundler', require: false
+  gem 'guard-rails', require: false
   # gem 'capistrano-rails'
 end
 

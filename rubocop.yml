@@ -1,0 +1,51 @@
+AllCops:
+  Include:
+    - 'app/**/*.rb'
+    - 'config/**/*.rb'
+    - 'lib/**/*.rb'
+    - 'lib/**/*.rake'
+    - 'spec/**/*'
+    - 'db/*.rb'
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'spec/fixtures/*.jpg'
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  StyleGuideCopsOnly: true
+  TargetRubyVersion: 2.2
+
+Style/Documentation:
+  Exclude:
+    - 'lib/**/version.rb'
+
+Style/Encoding:
+  EnforcedStyle: always
+  SupportedStyles:
+    - when_needed
+    - always
+  AutoCorrectEncodingComment: '# encoding: utf-8'
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/BlockComments:
+  Description: 'Do not use block comments.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-block-comments'
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+  Max: 120
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+
+Metrics/MethodLength:
+  Max: 15
+
+Rails:
+  Enabled: true

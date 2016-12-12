@@ -9,4 +9,6 @@ RSpec.describe ActivitiesController, type: :controller do
     end
   end
 
+
+
 end
