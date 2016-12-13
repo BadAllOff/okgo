@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :profile do
     firstname 'MyString'
     lastname 'MyString'
-    gender 'MyString'
+    gender 'Male'
     credo 'MyText'
-    user nil
+    user
   end
 end
