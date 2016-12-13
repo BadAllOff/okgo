@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :language do
-    description 'MyString'
+    description 'Russian'
+    event
   end
 end
