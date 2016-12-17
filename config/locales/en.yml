@@ -28,7 +28,7 @@ en:
   events:
     create_new_event: 'Create new event'
     join: 'Join'
-    leave: 'Not going'
+    leave: 'Leave event'
     you_have_joined_to_the_event: 'You have joined to the event'
     you_have_left_the_event: 'You have left the event'
     something_went_wrong: 'Something went wrong. Try to join another event.'

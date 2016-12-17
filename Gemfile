@@ -31,7 +31,7 @@ gem 'public_activity'
 gem 'active_link_to'
 gem 'socialization'
 gem 'breadcrumbs_on_rails'
-
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug', platform: :mri

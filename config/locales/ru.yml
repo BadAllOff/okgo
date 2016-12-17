@@ -30,7 +30,7 @@ ru:
   events:
     create_new_event: 'Создать новое мероприятие'
     join: 'Пойду'
-    leave: 'Не пойду'
+    leave: 'Отменить участие'
     you_have_joined_to_the_event: 'Вы присоединились к мероприятию'
     you_have_left_the_event: 'ВЫ покинули мероприятие'
     something_went_wrong: 'Что то пошло не так... Попробуйте присоединиться к другому мероприятию'

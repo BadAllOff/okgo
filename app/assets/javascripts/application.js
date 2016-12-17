@@ -65,6 +65,21 @@ $(document).ready(function() {
         }
     }
 
+    // $('body').toggleClass(localStorage.getItem("sidebarValue"), localStorage.getItem("sidebarStateVal"));
+    //
+    // $('.sidebar-toggle').on('click', function(){
+    //     if ($('body').hasClass('sidebar-collapse')) {
+    //         localStorage.setItem('sidebarValue', 'sidebar-collapse');
+    //         localStorage.setItem('sidebarStateVal', '');
+    //
+    //         alert(localStorage.getItem("sidebar"));
+    //     }else{
+    //         localStorage.setItem('sidebarValue', '');
+    //         localStorage.setItem('sidebarStateVal', 'sidebar-collapse');
+    //         alert(localStorage.getItem("sidebar"));
+    //     }
+    // });
+
 });
 //
 // $(document).ready(ready);
