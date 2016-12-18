@@ -82,7 +82,7 @@
               <dt><%= t'profiles.credo' %> :</dt>
               <dd><%= profile.credo %></dd>
             </dl>
-            <% if can?(:edit, profile) %>
+            <% if can? :update, profile %>
               <%= link_to t('edit',), edit_profile_path(profile), class: 'btn btn-primary' %>
             <% end %>
           </div>

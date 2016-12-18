@@ -23,11 +23,13 @@
         <i class="fa fa-hourglass-3"></i> <span><%= t 'sidebar_navigation.activities' %></span>
     <% end %>
   </li>
-  <li class="<%= active_link_to_class(languages_path, :active => :inclusive) %>" >
-    <%= link_to languages_path do %>
-        <i class="fa fa-circle-o"></i> <span><%= t 'sidebar_navigation.languages' %></span>
-    <% end %>
-  </li>
+  <% if current_user && current_user.admin? %>
+    <li class="<%= active_link_to_class(languages_path, :active => :inclusive) %>" >
+      <%= link_to languages_path do %>
+          <i class="fa fa-circle-o"></i> <span><%= t 'sidebar_navigation.languages' %></span>
+      <% end %>
+    </li>
+  <% end %>
 <!--  <li class="treeview">
     <a href="#"><i class="fa fa-circle-o"></i> <span>Multilevel</span>
       <span class="pull-right-container">

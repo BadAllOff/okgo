@@ -6,8 +6,7 @@ class Ability
 
     alias_action :create, :read, :update, :destroy, to: :crud
 
-    # Define abilities for the passed in user here. For example:
-    user ||= User.new # guest user (not logged in)
+    @user = user
 
     if user
       user.admin? ? admin_abilities : user_abilities
@@ -26,13 +25,13 @@ class Ability
 
   def user_abilities
     guest_abilities
-
     can :crud, Event, { user: user }
-    can :update, Profile, { user: user }
     can :read, Profile
-    can :join, EventMembership
-    can :leave, EventMembership
+    can :update, Profile, { user: user }
 
+    can :read, EventMembership
+    can :join, EventMembership
+    can :leave, EventMembership, { user: user }
   end
   #
   # The first argument to `can` is the action you are giving the user

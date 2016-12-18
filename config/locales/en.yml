@@ -8,7 +8,7 @@ en:
   page_titles:
     events: 'Events'
     profiles: 'Profile'
-    event_membershipd: 'Memberships'
+    event_memberships: 'Memberships'
   breadcrumbs:
     homepage: 'Home'
     events:
