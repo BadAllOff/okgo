@@ -1,15 +1,15 @@
 <div class="user-panel">
   <div class="pull-left image">
-    <% if @profile.photo? %>
-        <%= image_tag(@profile.photo.url('small'), class: "img-circle", alt: 'User Image') %>
+    <% if current_user.profile.photo? %>
+        <%= image_tag(current_user.profile.photo.url('small'), class: "img-circle", alt: 'User Image') %>
     <% else %>
         <%= image_tag('small_missing.png', class: "img-circle", alt: 'User Image') %>
     <% end %>
   </div>
   <div class="pull-left info">
     <% if user_signed_in? %>
-        <% if !@profile.firstname.blank? %>
-          <p><%= @profile.firstname %></p>
+        <% if !current_user.profile.firstname.blank? %>
+          <p><%= current_user.profile.firstname %></p>
         <% else %>
           <p><%= current_user.email %></p>
         <% end %>

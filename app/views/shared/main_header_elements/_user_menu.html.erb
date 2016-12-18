@@ -2,8 +2,8 @@
   <!-- Menu Toggle Button -->
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
     <!-- The user image in the navbar-->
-    <% if @profile && @profile.photo?  %>
-        <%= image_tag(@profile.photo.url('micro'), class: "user-image", alt: 'User Image') %>
+    <% if current_user.profile.photo?  %>
+        <%= image_tag(current_user.profile.photo.url('micro'), class: "user-image", alt: 'User Image') %>
     <% else %>
         <%= image_tag('micro_missing.png', class: "user-image", alt: 'User Image') %>
     <% end %>
@@ -15,13 +15,13 @@
   <ul class="dropdown-menu">
     <!-- The user image in the menu -->
     <li class="user-header">
-      <% if @profile && @profile.photo?  %>
-          <%= image_tag(@profile.photo.url('medium'), class: "img-circle", alt: 'User Image') %>
+      <% if current_user.profile && current_user.profile.photo?  %>
+          <%= image_tag(current_user.profile.photo.url('medium'), class: "img-circle", alt: 'User Image') %>
       <% else %>
           <%= image_tag('medium_missing.png', class: "img-circle", alt: 'User Image') %>
       <% end %>
       <p>
-        <%= @profile.firstname %> <%= @profile.lastname %>
+        <%= current_user.profile.firstname %> <%= current_user.profile.lastname %>
         <small>Member since <%= current_user.created_at.strftime('%B %d, %Y') %></small>
       </p>
     </li>
@@ -30,11 +30,11 @@
       <div class="row">
         <div class="col-xs-6 text-center">
           <span class="description-text"><%= t 'profiles.count_events' %></span><br>
-          <a href="#"><%= @profile.user.events.count %></a>
+          <a href="#"><%= current_user.profile.user.events.count %></a>
         </div>
         <div class="col-xs-6 text-center">
           <span class="description-text"><%= t 'profiles.count_memberships' %></span><br>
-          <a href="#"><%= @profile.user.event_memberships.count %></a>
+          <a href="#"><%= current_user.profile.user.event_memberships.count %></a>
         </div>
       </div>
       <!-- /.row -->
@@ -42,10 +42,10 @@
     <!-- Menu Footer-->
     <li class="user-footer">
       <div class="pull-left">
-        <%= link_to 'Profile', profiles_path, class: 'btn btn-default btn-flat' %>
+        <%= link_to t('profiles.profile'), profile_path(current_user.profile), class: 'btn btn-default btn-flat' %>
       </div>
       <div class="pull-right">
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-default btn-flat' %>
+        <%= link_to t('sign_out'), destroy_user_session_path, method: :delete, class: 'btn btn-default btn-flat' %>
       </div>
     </li>
   </ul>

@@ -2,8 +2,13 @@ class EventMembershipsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:join, :leave]
   before_action :set_event_membership, only: [:leave]
+  before_action :set_page_title
 
   include Profiled
+  include Breadcrumbed
+  before_action :set_membership_index_breadcrumb, only: [:index, :join, :leave]
+
+  authorize_resource
 
   def index
     @event_memberships =  EventMembership.where(user: current_user).order('created_at')
@@ -20,19 +25,14 @@ class EventMembershipsController < ApplicationController
 
   def leave
     @event_membership.destroy if !@event_membership.nil?
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: t('events.you_have_left_the_event') }
-      format.json { head :no_content }
-    end
-    #
-    # if @event_membership.delete
-    #   format.html { redirect_to @event, notice: 'You left the event' }
-    # else
-    #   format.html { redirect_to @event, alert: 'Something went wrong. Try later.' }
-    # end
+    redirect_to events_url, notice: t('events.you_have_left_the_event')
   end
 
   private
+    def set_membership_index_breadcrumb
+      add_breadcrumb I18n.t('breadcrumbs.event_memberships.index'), event_memberships_path
+    end
+
     def set_event
       @event = Event.find(params[:event_id])
     end
@@ -40,6 +40,10 @@ class EventMembershipsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event_membership
       @event_membership = EventMembership.where(user: current_user, event: @event).first
+    end
+
+    def set_page_title
+      @page_title = I18n.t('page_titles.event_memberships')
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

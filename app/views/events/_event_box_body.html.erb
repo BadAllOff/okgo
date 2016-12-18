@@ -3,7 +3,7 @@
 <div class="no-padding">
   <ul class="members-list clearfix"> <!-- members list-->
     <% event.memberships.each do |member| %>
-        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <li class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
           <% if member.user.profile.photo?  %>
               <%= image_tag(member.user.profile.photo.url('medium'),
                             class: "img-circle",
@@ -19,9 +19,9 @@
           <%= link_to profile_path(member.user), class: 'members-list-name' do  %>
               <%= member.user.profile.firstname %>
           <% end %>
-          <span class="members-list-date"><%= t'profiles.created_at' %>
+<!--          <span class="members-list-date"><%= t'profiles.created_at' %>
             <%= I18n.l member.user.created_at, format: (:without_time) %>
-              </span>
+          </span>-->
         </li>
     <% end %>
   </ul>

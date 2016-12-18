@@ -1,5 +1,5 @@
----
 ru:
+  sign_out: 'Выйти'
   log_in: "Войти"
   edit: 'Редактировать'
   show: 'Просмотреть'
@@ -7,7 +7,9 @@ ru:
   are_you_sure: 'Вы уверенны?'
   page_titles:
     events: 'Мероприятия'
-    profiles: 'Профиль'
+    profiles: 'Профили'
+    event_memberships: 'Участия'
+    activities: 'Активити'
   breadcrumbs:
     homepage: 'Главная'
     events:
@@ -19,20 +21,26 @@ ru:
       index: 'Профиль'
       show: 'Профиль'
       edit: 'Редактировать профиль'
+    event_memberships:
+      index: 'Мои мероприятия'
+      join: 'Присоединиться'
+      leave: 'Покинуть'
+    activity:
+      index: 'Недавние действия'
   sidebar_navigation:
     search: 'Поиск'
     navigation: 'НАВИГАЦИЯ'
     events: 'Мероприятия'
-    profile: 'Профиль'
+    my_profile: 'Профиль'
     languages: 'Языки'
-    event_memberships: 'Членство'
+    event_memberships: 'Участия'
     activities: 'Активити'
   events:
     create_new_event: 'Создать новое мероприятие'
     join: 'Пойду'
     leave: 'Отменить участие'
     you_have_joined_to_the_event: 'Вы присоединились к мероприятию'
-    you_have_left_the_event: 'ВЫ покинули мероприятие'
+    you_have_left_the_event: 'Вы покинули мероприятие'
     something_went_wrong: 'Что то пошло не так... Попробуйте присоединиться к другому мероприятию'
     likes:
       zero: "%{count} лайков"

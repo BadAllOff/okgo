@@ -1,29 +1,42 @@
-<div class="post">
-  <div class="user-block">
-    <%= image_tag(activity.owner.profile.photo.url('medium'), class: 'img-circle img-bordered-sm', alt: 'User Avatar') %>
+<li>
+  <i class="fa fa-calendar bg-blue"></i>
 
-    <span class="username">
-                          <%= link_to activity.owner.profile.firstname, profile_path(activity.owner) %>
-      <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-    <span class="description">Shared publicly - <%= time_ago_in_words(activity.created_at, include_seconds: true) %> </span>
+  <div class="timeline-item">
+
+    <div class="box box-widget">
+      <div class="box-header with-border">
+        <div class="user-block">
+          <%= image_tag(activity.owner.profile.photo.url('medium'), class: 'img-circle img-bordered-sm', alt: 'User Avatar') %>
+          <span class="username"><a href="#"><%= link_to activity.owner.profile.firstname, profile_path(activity.owner) %></a></span>
+          <span class="description">Shared publicly - <%= time_ago_in_words(activity.created_at, include_seconds: true) %></span>
+        </div>
+        <!-- /.user-block -->
+<!--        <div class="box-tools">
+          <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
+            <i class="fa fa-circle-o"></i></button>
+        </div>-->
+        <!-- /.box-tools -->
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <!-- post text -->
+        <p>
+          <% if activity.trackable %>
+              CREATED an event <%= activity.trackable.title %>
+          <% else %>
+              CREATED an event, which has since been removed.
+          <% end %>
+        </p>
+        <!-- Attachment -->
+        <!-- Social sharing buttons -->
+        <!--<button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>-->
+        <!--<span class="pull-right text-muted">45 likes - 2 comments</span>-->
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+
+      </div>
+      <!-- /.box-footer -->
+    </div>
   </div>
-  <!-- /.user-block -->
-  <p>
-    <% if activity.trackable %>
-        CREATED an event <%= activity.trackable.title %>
-    <% else %>
-        CREATED an event, which has since been removed.
-    <% end %>
-  </p>
-  <ul class="list-inline">
-    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-    </li>
-    <li class="pull-right">
-      <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-        (5)</a></li>
-  </ul>
-
-  <input class="form-control input-sm" placeholder="Type a comment" type="text">
-</div>
+</li>

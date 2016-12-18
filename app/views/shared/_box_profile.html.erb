@@ -1,0 +1,24 @@
+<div class="col-md-4">
+  <!-- Widget: user widget style 1 -->
+  <div class="box box-widget widget-user-2">
+    <!-- Add the bg color to the header using any of the bg-* classes -->
+    <div class="widget-user-header bg-yellow">
+      <div class="widget-user-image">
+        <%= image_tag(profile.photo.url('medium'), class: 'img-circle', alt: 'User Avatar') %>
+      </div>
+      <!-- /.widget-user-image -->
+      <%= link_to profile_path(profile), class: 'text-primary' do %>
+      <h3 class="widget-user-username" style="overflow: hidden;"><%= profile.firstname %> <%= profile.lastname %></h3>
+          <% end %>
+      <h5 class="widget-user-desc">Language Level</h5>
+    </div>
+    <div class="box-footer no-padding">
+      <ul class="nav nav-stacked">
+        <li><a href="#"><%= t('profiles.created_at') %> <span class="pull-right badge bg-blue"><%= I18n.l profile.user.created_at, format: ('%B %d, %Y') %></span></a></li>
+        <li><a href="#"><%= t 'profiles.count_events' %> <span class="pull-right badge bg-aqua"><%= profile.user.events.count %></span></a></li>
+        <li><a href="#"><%= t 'profiles.count_memberships' %> <span class="pull-right badge bg-green"><%= profile.user.event_memberships.count %></span></a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.widget-user -->
+</div>

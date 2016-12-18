@@ -1,11 +1,14 @@
 en:
+  sign_out: 'Sign Out'
   log_in: "Log in"
+  edit: 'Edit'
   show: 'Show'
   back: 'Back'
   are_you_sure: 'Are you sure?'
   page_titles:
     events: 'Events'
     profiles: 'Profile'
+    event_membershipd: 'Memberships'
   breadcrumbs:
     homepage: 'Home'
     events:
@@ -17,6 +20,10 @@ en:
       index: 'Profile'
       show: 'Profile'
       edit: 'Edit Profile'
+    event_memberships:
+      index: 'My membership'
+      join: 'Join'
+      leave: 'Leave'
   sidebar_navigation:
     search: 'Search'
     navigation: 'NAVIGATION'
@@ -50,6 +57,12 @@ en:
       ends_at: 'Ends at'
       maximum_participants: 'Maximum participants'
   profiles:
+      profile: 'Профиль'
+      firstname: 'Firstname'
+      lastname: 'Lastname'
+      gender: 'Gender'
+      credo: 'Credo'
+      email: 'Email'
       editing_profile: 'Editing Profile'
       created_at: 'Registration date'
       count_events: 'Total Events'

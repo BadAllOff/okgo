@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   include Breadcrumbed
   before_action :set_event_index_breadcrumb, only: [:index, :show, :edit, :new]
 
+  authorize_resource
 
   # GET /events  before_action :set_page_title
 
@@ -31,6 +32,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    authorize! :update, @event
     add_breadcrumb I18n.t('breadcrumbs.events.edit'), edit_event_path
   end
 
@@ -75,27 +77,27 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    def set_page_title
-      @page_title = I18n.t('page_titles.events')
-    end
+  def set_page_title
+    @page_title = I18n.t('page_titles.events')
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id, :max_members)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id, :max_members)
+  end
 
-    def set_count_events
-      @count_events = Event.where('starts_at > ?', DateTime.now).count
-    end
+  def set_count_events
+    @count_events = Event.where('starts_at > ?', DateTime.now).count
+  end
 
-    def set_count_memberships
-      @count_memberships = Event.joins(:memberships).where('starts_at > ?', DateTime.now).count
-    end
+  def set_count_memberships
+    @count_memberships = Event.joins(:memberships).where('starts_at > ?', DateTime.now).count
+  end
 
   def set_event_index_breadcrumb
     add_breadcrumb I18n.t('breadcrumbs.events.index'), events_path

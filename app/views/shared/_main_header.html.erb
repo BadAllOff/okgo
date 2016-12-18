@@ -21,15 +21,17 @@
             %>
             <!-- /.messages-menu -->
             <!-- Notifications Menu -->
-            <%= render partial: 'shared/main_header_elements/notifications_menu' %>
+            <%= # render partial: 'shared/main_header_elements/notifications_menu'
+            %>
             <!-- Tasks Menu -->
-            <%= render partial: 'shared/main_header_elements/tasks_menu' %>
+            <%= # render partial: 'shared/main_header_elements/tasks_menu'
+            %>
             <!-- User Account Menu -->
             <%= render partial: 'shared/main_header_elements/user_menu' %>
             <!-- Control Sidebar Toggle Button -->
-            <li>
-              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-            </li>
+            <!--<li>-->
+              <!--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>-->
+            <!--</li>-->
         <% else %>
             <li>
               <%= link_to t('log_in'), new_user_session_path %>

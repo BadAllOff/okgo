@@ -16,3 +16,16 @@
 .profile-username{
   word-break: break-all;
 }
+
+.content-header > .breadcrumb {
+  float: none;
+  background: transparent;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  padding: 7px 5px;
+  position: relative;
+  top: 0px;
+  right: 5px;
+  border: none;
+}

@@ -1,17 +1,19 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_or_create_profile, only: [:index, :show, :edit, :update]
+  before_action :set_profile, only: [:show, :edit, :update]
+  # before_action :set_or_create_profile, only: [:index, :show, :edit, :update]
   before_action :set_page_title
 
   include Breadcrumbed
   before_action :set_profile_index_breadcrumb, only: [:index, :show, :edit]
 
+  authorize_resource
 
   #
   # # GET /profiles
   # # GET /profiles.json
   def index
-    @my_activities = PublicActivity::Activity.where(owner_type: User, owner_id: current_user).order('created_at desc')
+    @profiles = Profile.all.limit(10)
   end
 
   # GET /profiles/1
@@ -40,8 +42,16 @@ class ProfilesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_or_create_profile
-      @profile = Profile.where(user_id: current_user).first_or_create!
+    # def set_or_create_profile
+    #   @profile = Profile.where(user_id: current_user).first_or_create!
+    # end
+
+    def set_profile
+      @profile = Profile.find(params[:id])
+    end
+
+    def set_activitie
+      @activitie = PublicActivity::Activity.where(owner_type: User, owner_id: params[:id]).order('created_at desc')
     end
 
     def set_page_title
