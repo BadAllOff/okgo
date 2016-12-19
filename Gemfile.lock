@@ -108,6 +108,7 @@ GEM
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     guard (2.14.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -288,6 +289,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.2)
       execjs (>= 0.3.0, < 3)
+    underscore-rails (1.8.3)
     unicode-display_width (1.1.0)
     validates_timeliness (3.0.15)
       timeliness (~> 0.3.7)
@@ -318,6 +320,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   font-awesome-sass (~> 4.7.0)
+  gmaps4rails
   guard-bundler
   guard-rails
   guard-rspec
@@ -343,6 +346,7 @@ DEPENDENCIES
   thin
   tzinfo-data
   uglifier (>= 1.3.0)
+  underscore-rails
   validates_timeliness
   web-console
 

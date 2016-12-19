@@ -10,6 +10,8 @@
 //= require handlebars-v4.0.5
 //= require bootstrap-datetimepicker
 //= require md_simple_editor
+//= require underscore
+//= require gmaps/google
 //= require app
 var ready;
 
@@ -64,6 +66,7 @@ $(document).ready(function() {
             eventUnlikebtnSource = Handlebars.compile(eventUnlikebtnSource);
         }
     }
+
 
     // $('body').toggleClass(localStorage.getItem("sidebarValue"), localStorage.getItem("sidebarStateVal"));
     //

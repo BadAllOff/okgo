@@ -32,6 +32,9 @@ gem 'active_link_to'
 gem 'socialization'
 gem 'breadcrumbs_on_rails'
 gem 'cancancan'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri

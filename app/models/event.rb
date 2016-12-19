@@ -6,9 +6,10 @@ class Event < ApplicationRecord
   belongs_to :language
   has_many :memberships,  class_name: 'EventMembership', dependent: :destroy
 
-  validates_presence_of :title, :description, :max_members, :starts_at, :ends_at, :language
+  validates_presence_of :title, :description, :max_members, :starts_at, :ends_at, :language, :latitude, :longitude
   validates_datetime :ends_at, :starts_at, after: DateTime.current + 24.hours
   validates_datetime :ends_at, after: :starts_at
+  validates_numericality_of :latitude, :longitude
 
   default_scope { order(starts_at: :asc) }
 

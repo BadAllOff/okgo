@@ -3,7 +3,7 @@
       <%= render partial: 'events/like_btn', locals: {event: event} %>
     </span>
     <% if current_user.member_of?(event) %>
-      <%= link_to leave_event_path(event), class: 'btn btn-primary', method: :delete, data: { confirm: t('are_you_sure') } do %>
+      <%= link_to leave_event_path(event), class: 'btn btn-danger', method: :delete, data: { confirm: t('are_you_sure') } do %>
           <i class="fa fa-minus-square-o"></i> <%= t'events.leave' %>
       <% end %>
     <% else %>

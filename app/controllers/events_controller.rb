@@ -26,13 +26,21 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
     add_breadcrumb I18n.t('breadcrumbs.events.new'), new_event_path
+    @event = Event.new
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+      marker.lat event.latitude || Rails.application.secrets.default_latitude
+      marker.lng event.longitude || Rails.application.secrets.default_longitude
+    end
   end
 
   # GET /events/1/edit
   def edit
     authorize! :update, @event
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+      marker.lat event.latitude || Rails.application.secrets.default_latitude
+      marker.lng event.longitude || Rails.application.secrets.default_longitude
+    end
     add_breadcrumb I18n.t('breadcrumbs.events.edit'), edit_event_path
   end
 
@@ -40,7 +48,10 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = current_user.events.build(event_params)
-
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+      marker.lat event.latitude || Rails.application.secrets.default_latitude
+      marker.lng event.longitude || Rails.application.secrets.default_longitude
+    end
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -88,7 +99,7 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id, :max_members)
+    params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id, :max_members, :latitude, :longitude)
   end
 
   def set_count_events

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217003123) do
+ActiveRecord::Schema.define(version: 20161218235339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 20161217003123) do
     t.integer  "language_id",  default: 1
     t.integer  "max_members",  default: 10
     t.integer  "likers_count", default: 0
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "gmap_zoom"
     t.index ["language_id"], name: "index_events_on_language_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end

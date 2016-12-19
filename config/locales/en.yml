@@ -39,6 +39,8 @@ en:
     you_have_joined_to_the_event: 'You have joined to the event'
     you_have_left_the_event: 'You have left the event'
     something_went_wrong: 'Something went wrong. Try to join another event.'
+    drag_me_and_adjust_the_zoom_level: 'Drag me and adjust the zoom level.'
+    click_on_map_to_choose_place: 'Click on map to choose place, or drag the marker.'
     active_events:
       zero: "No events"
       few: "events"

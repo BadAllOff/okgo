@@ -42,6 +42,8 @@ ru:
     you_have_joined_to_the_event: 'Вы присоединились к мероприятию'
     you_have_left_the_event: 'Вы покинули мероприятие'
     something_went_wrong: 'Что то пошло не так... Попробуйте присоединиться к другому мероприятию'
+    drag_me_and_adjust_the_zoom_level: 'Потяни меня чтоб указать место.'
+    click_on_map_to_choose_place: 'Кликните по карте что бы выбать место, или перетащите маркер мышкой.'
     likes:
       zero: "%{count} лайков"
       few: "%{count} лайков"
