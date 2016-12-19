@@ -22,6 +22,10 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     add_breadcrumb I18n.t('breadcrumbs.events.show'), event_path(@event)
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+      marker.lat event.latitude || Rails.application.secrets.default_latitude
+      marker.lng event.longitude || Rails.application.secrets.default_longitude
+    end
   end
 
   # GET /events/new
