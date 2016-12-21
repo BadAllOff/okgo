@@ -25,6 +25,8 @@ ru:
       index: 'Мои мероприятия'
       join: 'Присоединиться'
       leave: 'Покинуть'
+      as_tutor: 'Как организатор'
+      as_member: 'Как участник'
     activity:
       index: 'Недавние действия'
   sidebar_navigation:
@@ -33,7 +35,10 @@ ru:
     events: 'Мероприятия'
     my_profile: 'Профиль'
     languages: 'Языки'
-    event_memberships: 'Участия'
+    event_memberships:
+      index: 'Мои мероприятия'
+      as_tutor: 'Как ведущий'
+      as_member: 'Как участник'
     activities: 'Активити'
   events:
     create_new_event: 'Создать новое мероприятие'

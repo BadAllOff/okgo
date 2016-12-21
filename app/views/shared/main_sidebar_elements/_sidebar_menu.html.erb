@@ -13,11 +13,33 @@
       <% end %>
     </li>
   <% end %>
-  <li class="<%= active_link_to_class(event_memberships_path, :active => :inclusive) %>" >
-    <%= link_to event_memberships_path do %>
-        <i class="fa fa-calendar-check-o"></i> <span><%= t 'sidebar_navigation.event_memberships' %></span>
-    <% end %>
+  <li class="treeview">
+    <a href="#"><i class="fa fa-calendar-check-o"></i> <span><%= t 'sidebar_navigation.event_memberships.index' %></span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+<!--      <li class="<%= active_link_to_class(event_memberships_path, :active => :inclusive) %>" >
+        <%= link_to event_memberships_path do %>
+            <i class="fa fa-calendar-check-o"></i> <span><%= t 'sidebar_navigation.event_memberships' %></span>
+        <% end %>
+      </li>-->
+      <li>
+        <%= link_to as_tutor_event_memberships_path do %>
+            <i class="fa fa-calendar-check-o"></i> <span><%= t 'sidebar_navigation.event_memberships.as_tutor' %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to as_member_event_memberships_path do %>
+            <i class="fa fa-calendar-check-o"></i> <span><%= t 'sidebar_navigation.event_memberships.as_member' %></span>
+        <% end %>
+      </li>
+    </ul>
   </li>
+
+
+
   <li class="<%= active_link_to_class(activities_path, :active => :inclusive) %>" >
     <%= link_to activities_path do %>
         <i class="fa fa-hourglass-3"></i> <span><%= t 'sidebar_navigation.activities' %></span>

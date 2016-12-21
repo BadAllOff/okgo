@@ -29,8 +29,9 @@ class Ability
     can :read, Profile
     can :update, Profile, { user: user }
 
-    can :read, EventMembership
     can :join, EventMembership
+    can :as_tutor, EventMembership
+    can :as_member, EventMembership
     can :leave, EventMembership, { user: user }
   end
   #

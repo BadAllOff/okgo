@@ -7,7 +7,12 @@ Rails.application.routes.draw do
       post 'like', to: 'socializations#like'
       delete 'unlike', to: 'socializations#unlike'
     end
-    resources :event_memberships, only: [:index]
+    resources :event_memberships do
+      collection do
+        get 'as_tutor'
+        get 'as_member'
+      end
+    end
     post 'event_memberships/join/:event_id' => 'event_memberships#join', as:   :join_event
     delete 'event_memberships/leave/:event_id' => 'event_memberships#leave', as: :leave_event
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
