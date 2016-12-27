@@ -15,7 +15,7 @@ class EventsController < ApplicationController
 
   # GET /events.json
   def index
-    @events = Event.where('starts_at >= ?', Time.zone.now).includes(:memberships)
+    @events = Event.where('starts_at >= ?', Time.zone.now).order(starts_at: :asc).includes(:language, user: [:profile], memberships: [user: [:profile]] )
   end
 
   # GET /events/1
@@ -103,7 +103,11 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id, :max_members, :latitude, :longitude)
+    if controller.action_name == 'not_usual_action'
+      params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id, :max_members, :latitude, :longitude)
+    else
+      params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id, :max_members, :latitude, :longitude)
+    end
   end
 
   def set_count_events

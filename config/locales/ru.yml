@@ -93,6 +93,9 @@ ru:
     created_at: 'Зарегистрирован(а)'
     count_events: 'Мероприятий'
     count_memberships: 'Участий'
+  event_memberships:
+    future_events: 'Будущие мероприятия'
+    past_events: 'Прошедшие мероприятия'
   activerecord:
     models:
       user: "Пользователь"

@@ -32,6 +32,7 @@ class Ability
     can :join, EventMembership
     can :as_tutor, EventMembership
     can :as_member, EventMembership
+    can :member_attended, EventMembership
     can :leave, EventMembership, { user: user }
   end
   #

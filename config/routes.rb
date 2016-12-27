@@ -11,6 +11,12 @@ Rails.application.routes.draw do
       collection do
         get 'as_tutor'
         get 'as_member'
+
+      end
+
+      member do
+        post 'member_attended' => 'event_memberships#member_attended', as: :member_attended
+        post 'member_not_attended' => 'event_memberships#member_not_attended', as: :member_not_attended
       end
     end
     post 'event_memberships/join/:event_id' => 'event_memberships#join', as:   :join_event

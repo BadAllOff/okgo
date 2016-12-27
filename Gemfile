@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # gem 'puma', '~> 3.0'
 gem 'thin'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails', '~> 5.0', require: false
+gem 'uglifier', '>= 1.3.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'therubyracer'
 gem 'jquery-rails'
@@ -34,6 +34,8 @@ gem 'breadcrumbs_on_rails'
 gem 'cancancan'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem "skylight"
+gem 'faker'
 
 
 group :development, :test do
@@ -55,6 +57,10 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'guard-bundler', require: false
   # gem 'capistrano-rails'
+  gem 'derailed_benchmarks'
+  gem 'bullet'
+  gem 'rack-mini-profiler', require: false
+  # gem 'flamegraph'
 end
 
 group :test do

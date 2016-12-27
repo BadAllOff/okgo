@@ -11,8 +11,12 @@ class Event < ApplicationRecord
   validates_datetime :ends_at, after: :starts_at
   validates_numericality_of :latitude, :longitude
 
-  default_scope { order(starts_at: :asc) }
-
   acts_as_likeable
+
+  def joinable?(membership)
+    return false if user == membership.user
+    return false if starts_at < Time.zone.now
+    return true
+  end
 
 end
