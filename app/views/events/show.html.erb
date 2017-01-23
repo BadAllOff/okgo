@@ -1,2 +1,4 @@
 <%= render partial: 'events/event', locals: {event: @event}%>
 <%= render partial: 'events/show_gmap', locals: {event: @event, coordinates: @hash }%>
+<%= render partial: 'handlebars/event_like_btn_template' %>
+<%= render partial: 'handlebars/members_template' %>

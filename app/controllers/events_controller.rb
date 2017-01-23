@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :members]
   before_action :set_count_events, only: [:index]
   before_action :set_count_memberships, only: [:index]
   before_action :set_page_title
@@ -15,7 +15,8 @@ class EventsController < ApplicationController
 
   # GET /events.json
   def index
-    @events = Event.where('starts_at >= ?', Time.zone.now).order(starts_at: :asc).includes(:language, user: [:profile], memberships: [user: [:profile]] )
+    # TODO add event_memebership_counter
+    @events = Event.where('starts_at >= ?', Time.zone.now).order(starts_at: :asc).includes(:language, user: [:profile] )
   end
 
   # GET /events/1
@@ -81,6 +82,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def members
+    @members = EventMembership.where(event_id: params[:id]).includes(:profile)
+    respond_to do |format|
+      format.json { render 'members.json.jbuilder', status: :ok, layout: false }
+    end
+  end
+
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
@@ -103,7 +111,7 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    if controller.action_name == 'not_usual_action'
+    if action_name == 'not_usual_action'
       params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id, :max_members, :latitude, :longitude)
     else
       params.require(:event).permit(:title, :description, :address, :starts_at, :ends_at, :language_id, :max_members, :latitude, :longitude)

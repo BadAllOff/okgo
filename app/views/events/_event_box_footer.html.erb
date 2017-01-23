@@ -1,16 +1,29 @@
 <% if user_signed_in? %>
-    <span id="event_like_btn_<%= event.id %>" class="like-btn">
-      <%= render partial: 'events/like_btn', locals: {event: event} %>
-    </span>
+  <span id="event_like_btn_<%= event.id %>" class="like-btn">
+    <%= render partial: 'events/like_btn', locals: {event: event} %>
+  </span>
+  <span class="event_join_btn_<%= event.id %>">
     <% if current_user.member_of?(event) %>
-      <%= link_to leave_event_path(event), class: 'btn btn-danger', method: :delete, data: { confirm: t('are_you_sure') } do %>
-          <i class="fa fa-minus-square-o"></i> <%= t'events.leave' %>
+      <%= link_to leave_event_path(event), class: 'event_participation_btn btn btn-danger', method: :delete, remote: true, data: { type: :json, confirm: t('are_you_sure') } do %>
+          <i class="fa fa-user-times"></i> <%= t'events.leave' %>
       <% end %>
     <% else %>
-      <%= link_to join_event_path(event), class: 'btn btn-default', method: :post do %>
-          <i class="fa fa-plus-square-o"></i> <%= t'events.join' %>
+      <%= link_to join_event_path(event), class: 'event_participation_btn btn btn-default', method: :post, remote: true, data: { type: :json } do %>
+          <i class="fa fa-user-plus"></i> <%= t'events.join' %>
       <% end %>
     <% end %>
+  </span>
+<% end %>
+
+<%= link_to members_event_path(event),
+            class: 'load_members load_members_#{event.id} btn btn-default',
+            remote: true,
+            method: :post,
+            data: {
+                event_id: event.id,
+                type: :json
+            } do %>
+    <i class="fa fa-users"></i> <%= t'events.show_members' %>
 <% end %>
 
 <%= link_to_unless_current('<i class="fa fa-map-marker"></i> Посмотреть на карте'.html_safe, event_path(event), class: 'btn btn-default') do

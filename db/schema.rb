@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222020749) do
+ActiveRecord::Schema.define(version: 20161227114610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,19 @@ ActiveRecord::Schema.define(version: 20161222020749) do
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
+  create_table "rated_memberships", force: :cascade do |t|
+    t.integer  "language_level"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "user_id"
+    t.integer  "event_membership_id"
+    t.integer  "language_id",         null: false
+    t.integer  "rated_member_id",     null: false
+    t.integer  "activity_level",      null: false
+    t.index ["event_membership_id"], name: "index_rated_memberships_on_event_membership_id", using: :btree
+    t.index ["user_id"], name: "index_rated_memberships_on_user_id", using: :btree
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"
@@ -160,4 +173,6 @@ ActiveRecord::Schema.define(version: 20161222020749) do
   add_foreign_key "events", "languages"
   add_foreign_key "events", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "rated_memberships", "event_memberships"
+  add_foreign_key "rated_memberships", "users"
 end

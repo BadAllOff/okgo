@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     resources :activities
     resources :profiles, :languages
     resources :events do
+      member do
+        post 'members', to: 'events#members'
+      end
       post 'like', to: 'socializations#like'
       delete 'unlike', to: 'socializations#unlike'
     end
@@ -11,12 +14,13 @@ Rails.application.routes.draw do
       collection do
         get 'as_tutor'
         get 'as_member'
-
+        get 'show_event_members/:event_id' => 'event_memberships#show_event_members', as: :show_members
       end
 
       member do
         post 'member_attended' => 'event_memberships#member_attended', as: :member_attended
         post 'member_not_attended' => 'event_memberships#member_not_attended', as: :member_not_attended
+        post 'rate_member' => 'event_memberships#rate_member', as: :rate
       end
     end
     post 'event_memberships/join/:event_id' => 'event_memberships#join', as:   :join_event

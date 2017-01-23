@@ -6,6 +6,7 @@ class User < ApplicationRecord
   after_create :create_profile
   has_many :events, dependent: :destroy
   has_many :event_memberships, dependent: :destroy
+  has_many :rated_memberships
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -30,6 +31,22 @@ class User < ApplicationRecord
 
   def member_of?(event)
     EventMembership.where(event_id: event, user_id: id).first
+  end
+
+  def rated_membership?(membership)
+    RatedMembership.where(user_id: id, event_membership_id: membership.id).first
+  end
+
+  def not_rated_membership?(membership)
+    !rated_membership?(membership)
+  end
+
+  def can_rate_membership?(membership)
+    if ( (author_of?(membership.event) || member_of?(membership.event)) && membership.attended? && not_rated_membership?(membership))
+      true
+    else
+      false
+    end
   end
 
   private

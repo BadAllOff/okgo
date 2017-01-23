@@ -10,3 +10,7 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.scss, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 # Rails.application.config.assets.precompile += %w( app.js cable.js demo.js fastclick.min.js jquery.slimscroll.min.js AdminLTE.scss skin-blue.scss )
+
+%w( activities events languages event_memberships profiles welcome ).each do |controller|
+  Rails.application.config.assets.precompile += ["#{controller}.js.coffee", "#{controller}.css"]
+end

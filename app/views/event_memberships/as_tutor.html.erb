@@ -1,25 +1,28 @@
-<!-- Custom Tabs -->
-<div class="nav-tabs-custom">
+<div class="nav-tabs-custom nav-tabs-memberships">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><%= t'event_memberships.future_events' %></a></li>
-    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false"><%= t'event_memberships.past_events' %></a></li>
+    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><%= t'event_memberships.past_events' %></a></li>
+    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true"><%= t'event_memberships.future_events' %></a></li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="tab_1">
-      <p>Future events</p>
-      <% @future_events.each do |event| %>
-          <%= render partial: 'event_memberships/event/as_tutor', locals: {event: event}%>
-      <% end %>
-    </div>
     <!-- /.tab-pane -->
-    <div class="tab-pane" id="tab_2">
-      <p>Past Events</p>
-      <% @past_events.each do |event| %>
-          <%= render partial: 'event_memberships/event/as_tutor', locals: {event: event}%>
+    <div class="tab-pane active" id="tab_1">
+      <% if @past_events.present? %>
+          <% @past_events.each do |event| %>
+              <%= render partial: 'event_memberships/event/as_tutor', locals: {event: event, past_events: true}%>
+          <% end %>
+      <% else %>
+          No past events
       <% end %>
     </div>
 
-  </div>
-  <!-- /.tab-content -->
-</div>
-<!-- nav-tabs-custom -->
+    <div class="tab-pane" id="tab_2">
+      <% if @future_events.present? %>
+        <% @future_events.each do |event| %>
+            <%= render partial: 'event_memberships/event/as_tutor', locals: {event: event, past_events: true}%>
+        <% end %>
+      <% else %>
+            No future events
+      <% end %>
+    </div>
+  </div> <!-- /.tab-content -->
+</div> <!-- / .nav-tabs-custom .nav-tabs-memberships -->

@@ -9,7 +9,7 @@ ru:
     events: 'Мероприятия'
     profiles: 'Профили'
     event_memberships: 'Участия'
-    activities: 'Активити'
+    activities: 'Недавние действия'
   breadcrumbs:
     homepage: 'Главная'
     events:
@@ -37,7 +37,7 @@ ru:
     languages: 'Языки'
     event_memberships:
       index: 'Мои мероприятия'
-      as_tutor: 'Как ведущий'
+      as_tutor: 'Как организатор'
       as_member: 'Как участник'
     activities: 'Активити'
   events:
@@ -49,7 +49,15 @@ ru:
     you_have_left_the_event: 'Вы покинули мероприятие'
     something_went_wrong: 'Что то пошло не так... Попробуйте присоединиться к другому мероприятию'
     drag_me_and_adjust_the_zoom_level: 'Потяни меня чтоб указать место.'
-    click_on_map_to_choose_place: 'Кликните по карте что бы выбать место, или перетащите маркер мышкой.'
+    click_on_map_to_choose_place: 'Кликните по карте что бы выбрать место, или перетащите маркер мышкой.'
+    show_members: 'Показать участиников'
+    rate_members:
+      language_level: 'Знание языка'
+      activity_level: 'Активность'
+      rate_btn: 'Оценить'
+      thanks_for_feedback_it_is_important: 'Спасибо, Ваш отзыв очень важен для всего сообщества.'
+      you_have_confirmed_absence_of_participant: 'Вы отметили что пользователь отсутствовал на мероприятии.'
+      previously_you_marked_this_user_as_absent: 'Ранее вы отметили что пользователь отсутствовал.'
     likes:
       zero: "%{count} лайков"
       few: "%{count} лайков"
@@ -82,6 +90,7 @@ ru:
       language: 'Язык'
       title: 'Тема'
       create_event: 'Создать мероприятие'
+    not_finished_yet: "Мероприятие еще не закончилось"
   profiles:
     profile: 'Профиль'
     firstname: 'Имя'
@@ -96,6 +105,11 @@ ru:
   event_memberships:
     future_events: 'Будущие мероприятия'
     past_events: 'Прошедшие мероприятия'
+    event_description: 'Описание'
+    did_he_attended_at_this_event: 'Пользователь присутсвовал(а) на мероприятии?'
+  btns:
+    yes_btn: "Да"
+    no_btn: "Нет"
   activerecord:
     models:
       user: "Пользователь"
@@ -128,6 +142,9 @@ ru:
         starts_at: 'Начало'
         ends_at: 'Конец'
         max_members: 'Максимальное число участников'
+      rated_membership:
+        language_level: 'Знание языка'
+        activity_level: 'Общительность'
     errors:
       messages:
         record_invalid: 'Возникли ошибки: %{errors}'

@@ -36,6 +36,9 @@ gem 'gmaps4rails'
 gem 'underscore-rails'
 gem "skylight"
 gem 'faker'
+gem 'bootstrap-slider-rails'
+gem 'data-confirm-modal'
+gem 'izitoast'
 
 
 group :development, :test do

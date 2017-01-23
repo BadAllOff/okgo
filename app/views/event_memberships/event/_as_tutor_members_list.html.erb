@@ -1,0 +1,136 @@
+<div class="no-padding members-list">
+  <!-- members list-->
+  <% memberships.each do |member| %>
+      <div class="media col-lg-6">
+        <div class="media-left">
+          <% if member.user.profile.photo?  %>
+              <%= image_tag(member.user.profile.photo.url('medium'),
+                            class: "img-circle media-object",
+                            alt: member.user.profile.firstname,
+                            data: { original_title: member.user.profile.firstname,
+                                    toggle: 'tooltip'
+                            }
+                  )
+              %>
+          <% else %>
+              <%= image_tag('medium_missing.png', class: "img-circle media-object", alt: 'User Image') %>
+          <% end %>
+        </div>
+        <div class="media-body">
+          <p class="media-heading">
+            <%= link_to profile_path(member.user.profile), target: '_blank' do  %>
+                <%= member.user.profile.firstname %>
+            <% end %>
+          </p>
+          <% member_rates = current_user.rated_membership?(member) %>
+          <% if member_rates %>
+            <div id="member-already-rated-<%= member.id %>">
+              <p>
+                <%= t('events.rate_members.language_level') %>: <%= member_rates.language_level %>
+              </p>
+              <p>
+                <%= t('events.rate_members.activity_level') %>: <%= member_rates.activity_level %>
+              </p>
+            </div>
+          <% else %>
+            <div id="event-member-attendance-<%= member.id %>">
+              <% if member.attended == false && member.marked %>
+                <p class="text-warning"><%= t('events.rate_members.previously_you_marked_this_user_as_absent') %></p>
+              <% end %>
+              <p><%= t('event_memberships.did_he_attended_at_this_event') %></p>
+              <%= link_to t('btns.yes_btn'), member_attended_event_membership_path(member), class: 'member-attended-btn btn btn-default', method: :post, remote: true, data: { type: 'json' } %>
+              <%= link_to t('btns.no_btn'), member_not_attended_event_membership_path(member), class: 'member-attended-btn btn btn-danger', method: :post, remote: true, data: { type: 'json' } %>
+            </div>
+            <div class="hide" id="event-member-rate-<%= member.id %>">
+              <%= form_tag rate_event_membership_path(member),
+                           method: :post,
+                           class: "submit-rate form-horizontal",
+                           remote: true,
+                           data:
+                               {
+                                   format: :json,
+                                   id: "rate-user-#{member.id}"
+                               } do %>
+                  <div class="rateMessages"></div>
+                  <div class="form-group">
+                    <%= label_tag :language_level, t('events.rate_members.language_level'), class: "col-sm-4 control-label" %>
+                    <div class="col-sm-8">
+                      <%= text_field_tag :language_level, "", class: 'language_level',
+                                         data: {
+                                             slider_id: "language_level_#{member.id}",
+                                             slider_min: 1,
+                                             slider_max: 100,
+                                             slider_step: 1,
+                                             slider_value: 1
+                                         } %>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <%= label_tag :activity_level, t('events.rate_members.activity_level'), class: "col-sm-4 control-label" %>
+                    <div class="col-sm-8">
+                      <%= text_field_tag :activity_level, "", class: 'activity_level',
+                                         data: {
+                                             slider_id: "activity_level_#{member.id}",
+                                             slider_min: 1,
+                                             slider_max: 100,
+                                             slider_step: 1,
+                                             slider_value: 1
+                                         } %>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-offset-4">
+                    <%= submit_tag t('events.rate_members.rate_btn'), class: 'btn btn-primary rate_user_submit_btn' %>
+                  </div>
+              <% end %>
+            </div>
+            <div class="hide thanks-for-feedback">
+              <h5><%= t('events.rate_members.thanks_for_feedback_it_is_important') %></h5>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+  <!-- /.members-list -->
+</div>
+
+
+<script type="text/javascript">
+  $(function () {
+    $(".member-attended-btn").unbind().bind('ajax:success', function (e, data, status, xhr) {
+      var membership = $.parseJSON(xhr.responseText);
+      if (membership.status == 'attended') {
+        $(this).parent().addClass('hide');
+        /*$('#event-member-attended-'+membership.membership_id).hide();*/
+        $('#event-member-rate-'+membership.membership_id).removeClass('hide');
+      }
+      else if (membership.status == 'missing')
+      {
+        $(this).parent().html("<span class='text-success'>"+membership.gratitude_text+"</span>");
+        $('.overlay').addClass('hidden');
+      }
+      else if (membership.status == 'not finished')
+      {
+        $(this).parent().html("<span class='text-warning'>"+membership.gratitude_text+"</span>");
+        $('.overlay').addClass('hidden');
+      }
+    });
+  });
+
+  $(".activity_level, .language_level").slider({});
+
+  $(function () {
+    $('.submit-rate').bind('ajax:success', function (e, data, status, xhr) {
+      $(this).parent().addClass('hide').next().removeClass('hide').html("<span class='text-success'><%= t('events.rate_members.thanks_for_feedback_it_is_important') %> </span>");
+      var response = $.parseJSON(xhr.responseText);
+      console.log(response);
+    });
+
+    $('.submit-rate').bind('ajax:error', function (e, data, status, xhr) {
+      $(this).parent().addClass('hide').next().removeClass('hide').html("<span class='text-warning'><%= j t('events.rate_members.you_already_had_left_feedback_about_this_user') %> </span>");
+      var response = $.parseJSON(xhr.responseText);
+      console.log(response);
+    });
+  });
+</script>

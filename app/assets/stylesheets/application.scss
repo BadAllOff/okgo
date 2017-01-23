@@ -7,6 +7,8 @@
 @import "libs/skin-blue";
 @import "libs/icheck/blue";
 @import 'bootstrap-datetimepicker';
+@import "bootstrap-slider";
+@import "iziToast";
 @import "md_simple_editor";
 
 .user-block dl.description{
@@ -28,4 +30,27 @@
   top: 0px;
   right: 5px;
   border: none;
+}
+
+.nav-tabs-memberships{
+  background: none;
+  .tab-content{
+    background: none;
+    padding: 0px;
+  }
+  ul.nav-tabs{
+    li, li.active > a{
+      background-color: #ecf0f5;
+    }
+  }
+}
+
+.slider-selection{
+  background-image: linear-gradient(to bottom, #89cdef 0%, #81bfde 100%);
+}
+
+.members-list{
+  .media{
+    margin-top: 15px;
+  }
 }

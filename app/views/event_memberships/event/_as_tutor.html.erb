@@ -1,4 +1,4 @@
-<div class="box box-widget collapsed-box"><!--collapsed-box-->
+<div class="box box-widget collapsed-box" id="event-<%= event.id %>"><!--collapsed-box-->
   <div class="box-header with-border">
     <div class="user-block">
       <%= link_to profile_path(event.user.profile) do %>
@@ -42,7 +42,6 @@
         </dt>
         <dd>
           <%= I18n.l event.starts_at, format: ("%b %d") %>,
-          <%= t ('starts_at') %>
           <%= I18n.l event.starts_at, format: ("%H:%M") %>
         </dd>
 
@@ -56,78 +55,48 @@
       <!--<button type="button" class="btn btn-sm" data-widget="remove" style="background: none;"><i class="fa fa-times"></i></button>-->
     </div>
     <!-- /.box-tools -->
-    <button type="button" class="btn btn-sm btn-block" data-widget="collapse" style="background: none;"><i class="fa fa-plus"></i>
+    <button type="button" class="btn btn-sm" data-widget="collapse" style="background: none;">
+      <%= t('event_memberships.event_description') %>
+      <i class="fa fa-plus"></i>
     </button>
   </div> <!-- /.box-header -->
+
   <div class="box-body">
     <!-- post text -->
     <%= markdown(event.description) %>
-    <div class="no-padding">
-      <!-- members list-->
-      <% event.memberships.each do |member| %>
-
-        <div class="media">
-          <div class="media-left">
-            <% if member.user.profile.photo?  %>
-                <%= image_tag(member.user.profile.photo.url('medium'),
-                              class: "img-circle media-object",
-                              alt: member.user.profile.firstname,
-                              data: { original_title: member.user.profile.firstname,
-                                      toggle: 'tooltip'
-                              }
-                    )
-                %>
-            <% else %>
-                <%= image_tag('medium_missing.png', class: "img-circle media-object", alt: 'User Image') %>
-            <% end %>
-          </div>
-          <div class="media-body">
-            <p class="media-heading">
-              <%= link_to profile_path(member.user.profile), class: 'members-list-name', target: '_blank' do  %>
-                  <%= member.user.profile.firstname %>
-              <% end %>
-            </p>
-            <p>
-              Пользователь присутствовал на мероприятии?
-              <%= link_to 'Yes', member_attended_event_membership_path(member), class: 'btn btn-default', method: :post, remote: true, data: { type: 'script' } %>
-              <%= link_to 'No', member_not_attended_event_membership_path(member), class: 'btn btn-danger', method: :post, remote: true, data: { type: 'script' } %>
-            </p>
-            <div>
-              <%=  %>
-            </div>
-
-          </div>
-        </div>
-
-      <% end %>
-
-
-      <!-- /.members-list -->
-
-
-
-    </div>
   </div><!-- /.box-body -->
-  <!-- /.box-body -->
+
+  <div class="overlay hidden">
+    <i class="fa fa-refresh fa-spin"></i>
+  </div>
+
   <div class="box-footer">
     <% if user_signed_in? %>
     <span id="event_like_btn_<%= event.id %>" class="like-btn">
       <%= render partial: 'events/like_btn', locals: {event: event} %>
     </span>
-        <% if current_user.member_of?(event) %>
-            <%= link_to leave_event_path(event), class: 'btn btn-danger', method: :delete, data: { confirm: t('are_you_sure') } do %>
-                <i class="fa fa-minus-square-o"></i> <%= t'events.leave' %>
-            <% end %>
-        <% else %>
-            <%= link_to join_event_path(event), class: 'btn btn-default', method: :post do %>
-                <i class="fa fa-plus-square-o"></i> <%= t'events.join' %>
-            <% end %>
+        <% if !past_events %>
+          <% if current_user.member_of?(event) %>
+              <%= link_to leave_event_path(event), class: 'btn btn-danger', method: :delete, data: { confirm: t('are_you_sure') } do %>
+                  <i class="fa fa-minus-square-o"></i> <%= t'events.leave' %>
+              <% end %>
+          <% else %>
+              <%= link_to join_event_path(event), class: 'btn btn-default', method: :post do %>
+                  <i class="fa fa-plus-square-o"></i> <%= t'events.join' %>
+              <% end %>
+          <% end %>
         <% end %>
     <% end %>
 
-    <%= link_to_unless_current('<i class="fa fa-map-marker"></i> Посмотреть на карте'.html_safe, event_path(event), class: 'btn btn-default') do
+    <%= link_to show_members_event_memberships_path(event), class: 'btn btn-default load-members-btn', remote: true, data: {event_id: event.id} do %>
+        <i class="fa fa-users"></i>
+        <%= t('events.show_members') %>
+    <% end %>
 
-    end%>
+    <%= link_to_unless_current('<i class="fa fa-map-marker"></i> Посмотреть на карте'.html_safe, event_path(event), class: 'btn btn-default') do
+    end %>
+
+
 
     <span class="pull-right text-muted">
       <%= link_to 'Show', event, class: 'btn btn-xs btn-default' %> |

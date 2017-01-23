@@ -9,6 +9,7 @@ en:
     events: 'Events'
     profiles: 'Profile'
     event_memberships: 'Memberships'
+    activities: 'Recent activities'
   breadcrumbs:
     homepage: 'Home'
     events:
@@ -24,6 +25,8 @@ en:
       index: 'My membership'
       join: 'Join'
       leave: 'Leave'
+      as_tutor: 'As tutor'
+      as_member: 'As member'
   sidebar_navigation:
     search: 'Search'
     navigation: 'NAVIGATION'
@@ -42,6 +45,14 @@ en:
     something_went_wrong: 'Something went wrong. Try to join another event.'
     drag_me_and_adjust_the_zoom_level: 'Drag me and adjust the zoom level.'
     click_on_map_to_choose_place: 'Click on map to choose place, or drag the marker.'
+    show_members: 'Show members'
+    rate_members:
+      language_level: 'Language level'
+      activity_level: 'Activity level'
+      rate_btn: 'Rate member'
+      thanks_for_feedback_it_is_important: "Thanks for feedback. It's important for all of us."
+      you_have_confirmed_absence_of_participant: 'You have confirmed absence of participant'
+      previously_you_marked_this_user_as_absent: 'Previously, you marked this user as absent.'
     active_events:
       zero: "No events"
       few: "events"
@@ -59,17 +70,26 @@ en:
       starts_at: 'Starts at'
       ends_at: 'Ends at'
       maximum_participants: 'Maximum participants'
+    not_finished_yet: "Event not finished yet"
   profiles:
-      profile: 'Профиль'
-      firstname: 'Firstname'
-      lastname: 'Lastname'
-      gender: 'Gender'
-      credo: 'Credo'
-      email: 'Email'
-      editing_profile: 'Editing Profile'
-      created_at: 'Registration date'
-      count_events: 'Total Events'
-      count_memberships: 'Total Participations'
+    profile: 'Профиль'
+    firstname: 'Firstname'
+    lastname: 'Lastname'
+    gender: 'Gender'
+    credo: 'Credo'
+    email: 'Email'
+    editing_profile: 'Editing Profile'
+    created_at: 'Registration date'
+    count_events: 'Total Events'
+    count_memberships: 'Total Participations'
+  event_memberships:
+    future_events: 'Future Events'
+    past_events: 'Past events'
+    event_description: 'Description'
+    did_he_attended_at_this_event: 'Did he/she attended at this event?'
+  btns:
+    yes_btn: "Yes"
+    no_btn: "No"
   activerecord:
       attributes:
         profile:
@@ -83,6 +103,9 @@ en:
           starts_at: 'Starts at'
           ends_at: 'Ends at'
           max_members: 'Maximum number of participants'
+        rated_membership:
+          language_level: 'Language level'
+          activity_level: 'Activity level'
   time:
     am: am
     formats:
@@ -91,5 +114,3 @@ en:
       short: "%d %b, %H:%M"
       without_time: "%d %B %Y"
     pm: pm
-
-
