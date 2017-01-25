@@ -53,4 +53,15 @@
   .media{
     margin-top: 15px;
   }
+
+  .member-box{
+    border: 1px solid #dddddd;
+    padding: 20px 20px;
+    border-radius: 3px;
+
+    .member-img > img{
+      border: 2px solid #dddddd;
+      padding: 2px;
+    }
+  }
 }

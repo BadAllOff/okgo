@@ -78,6 +78,8 @@ GEM
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     cancancan (1.15.0)
+    chartjs-ror (3.2.0)
+      rails (>= 3.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -128,6 +130,8 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
+    groupdate (3.1.1)
+      activesupport (>= 3)
     guard (2.14.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -345,6 +349,7 @@ DEPENDENCIES
   bullet
   byebug
   cancancan
+  chartjs-ror
   coffee-rails (~> 4.2)
   data-confirm-modal
   derailed_benchmarks
@@ -353,6 +358,7 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 4.7.0)
   gmaps4rails
+  groupdate
   guard-bundler
   guard-rails
   guard-rspec

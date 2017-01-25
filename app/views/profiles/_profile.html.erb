@@ -47,6 +47,8 @@
 
   </div>
 </div>
+
+
 <div class="row">
   <div class="col-md-3">
     <div class="box box-primary">
@@ -54,51 +56,90 @@
         <%= image_tag(profile.photo.url('medium'), class: 'img-circle profile-user-img img-responsive', alt: 'User Avatar') %>
         <h3 class="profile-username text-center"><%= profile.firstname %> <%= profile.lastname %></h3>
         <p class="text-muted text-center">Language Level</p>
-        <!--<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>-->
+        <% if can? :update, profile %>
+            <%= link_to t('edit',), edit_profile_path(profile), class: 'btn btn-primary btn-block' %>
+        <% end %>
       </div>
       <!-- /.box-body -->
     </div>
   </div>
+
   <div class="col-md-9">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">Progress chart</h3>
 
-      <!-- Custom Tabs -->
-      <div class="nav-tabs-custom">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><%= t'profiles.profile' %></a></li>
-          <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true">Activity</a></li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="tab_1">
-            <dl class="dl-horizontal">
-              <dt><%= t'profiles.firstname' %> :</dt>
-              <dd><%= profile.firstname %></dd>
-
-              <dt><%= t'profiles.lastname' %> :</dt>
-              <dd><%= profile.lastname %></dd>
-
-              <dt><%= t'profiles.gender' %> :</dt>
-              <dd><%= profile.gender %></dd>
-
-              <dt><%= t'profiles.credo' %> :</dt>
-              <dd><%= profile.credo %></dd>
-            </dl>
-            <% if can? :update, profile %>
-              <%= link_to t('edit',), edit_profile_path(profile), class: 'btn btn-primary' %>
-            <% end %>
-          </div>
-          <!-- /.tab-pane -->
-          <div class="tab-pane" id="tab_2">
-            <% if activitie %>
-                <% activitie.each do |activity| %>
-                    <%= render_activity activity %>
-                <% end %>
-            <% end %>
-          </div>
-          <!-- /.tab-pane -->
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
         </div>
-        <!-- /.tab-content -->
       </div>
-      <!-- nav-tabs-custom -->
+      <div class="box-body">
+          <%
+            data = {
+              labels: @r_labels,
+              datasets: [
+                {
+                  label: t('events.rate_members.language_level'),
+                  backgroundColor: "rgba(220,220,220,0.2)",
+                  borderColor: "rgba(220,220,220,1)",
+                  data: @r_lang_lvl
+                },
+                {
+                  label: t('events.rate_members.activity_level'),
+                  backgroundColor: "rgba(151,187,205,0.2)",
+                  borderColor: "rgba(151,187,205,1)",
+                  data: @r_activity_lvl
+                }
+              ]
+            }
+
+             options = {
+               id: 'ratingChart',
+               height: '200'
+             }
+          %>
+          <%= line_chart  data, options %>
+          <!--<canvas id="ratingChart"></canvas>-->
+      </div>
+      <!-- /.box-body -->
+    </div>
+
+
+    <!-- Custom Tabs -->
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><%= t'profiles.profile' %></a></li>
+        <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true">Activity</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab_1">
+          <dl class="dl-horizontal">
+            <dt><%= t'profiles.firstname' %> :</dt>
+            <dd><%= profile.firstname %></dd>
+
+            <dt><%= t'profiles.lastname' %> :</dt>
+            <dd><%= profile.lastname %></dd>
+
+            <dt><%= t'profiles.gender' %> :</dt>
+            <dd><%= profile.gender %></dd>
+
+            <dt><%= t'profiles.credo' %> :</dt>
+            <dd><%= profile.credo %></dd>
+          </dl>
+        </div>
+        <!-- /.tab-pane -->
+        <div class="tab-pane" id="tab_2">
+          <% if activitie %>
+              <% activitie.each do |activity| %>
+                  <%= render_activity activity %>
+              <% end %>
+          <% end %>
+        </div>
+        <!-- /.tab-pane -->
+      </div>
+      <!-- /.tab-content -->
+    </div>
+    <!-- nav-tabs-custom -->
 
   </div><!--/.col-md-9-->
 </div><!--/.row-->

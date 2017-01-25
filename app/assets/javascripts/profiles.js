@@ -1,1 +1,1 @@
-//= require plugins/chartjs/Chart.min
+//= require Chart.min

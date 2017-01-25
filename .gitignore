@@ -13,6 +13,8 @@
 public/assets
 public/sitemaps
 public/system
+public/uploads
+public/tmp
 # если установлен Paperclip
 Procfile
 # про него я еще расскажу
@@ -20,7 +22,6 @@ config/deploy/
 # файлы Capistrano
 /shared/
 # файлы, которых нет в репозитории, но они будут скопированы на сервер при первом деплое приложения
-coverage
+/coverage
 config/database.yml
-config/secrets.yml
 TODO.txt

@@ -19,6 +19,18 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @memberships = EventMembership.where(user: @profile.user, attended: true)
+    @rates = RatedMembership.where(event_membership: @memberships).includes(event_membership: [:event])
+
+    @r_activity_lvl = Array.new
+    @r_labels = Array.new
+    @r_lang_lvl= Array.new
+
+    @rates.each do |rate|
+        @r_labels << rate.event_membership.event.title
+        @r_lang_lvl << rate.language_level
+        @r_activity_lvl << rate.activity_level
+    end
   end
 
   # GET /profiles/1/edit

@@ -39,6 +39,8 @@ gem 'faker'
 gem 'bootstrap-slider-rails'
 gem 'data-confirm-modal'
 gem 'izitoast'
+gem 'chartjs-ror'
+gem 'groupdate'
 
 
 group :development, :test do
