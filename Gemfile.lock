@@ -310,8 +310,6 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
-    skylight (1.0.1)
-      activesupport (>= 3.0.0)
     slop (3.6.0)
     socialization (1.2.0)
       activerecord
@@ -412,7 +410,6 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   shoulda-matchers
-  skylight
   socialization
   spring
   spring-watcher-listen (~> 2.0.0)

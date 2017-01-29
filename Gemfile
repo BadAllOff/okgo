@@ -36,7 +36,6 @@ gem 'breadcrumbs_on_rails'
 gem 'cancancan'
 gem 'gmaps4rails'
 gem 'underscore-rails'
-gem "skylight"
 gem 'faker'
 gem 'bootstrap-slider-rails'
 gem 'data-confirm-modal'
@@ -51,10 +50,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rubocop', require: false
-  gem 'capistrano', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-rvm', require: false
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 group :development do
