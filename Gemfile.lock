@@ -206,6 +206,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.0.1)
+    newrelic_rpm (3.18.0.329)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -399,6 +400,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   md_simple_editor!
   momentjs-rails
+  newrelic_rpm
   nyan-cat-formatter
   paperclip (~> 5.0.0)
   pg
