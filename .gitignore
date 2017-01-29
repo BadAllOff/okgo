@@ -10,7 +10,6 @@
 .byebug_history
 /tmp
 .idea
-public/assets
 public/sitemaps
 public/system
 public/uploads
