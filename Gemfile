@@ -12,6 +12,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'therubyracer'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
+gem 'turbolinks'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -27,7 +28,7 @@ gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'redcarpet'
 # gem 'markitup-rails'
-gem 'md_simple_editor', git: 'https://github.com/BadAllOff/md_simple_editor', ref: 'f926c9f'
+gem 'md_simple_editor', github: 'BadAllOff/md_simple_editor', ref: 'f926c9f'
 gem 'validates_timeliness'
 gem 'public_activity'
 gem 'active_link_to'
@@ -54,7 +55,7 @@ group :development, :test do
   gem 'capistrano', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', require: false
-  gem 'capistrano-rvm', github: "capistrano/rvm", require: false
+  gem 'capistrano-rvm', require: false
 end
 
 group :development do
