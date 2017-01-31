@@ -124,7 +124,7 @@
             <dd><%= profile.gender %></dd>
 
             <dt><%= t'profiles.about' %> :</dt>
-            <dd><%= markdown(profile.about) %></dd>
+            <dd><%= markdown(profile.about) if profile.about %></dd>
 
             <dt><%= t'profiles.credo' %> :</dt>
             <dd><%= profile.credo %></dd>
