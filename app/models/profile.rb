@@ -17,4 +17,6 @@ class Profile < ApplicationRecord
   validates_presence_of :firstname, :lastname, :gender
   validates :firstname, length: { in: 1..20 }
   validates :lastname, length: { in: 1..20 }
+  validates :about, length: { in: 1..3000 }
+  validates :credo, length: { in: 1..250 }
 end

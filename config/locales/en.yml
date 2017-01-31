@@ -76,6 +76,7 @@ en:
     firstname: 'Firstname'
     lastname: 'Lastname'
     gender: 'Gender'
+    about: 'About me'
     credo: 'Credo'
     email: 'Email'
     editing_profile: 'Editing Profile'
@@ -96,6 +97,7 @@ en:
           gender_female: 'Female'
           gender_male: 'Male'
           gender_other: 'Other'
+          about: 'About me'
         event:
           title: 'Title'
           description: 'Description'

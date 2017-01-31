@@ -6,7 +6,7 @@ set :repo_url, 'git@bitbucket.org:BadAllOffSH/okgo.git'
 set :deploy_to, '/opt/www/okgo'
 set :user, 'deploy'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'vendor/bundle', 'public/uploads'
-append :linked_files, 'config/database.yml', 'config/secrets.yml'
+append :linked_files, 'config/database.yml'
 set :keep_releases, 7
 
 

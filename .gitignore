@@ -14,7 +14,6 @@ public/sitemaps
 public/system
 public/uploads
 public/tmp
-config/secrets.yml
 # если установлен Paperclip
 Procfile
 # файлы Capistrano

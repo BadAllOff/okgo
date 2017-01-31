@@ -29,11 +29,12 @@
 <%= link_to_unless_current('<i class="fa fa-map-marker"></i> Посмотреть на карте'.html_safe, event_path(event), class: 'btn btn-default') do
 
 end%>
-
-<span class="pull-right text-muted">
-  <%= link_to 'Show', event, class: 'btn btn-xs btn-default' %> |
-  <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-xs btn-primary' %> |
-  <%= link_to 'Destroy', event, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('are_you_sure')} %>
-<!--  <%= t('events.likes', count: event.likers(User).count) %> -
-  <%= t('events.joined', count: event.memberships.count) %>-->
-</span>
+<% if user_signed_in? && can?(:crud, event) %>
+  <span class="pull-right text-muted">
+    <%= link_to 'Show', event, class: 'btn btn-xs btn-default' %> |
+    <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-xs btn-primary' %> |
+    <%= link_to 'Destroy', event, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('are_you_sure')} %>
+  <!--  <%= t('events.likes', count: event.likers(User).count) %> -
+    <%= t('events.joined', count: event.memberships.count) %>-->
+  </span>
+<% end %>
