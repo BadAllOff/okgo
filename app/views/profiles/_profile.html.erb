@@ -58,6 +58,7 @@
         <p class="text-muted text-center">Language Level</p>
         <% if can? :update, profile %>
             <%= link_to t('edit',), edit_profile_path(profile), class: 'btn btn-primary btn-block' %>
+            <%= link_to t('devise.passwords.edit.change_my_password',), edit_user_registration_path, class: 'btn btn-primary btn-block' %>
         <% end %>
       </div>
       <!-- /.box-body -->

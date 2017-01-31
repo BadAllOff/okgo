@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   # # GET /profiles
   # # GET /profiles.json
   def index
-    @profiles = Profile.all.limit(10)
+    @profiles = Profile.all.limit(10).includes(:user)
   end
 
   # GET /profiles/1
