@@ -72,7 +72,8 @@ en:
       maximum_participants: 'Maximum participants'
     not_finished_yet: "Event not finished yet"
   profiles:
-    profile: 'Профиль'
+    profile: 'Profile'
+    activity: 'Activity'
     firstname: 'Firstname'
     lastname: 'Lastname'
     gender: 'Gender'
@@ -83,6 +84,7 @@ en:
     created_at: 'Registration date'
     count_events: 'Total Events'
     count_memberships: 'Total Participations'
+    progress_chart: 'Progress chart'
   event_memberships:
     future_events: 'Future Events'
     past_events: 'Past events'

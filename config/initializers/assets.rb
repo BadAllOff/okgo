@@ -14,3 +14,4 @@ Rails.application.config.assets.version = '1.0'
 %w( activities events languages event_memberships profiles welcome ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.js.coffee", "#{controller}.css"]
 end
+Rails.application.config.assets.precompile += %w( devise/registrations.js )

@@ -55,9 +55,9 @@
       <div class="box-body box-profile">
         <%= image_tag(profile.photo.url('medium'), class: 'img-circle profile-user-img img-responsive', alt: 'User Avatar') %>
         <h3 class="profile-username text-center"><%= profile.firstname %> <%= profile.lastname %></h3>
-        <p class="text-muted text-center">Language Level</p>
+        <p class="text-muted text-center"><%= t('events.rate_members.language_level') %></p>
         <% if can? :update, profile %>
-            <%= link_to t('edit',), edit_profile_path(profile), class: 'btn btn-primary btn-block' %>
+            <%= link_to "#{t('edit')} #{t('profiles.profile')}", edit_profile_path(profile), class: 'btn btn-primary btn-block' %>
             <%= link_to t('devise.passwords.edit.change_my_password',), edit_user_registration_path, class: 'btn btn-primary btn-block' %>
         <% end %>
       </div>
@@ -68,7 +68,7 @@
   <div class="col-md-9">
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title">Progress chart</h3>
+        <h3 class="box-title"><%= t'profiles.progress_chart' %></h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -110,7 +110,7 @@
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><%= t'profiles.profile' %></a></li>
-        <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true">Activity</a></li>
+        <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true"><%= t'profiles.activity' %></a></li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab_1">

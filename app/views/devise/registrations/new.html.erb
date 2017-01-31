@@ -42,11 +42,13 @@
         <div class="field form-group has-feedback">
           <%= f.label :email %><br />
           <%= f.email_field :email, class: 'form-control', placeholder: true, autofocus: true %>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
 
         <div class="field form-group has-feedback">
-          <%= f.label :password %>
+          <%= f.label :password %><br />
           <%= f.password_field :password, class: 'form-control', placeholder: true, autocomplete: "off" %>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           <% if @minimum_password_length %>
               <p class="help-block">
                 <em>(<%= @minimum_password_length %> <%= t('devise.characters_minimum') %>)</em>
@@ -57,6 +59,7 @@
         <div class="field form-group has-feedback">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, class: 'form-control', placeholder: true, autocomplete: "off" %>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 
         <div class="actions">
