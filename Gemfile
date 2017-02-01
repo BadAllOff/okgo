@@ -43,6 +43,7 @@ gem 'izitoast'
 gem 'chartjs-ror'
 gem 'groupdate'
 gem 'unicorn'
+gem 'will_paginate', '~> 3.1.0'
 
 # Performance & stats
 gem 'newrelic_rpm'

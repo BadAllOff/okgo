@@ -7,9 +7,9 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-role :app, %w{deploy@okgo.online}
-role :web, %w{deploy@okgo.online} # Управляет asset pipeline
-role :db, %w{deploy@okgo.online} # Работает с БД
+role :app, %w{deploy@178.62.231.130}
+role :web, %w{deploy@178.62.231.130} # Управляет asset pipeline
+role :db, %w{deploy@178.62.231.130} # Работает с БД
 
 set :rails_env, :production
 

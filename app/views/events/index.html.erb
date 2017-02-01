@@ -14,5 +14,13 @@
     <%= render partial: 'events/event', locals: {event: event}%>
 <% end %>
 
+<div class="flickr_pagination">
+  <div class="page_info">
+    <%= page_entries_info @events %>
+  </div>
+  <%= will_paginate @events, :container => false  %>
+</div>
+
+
 <%= render partial: 'handlebars/event_like_btn_template' %>
 <%= render partial: 'handlebars/members_template' %>

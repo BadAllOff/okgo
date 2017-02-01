@@ -113,6 +113,18 @@ ru:
   btns:
     yes_btn: "Да"
     no_btn: "Нет"
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero:  "%{model} не найдено"
+        one:   "Показано 1 %{model}"
+        other: "Показаны все %{count} %{model}"
+      single_page_html:
+        zero:  "%{model} не найдено"
+        one:   "Показано <b>1</b> %{model}"
+        other: "Показаны <b>все&nbsp;%{count}</b> %{model}"
+      multi_page: "Показано %{model} %{from} - %{to} of %{count} всего"
+      multi_page_html: "Показано %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> из <b>%{count}</b> всего"
   activerecord:
     models:
       user: "Пользователь"

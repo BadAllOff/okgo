@@ -35,6 +35,6 @@ end%>
     <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-xs btn-primary' %> |
     <%= link_to 'Destroy', event, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('are_you_sure')} %>
   <!--  <%= t('events.likes', count: event.likers(User).count) %> -
-    <%= t('events.joined', count: event.memberships.count) %>-->
+    <%= t('events.joined', count: event.event_memberships_count) %>-->
   </span>
 <% end %>
