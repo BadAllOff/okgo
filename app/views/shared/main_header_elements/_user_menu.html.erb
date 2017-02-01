@@ -15,7 +15,7 @@
   <ul class="dropdown-menu">
     <!-- The user image in the menu -->
     <li class="user-header">
-      <% if current_user.profile && current_user.profile.photo?  %>
+      <% if current_user.profile.photo?  %>
           <%= image_tag(current_user.profile.photo.url('medium'), class: "img-circle", alt: 'User Image') %>
       <% else %>
           <%= image_tag('medium_missing.png', class: "img-circle", alt: 'User Image') %>
@@ -30,11 +30,11 @@
       <div class="row">
         <div class="col-xs-6 text-center">
           <span class="description-text"><%= t 'profiles.count_events' %></span><br>
-          <a href="#"><%= current_user.profile.user.events.count %></a>
+          <a href="#"><%= current_user.profile.user.events_count %></a>
         </div>
         <div class="col-xs-6 text-center">
           <span class="description-text"><%= t 'profiles.count_memberships' %></span><br>
-          <a href="#"><%= current_user.profile.user.event_memberships.count %></a>
+          <a href="#"><%= current_user.profile.user.event_memberships_count %></a>
         </div>
       </div>
       <!-- /.row -->

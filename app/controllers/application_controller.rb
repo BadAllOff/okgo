@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
-  before_action :set_locale
-
-  before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
+
+  before_action :set_locale
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :miniprofiler
+
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, error: exception.message
@@ -36,5 +38,9 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options = {})
     { locale: I18n.locale }
+  end
+
+  def miniprofiler
+    Rack::MiniProfiler.authorize_request  if current_user && current_user.admin?
   end
 end

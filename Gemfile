@@ -46,6 +46,7 @@ gem 'unicorn'
 
 # Performance & stats
 gem 'newrelic_rpm'
+gem 'rack-mini-profiler', require: false
 
 
 group :development, :test do
@@ -73,7 +74,6 @@ group :development do
   # gem 'capistrano-rails'
   gem 'derailed_benchmarks'
   gem 'bullet'
-  gem 'rack-mini-profiler', require: false
   # gem 'flamegraph'
 end
 
