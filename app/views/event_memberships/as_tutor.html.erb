@@ -10,9 +10,9 @@
           <% @past_events.each do |event| %>
               <%= render partial: 'event_memberships/event/as_tutor', locals: {event: event, past_events: true}%>
           <% end %>
-      <% else %>
-          No past events
       <% end %>
+      <%= render partial: 'shared/pagination', locals: { object: @past_events} %>
+
     </div>
 
     <div class="tab-pane" id="tab_2">
@@ -20,9 +20,9 @@
         <% @future_events.each do |event| %>
             <%= render partial: 'event_memberships/event/as_tutor', locals: {event: event, past_events: true}%>
         <% end %>
-      <% else %>
-            No future events
       <% end %>
+      <%= render partial: 'shared/pagination', locals: { object: @future_events} %>
+
     </div>
   </div> <!-- /.tab-content -->
 </div> <!-- / .nav-tabs-custom .nav-tabs-memberships -->

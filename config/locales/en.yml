@@ -5,6 +5,7 @@ en:
   show: 'Show'
   back: 'Back'
   are_you_sure: 'Are you sure?'
+  the_counter_is_not_updated_immediately: 'The counter is not updated immediately'
   page_titles:
     events: 'Events'
     profiles: 'Profile'

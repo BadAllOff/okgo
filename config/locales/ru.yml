@@ -5,6 +5,7 @@ ru:
   show: 'Просмотреть'
   back: 'Назад'
   are_you_sure: 'Вы уверенны?'
+  the_counter_is_not_updated_immediately: 'Счётчик обновляеться не сразу'
   page_titles:
     events: 'Мероприятия'
     profiles: 'Профили'
@@ -127,9 +128,30 @@ ru:
       multi_page_html: "Показано %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> из <b>%{count}</b> всего"
   activerecord:
     models:
-      user: "Пользователь"
-      profile: 'Профиль'
-      event: 'Мероприятие'
+      user:
+        zero:  'Пользователей'
+        one:   'Пользователь'
+        few:   'Пользователей'
+        many:  'Пользователей'
+        other: 'Пользователей'
+      profile:
+        zero:  'Профилей'
+        one:   'Профиль'
+        few:   'Профилей'
+        many:  'Профилей'
+        other: 'Профилей'
+      event:
+        zero:  'Мероприятий'
+        one:   'Мероприятие'
+        few:   'Мероприятий'
+        many:  'Мероприятий'
+        other: 'Мероприятий'
+      event_membership:
+        zero:  'Участий'
+        one:   'Участие'
+        few:   'Участий'
+        many:  'Участий'
+        other: 'Участий'
     attributes:
       user:
         current_password: "Текущий пароль"

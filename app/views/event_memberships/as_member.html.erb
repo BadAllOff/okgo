@@ -7,15 +7,17 @@
   <div class="tab-content">
     <div class="tab-pane active" id="tab_1">
       <% @future_event_memberships.each do |membership| %>
-          <%= render partial: 'event_memberships/event/as_member', locals: {event: membership.event}%>
-          <%= render partial: 'events/event', locals: {event: membership.event}%>
+          <!--<%= render partial: 'event_memberships/event/as_member', locals: {event: membership.event} if membership.event%>-->
+          <%= render partial: 'events/event', locals: {event: membership.event} if membership.event%>
       <% end %>
+      <%= render partial: 'shared/pagination', locals: { object: @future_event_memberships} if !@future_event_memberships.blank? %>
     </div>
     <!-- /.tab-pane -->
     <div class="tab-pane" id="tab_2">
       <% @past_event_memberships.each do |membership| %>
-          <%= render partial: 'events/event', locals: {event: membership.event}%>
+          <%= render partial: 'events/event', locals: {event: membership.event} if membership.event%>
       <% end %>
+      <%= render partial: 'shared/pagination', locals: { object: @past_event_memberships} if !@past_event_memberships.blank? %>
     </div>
   </div>
   <!-- /.tab-content -->
