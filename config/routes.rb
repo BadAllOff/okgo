@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       end
       post 'like', to: 'socializations#like'
       delete 'unlike', to: 'socializations#unlike'
+      resources :comments, module: :events
     end
     resources :event_memberships do
       collection do
