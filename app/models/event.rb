@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   belongs_to :user, counter_cache: true
   belongs_to :language
   has_many :memberships,  class_name: 'EventMembership', dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates_presence_of :title, :description, :max_members, :starts_at, :ends_at, :language, :latitude, :longitude, :address
   validates_datetime :ends_at, :starts_at, after: DateTime.current + 24.hours
