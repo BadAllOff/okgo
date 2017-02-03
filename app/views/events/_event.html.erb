@@ -13,7 +13,7 @@
     <%= render partial: 'events/event_box_footer', locals: { event: event } %>
   </div>
 
-  <%= render partial: 'comments/comments', locals: {comments: event.comments} %>
+  <%= render partial: 'comments/comments', locals: {commentable: event} %>
 
 
 

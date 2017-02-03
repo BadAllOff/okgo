@@ -1,0 +1,11 @@
+<%= form_for [commentable, Comment.new] do |f| %>
+    <% if current_user.profile.photo?  %>
+        <%= image_tag(current_user.profile.photo.url('micro'), class: "img-responsive img-circle img-sm", alt: 'User Image') %>
+    <% else %>
+        <%= image_tag('micro_missing.png', class: "img-responsive img-circle img-sm", alt: 'User Image') %>
+    <% end %>
+    <div class="img-push">
+      <%= f.text_area :body, class: "form-control input-sm", placeholder: "Add a comment" %>
+    </div>
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>
