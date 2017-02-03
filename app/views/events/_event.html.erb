@@ -3,16 +3,17 @@
   <%= render partial: 'events/event_box_header', locals: { event: event } %>
     <button type="button" class="btn btn-sm" data-widget="collapse" style="background: none;"><%= t('event_memberships.event_description') %> <i class="fa fa-plus"></i>
     </button>
-  </div> <!-- /.box-header -->
+  </div>
+
   <div class="box-body">
     <%= render partial: 'events/event_box_body', locals: { event: event } %>
-  </div><!-- /.box-body -->
-  <div class="overlay hidden">
-    <i class="fa fa-refresh fa-spin"></i>
   </div>
-  <!-- /.box-body -->
+
   <div class="box-footer">
     <%= render partial: 'events/event_box_footer', locals: { event: event } %>
   </div>
-  <!-- /.box-footer -->
+
+  <div class="overlay hidden">
+    <i class="fa fa-refresh fa-spin"></i>
+  </div>
 </div>

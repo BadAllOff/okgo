@@ -42,7 +42,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="hold-transition skin-blue layout-boxed sidebar-mini sidebar-collapse">
-<div class="wrapper">
+  <div class="wrapper">
 
   <!-- Main Header -->
   <%= render partial: 'shared/main_header' %>
@@ -86,6 +86,8 @@ desired effect
     <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved. <%= DateTime.current.strftime('%B %d, %H:%M') %>
   </footer>
 <%= render 'handlebars/alerts_template' %>
+<%= render partial: 'handlebars/event_like_btn_template' %>
+
 <%= # render partial: 'shared/offcanvas_sidebar'
 %>
 </div>
