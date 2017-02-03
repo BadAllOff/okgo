@@ -1,0 +1,24 @@
+<div class="box-comment">
+  <%= link_to profile_path(comment.user.profile) do %>
+      <% if comment.user.profile.photo?  %>
+          <%= image_tag(comment.user.profile.photo.url('medium'),
+                        class: "img-circle img-sm",
+                        alt: "#{comment.user.profile.firstname} #{comment.user.profile.lastname}",
+                        data: { toggle: 'tooltip', original_title: "#{comment.user.profile.firstname} #{comment.user.profile.lastname}" }
+              )
+          %>
+      <% else %>
+          <%= image_tag('medium_missing.png', class: "img-circle img-sm", alt: "#{comment.user.profile.firstname} #{comment.user.profile.lastname}"
+              )
+          %>
+      <% end %>
+  <% end %>
+
+  <div class="comment-text">
+                    <span class="username">
+                      <%= comment.user.profile.firstname %> <%= comment.user.profile.lastname %>
+                      <span class="text-muted pull-right"><%= time_ago_in_words(comment.created_at) %></span>
+                    </span>
+    <%= comment.body %>
+  </div>
+</div>
