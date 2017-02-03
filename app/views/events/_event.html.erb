@@ -13,6 +13,40 @@
     <%= render partial: 'events/event_box_footer', locals: { event: event } %>
   </div>
 
+  <div class="box-footer box-comments">
+    <% event.comments.each do |comment| %>
+        <div class="box-comment">
+          <%= link_to profile_path(event.user.profile) do %>
+              <% if event.user.profile.photo?  %>
+                  <%= image_tag(event.user.profile.photo.url('medium'),
+                                class: "img-circle img-sm",
+                                alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}",
+                                data: {
+                                    toggle: 'tooltip',
+                                    original_title: "#{event.user.profile.firstname} #{event.user.profile.lastname}"
+                                }
+                      )
+                  %>
+              <% else %>
+                  <%= image_tag('medium_missing.png',
+                                class: "img-circle img-sm",
+                                alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}"
+                      )
+                  %>
+              <% end %>
+          <% end %>
+
+          <div class="comment-text">
+                    <span class="username">
+                      <%= comment.user.profile.firstname %> <%= comment.user.profile.lastname %>
+                      <span class="text-muted pull-right"><%= time_ago_in_words(comment.created_at) %></span>
+                    </span>
+            <%= comment.body %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
   <div class="overlay hidden">
     <i class="fa fa-refresh fa-spin"></i>
   </div>
