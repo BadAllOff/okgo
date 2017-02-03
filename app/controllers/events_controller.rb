@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :members]
+  before_action :set_event, only: [:edit, :update, :destroy, :members]
   before_action :set_count_events, only: [:index]
   before_action :set_count_memberships, only: [:index]
   before_action :set_page_title
@@ -21,6 +21,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event = Event.where(id: params[:id]).includes(:language, user: [:profile], comments: [user: [:profile]]).first
     add_breadcrumb I18n.t('breadcrumbs.events.show'), event_path(@event)
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.latitude || Rails.application.secrets.default_latitude

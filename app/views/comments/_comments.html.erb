@@ -3,7 +3,9 @@
   <% commentable.comments.each do |comment| %>
       <%= render partial: 'comments/comment', locals: {comment: comment, commentable: commentable} %>
   <% end %>
-  <div class="box-comment">
-    <%= render partial: 'comments/form', locals: {commentable: commentable} %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="box-comment">
+      <%= render partial: 'comments/form', locals: {commentable: commentable} %>
+    </div>
+  <% end %>
 </div>

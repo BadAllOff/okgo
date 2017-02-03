@@ -8,14 +8,19 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new comment_params
     @comment.user = current_user
     if @comment.save
-      redirect_to @commentable, notice: "Your comment was successfully posted."
+      increment_conters
+      respond_to do |format|
+        format.html { redirect_to @commentable, notice: "Your comment was successfully posted." }
+      end
     end
   end
 
   def destroy
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to @commentable, notice: "Your comment was successfully destroyed." }
+    if @comment.destroy
+      decrement_counters
+      respond_to do |format|
+        format.html { redirect_to @commentable, notice: "Your comment was successfully destroyed." }
+      end
     end
   end
 
@@ -27,5 +32,15 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def increment_conters
+    @commentable.increment!(:comments_counter)
+    current_user.increment!(:comments_counter)
+  end
+
+  def decrement_counters
+    @commentable.decrement!(:comments_counter)
+    current_user.decrement!(:comments_counter)
   end
 end

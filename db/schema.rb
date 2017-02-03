@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203073732) do
+ActiveRecord::Schema.define(version: 20170203104444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170203073732) do
     t.float    "longitude"
     t.integer  "gmap_zoom"
     t.integer  "event_memberships_count", default: 0
+    t.integer  "comments_counter",        default: 0
     t.index ["language_id"], name: "index_events_on_language_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
@@ -179,6 +180,7 @@ ActiveRecord::Schema.define(version: 20170203073732) do
     t.integer  "events_count",            default: 0
     t.integer  "role",                    default: 1
     t.integer  "event_memberships_count", default: 0
+    t.integer  "comments_counter",        default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
