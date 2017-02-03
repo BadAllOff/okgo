@@ -44,6 +44,8 @@
       <%= I18n.l event.starts_at, format: ("%H:%M") %>
     </dd>
 
+    <dd><%= (t("comments",count: event.comments_counter)).capitalize %></dd>
+
   </dl>
 </div>
 <!-- /.user-block -->

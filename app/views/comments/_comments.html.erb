@@ -1,5 +1,5 @@
 <div class="box-footer box-comments">
-  <h6>Comments</h6>
+  <h6><%= t("comments",count: commentable.comments_counter) %></h6>
   <% commentable.comments.each do |comment| %>
       <%= render partial: 'comments/comment', locals: {comment: comment, commentable: commentable} %>
   <% end %>

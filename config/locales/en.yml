@@ -94,6 +94,12 @@ en:
   btns:
     yes_btn: "Yes"
     no_btn: "No"
+  comments:
+    zero: "No comments"
+    few: "%{count} comments"
+    many: "%{count} comments"
+    one: "%{count} comment"
+    other: "%{count} comments"
   activerecord:
       attributes:
         profile:

@@ -114,6 +114,12 @@ ru:
   btns:
     yes_btn: "Да"
     no_btn: "Нет"
+  comments:
+    zero: "Нет комментариев"
+    few: "%{count} комментария"
+    many: "%{count} комментариев"
+    one: "%{count} комментарий"
+    other: "%{count} комментариев"
   will_paginate:
     page_entries_info:
       single_page:
