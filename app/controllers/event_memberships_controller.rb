@@ -1,9 +1,8 @@
 class EventMembershipsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:join, :leave, :show_event_members]
-  before_action :set_event_membership, only: [:leave]
+  before_action :get_membership_for_current_user, only: [:leave]
   before_action :set_page_title
-  # before_action :rate_membership_params, only: [:rate_member]
   before_action :get_users_membership, only: [:member_attended, :member_not_attended, :rate_member]
 
   include Profiled
@@ -119,7 +118,7 @@ class EventMembershipsController < ApplicationController
     end
 
     # Use callbacks to share common setup or constraints between actions.
-    def set_event_membership
+    def get_membership_for_current_user
       @event_membership = EventMembership.where(user: current_user, event: @event).first
     end
 
@@ -136,7 +135,4 @@ class EventMembershipsController < ApplicationController
       params.require(:event_membership).permit(:event_id, :attended)
     end
 
-    # def rate_membership_params
-    #   params.permit(:language_level, :activity_level)
-    # end
 end

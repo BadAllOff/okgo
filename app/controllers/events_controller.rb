@@ -15,7 +15,6 @@ class EventsController < ApplicationController
 
   # GET /events.json
   def index
-    # TODO add event_memebership_counter
     @events = Event.where('starts_at >= ?', Time.zone.now).order(starts_at: :asc).includes(:language, user: [:profile], comments: [:user] ).paginate(page: params[:page], per_page: 10)
   end
 

@@ -1,4 +1,5 @@
 <div class="box-comment">
+
   <%= link_to profile_path(comment.user.profile) do %>
       <% if comment.user.profile.photo?  %>
           <%= image_tag(comment.user.profile.photo.url('medium'),
@@ -17,7 +18,15 @@
   <div class="comment-text">
                     <span class="username">
                       <%= comment.user.profile.firstname %> <%= comment.user.profile.lastname %>
-                      <span class="text-muted pull-right"><%= time_ago_in_words(comment.created_at) %></span>
+                      <span class="text-muted pull-right" style="padding: 6px"></span>
+                      <div class="box-tools pull-right">
+                        <span class="text-muted" ><%= time_ago_in_words(comment.created_at) %></span>
+                        <% if can? :destroy, comment %>
+                          <%= link_to [commentable, comment], class: "btn btn-box-tool", data: { confirm: t('are_you_sure')}, method: :delete do %>
+                            <i class="fa fa-times"></i>
+                          <% end %>
+                        <% end %>
+                      </div>
                     </span>
     <%= comment.body %>
   </div>
