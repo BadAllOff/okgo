@@ -71,6 +71,9 @@ en:
       starts_at: 'Starts at'
       ends_at: 'Ends at'
       maximum_participants: 'Maximum participants'
+    comments:
+      your_comment_was_successfully_posted: 'Your comment was successfully posted.'
+      your_comment_was_successfully_destroyed: 'Your comment was successfully destroyed.'
     not_finished_yet: "Event not finished yet"
   profiles:
     profile: 'Profile'

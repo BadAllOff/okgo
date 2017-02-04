@@ -91,6 +91,9 @@ ru:
       language: 'Язык'
       title: 'Тема'
       create_event: 'Создать мероприятие'
+    comments:
+      your_comment_was_successfully_posted: 'Комментарий добавлен.'
+      your_comment_was_successfully_destroyed: 'Комментарий удалён.'
     not_finished_yet: "Мероприятие еще не закончилось"
   profiles:
     profile: 'Профиль'

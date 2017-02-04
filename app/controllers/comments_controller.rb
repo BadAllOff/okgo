@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       increment_conters
       respond_to do |format|
-        format.html { redirect_to @commentable, notice: "Your comment was successfully posted." }
+        format.html { redirect_to @commentable, notice: t('events.comments.your_comment_was_successfully_posted') }
       end
     end
   end
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
     if @comment.destroy
       decrement_counters
       respond_to do |format|
-        format.html { redirect_to @commentable, notice: "Your comment was successfully destroyed." }
+        format.html { redirect_to @commentable, notice: t('events.comments.your_comment_was_successfully_destroyed') }
       end
     end
   end
