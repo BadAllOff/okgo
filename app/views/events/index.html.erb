@@ -10,9 +10,23 @@
 </div><!-- /.box -->
 
 <!-- /.timeline-label -->
-<% @events.each do |event| %>
-    <%= render partial: 'events/event', locals: {event: event}%>
+<% @events.each_slice(2) do |events| %>
+  <% events.each do |event| %>
+    <div class="col-xs-12 col-md-6 event-resizing-div">
+      <%= render partial: 'events/event', locals: {event: event}%>
+    </div>
+  <% end %>
+    <div class="clearfix"></div>
 <% end %>
 <%= render partial: 'shared/pagination', locals: { object: @event} %>
 
 <%= render partial: 'handlebars/members_template' %>
+
+
+<script type="text/javascript" charset="utf-8">
+
+  $('.event_description').on('click', function(){
+    var eventWrapper = $(this).closest('.event-resizing-div');
+    eventWrapper.toggleClass('col-md-6', 'col-md-12');
+  });
+</script>
