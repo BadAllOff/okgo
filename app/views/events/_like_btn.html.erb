@@ -1,9 +1,9 @@
 <% if event.liked_by?(current_user) %>
-    <%= link_to event_unlike_path(event), method: :delete, remote: true, class: "btn btn-primary" do %>
+    <%= link_to event_unlike_path(event), method: :delete, remote: true, class: "btn btn-primary btn-flat" do %>
         <i class="fa fa-thumbs-o-up"></i> <%= event.likers_count %> Like
     <% end %>
 <% else %>
-    <%= link_to event_like_path(event), method: :post, remote: true, class: "btn btn-default" do %>
+    <%= link_to event_like_path(event), method: :post, remote: true, class: "btn btn-default btn-flat" do %>
         <i class="fa fa-thumbs-o-up"></i>  <%= event.likers_count if event.likers_count!=0 %> Like
     <% end %>
 <% end %>

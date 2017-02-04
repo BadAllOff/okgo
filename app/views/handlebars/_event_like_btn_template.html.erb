@@ -1,17 +1,17 @@
 <script id="eventLikeBtnTemplate" type="text/x-handlebars-template">
-  <a class="btn {{btn_class}} like-btn" data-remote="true" rel="nofollow" data-method="{{method}}" href="{{link}}">
+  <a class="btn {{btn_class}} like-btn btn-flat" data-remote="true" rel="nofollow" data-method="{{method}}" href="{{link}}">
     <i class="fa fa-thumbs-o-up"></i> {{likers_count}} Like
   </a>
 </script>
 
 <script id="eventJoinBtnTemplate" type="text/x-handlebars-template">
-  <a class="event_participation_btn btn btn-default" data-remote="true" data-method="post" data-type="json" href="{{join_event_link}}">
+  <a class="event_participation_btn btn btn-default btn-flat" data-remote="true" data-method="post" data-type="json" href="{{join_event_link}}">
     <i class="fa fa-user-plus"></i> {{btn_text}}
   </a>
 </script>
 
 <script id="eventLeaveBtnTemplate" type="text/x-handlebars-template">
-  <a class="event_participation_btn btn btn-danger" data-remote="true" data-method="delete" data-type="json" href="{{leave_event_link}}" data-confirm="{{confirm_text}}" >
+  <a class="event_participation_btn btn btn-danger btn-flat" data-remote="true" data-method="delete" data-type="json" href="{{leave_event_link}}" data-confirm="{{confirm_text}}" >
       <i class="fa fa-user-times"></i> {{btn_text}}
   </a>
 </script>

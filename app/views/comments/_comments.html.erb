@@ -1,11 +1,11 @@
 <div class="box-footer box-comments">
   <h6><%= t("comments",count: commentable.comments_counter) %></h6>
   <% commentable.comments.each do |comment| %>
-      <%= render partial: 'comments/comment', locals: {comment: comment, commentable: commentable} %>
+      <%= render partial: 'comments/comment', locals: { comment: comment, commentable: commentable } %>
   <% end %>
   <% if user_signed_in? %>
     <div class="box-comment">
-      <%= render partial: 'comments/form', locals: {commentable: commentable} %>
+      <%= render partial: 'comments/form', locals: { commentable: commentable } %>
     </div>
   <% end %>
 </div>

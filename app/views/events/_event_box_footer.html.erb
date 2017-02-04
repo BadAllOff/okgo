@@ -4,11 +4,11 @@
   </span>
   <span class="event_join_btn_<%= event.id %>">
     <% if current_user.member_of?(event) %>
-      <%= link_to leave_event_path(event), class: 'event_participation_btn btn btn-danger', method: :delete, remote: true, data: { type: :json, confirm: t('are_you_sure') } do %>
+      <%= link_to leave_event_path(event), class: 'event_participation_btn btn btn-danger btn-flat', method: :delete, remote: true, data: { type: :json, confirm: t('are_you_sure') } do %>
           <i class="fa fa-user-times"></i> <%= t'events.leave' %>
       <% end %>
     <% else %>
-      <%= link_to join_event_path(event), class: 'event_participation_btn btn btn-default', method: :post, remote: true, data: { type: :json } do %>
+      <%= link_to join_event_path(event), class: 'event_participation_btn btn btn-default btn-flat', method: :post, remote: true, data: { type: :json } do %>
           <i class="fa fa-user-plus"></i> <%= t'events.join' %>
       <% end %>
     <% end %>
@@ -16,7 +16,7 @@
 <% end %>
 
 <%= link_to members_event_path(event),
-            class: 'load_members load_members_#{event.id} btn btn-default',
+            class: 'load_members load_members_#{event.id} btn btn-default btn-flat',
             remote: true,
             method: :post,
             data: {
@@ -26,14 +26,14 @@
     <i class="fa fa-users"></i> <%= t'events.show_members' %>
 <% end %>
 
-<%= link_to_unless_current('<i class="fa fa-map-marker"></i> Посмотреть на карте'.html_safe, event_path(event), class: 'btn btn-default') do
+<%= link_to_unless_current("<i class='fa fa-map-marker'></i> #{t('events.show_on_map')}".html_safe, event_path(event), class: 'btn btn-default btn-flat') do
 
 end%>
 <% if user_signed_in? && can?(:crud, event) %>
   <span class="pull-right text-muted">
-    <%= link_to 'Show', event, class: 'btn btn-xs btn-default' %> |
-    <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-xs btn-primary' %> |
-    <%= link_to 'Destroy', event, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('are_you_sure')} %>
+    <%= link_to 'Show', event, class: 'btn btn-xs btn-default btn-flat' %> |
+    <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-xs btn-primary btn-flat' %> |
+    <%= link_to 'Destroy', event, method: :delete, class: 'btn btn-xs btn-danger btn-flat', data: { confirm: t('are_you_sure')} %>
   <!--  <%= t('events.likes', count: event.likers(User).count) %> -
     <%= t('events.joined', count: event.event_memberships_count) %>-->
   </span>
