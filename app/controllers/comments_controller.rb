@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
     if @comment.destroy
       decrement_counters
       respond_to do |format|
-        format.html { redirect_to @commentable, notice: t('events.comments.your_comment_was_successfully_destroyed') }
+        format.json { render partial: 'comments/destroy.json.jbuilder'}
         format.html { redirect_to @commentable, notice: t('events.comments.your_comment_was_successfully_destroyed') }
       end
     end

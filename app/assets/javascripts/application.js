@@ -98,6 +98,14 @@ ready = function () {
         $(this).addClass('disabled');
     });
 
+    $('.destroy_comment').bind("ajax:success", function (e, data, status, xhr) {
+        var source = $("#alertInfoTemplate").html();
+        var context = $.parseJSON(xhr.responseText);
+        var template = Handlebars.compile(source);
+        var alertWarning = template(context);
+        $(this).closest('.box-comment').slideUp().after(alertWarning);
+    });
+
     // $(document).on("ajax:before", "a.event_participation_btn",function()
     // {
     //     $('.overlay').toggleClass('hidden');
