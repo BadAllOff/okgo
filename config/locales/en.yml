@@ -28,6 +28,8 @@ en:
       leave: 'Leave'
       as_tutor: 'As tutor'
       as_member: 'As member'
+    activity:
+      index: 'Activity'
   sidebar_navigation:
     search: 'Search'
     navigation: 'NAVIGATION'
