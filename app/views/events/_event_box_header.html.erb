@@ -39,8 +39,9 @@
       <%= t 'events.event.starts_at' %>:
     </dt>
     <dd>
+      <span class="label label-default wday_<%= event.starts_at.wday %>"><%= event.starts_at.strftime('%a') %></span>
       <%= I18n.l event.starts_at, format: ("%b %d") %>,
-      <%= t ('event.starts_at') %>
+      <%= t ('events.event.starts_at') %>
       <%= I18n.l event.starts_at, format: ("%H:%M") %>
     </dd>
 
