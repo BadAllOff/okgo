@@ -56,8 +56,22 @@
 
 .event-resizing-div{
   transition: all 0.5s ease;
+  .wday_0{ border-top: 3px solid rgba(255, 0, 0, 0.4); }
+  .wday_1{ border-top: 3px solid rgba(255, 204, 0, 0.4); }
+  .wday_2{ border-top: 3px solid rgba(255, 49, 204, 0.4); }
+  .wday_3{ border-top: 3px solid rgba(1, 204, 1, 0.4); }
+  .wday_4{ border-top: 3px solid rgba(255, 146, 9, 0.4); }
+  .wday_5{ border-top: 3px solid rgba(2, 101, 255, 0.4); }
+  .wday_6{ border-top: 3px solid rgba(102, 0, 206, 0.4); }
 }
 
+.wday_0{ border-top: 3px solid rgba(255, 0, 0, 0.4); }
+.wday_1{ border-top: 3px solid rgba(255, 204, 0, 0.4); }
+.wday_2{ border-top: 3px solid rgba(255, 49, 204, 0.4); }
+.wday_3{ border-top: 3px solid rgba(1, 204, 1, 0.4); }
+.wday_4{ border-top: 3px solid rgba(255, 146, 9, 0.4); }
+.wday_5{ border-top: 3px solid rgba(2, 101, 255, 0.4); }
+.wday_6{ border-top: 3px solid rgba(102, 0, 206, 0.4); }
 
 .members-list{
   .media{

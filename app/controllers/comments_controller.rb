@@ -20,6 +20,7 @@ class CommentsController < ApplicationController
       decrement_counters
       respond_to do |format|
         format.html { redirect_to @commentable, notice: t('events.comments.your_comment_was_successfully_destroyed') }
+        format.html { redirect_to @commentable, notice: t('events.comments.your_comment_was_successfully_destroyed') }
       end
     end
   end

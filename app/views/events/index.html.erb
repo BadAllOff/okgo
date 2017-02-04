@@ -2,6 +2,13 @@
 <div class="box box-primary">
   <div class="box-header with-border">
     <h3 class="box-title"></h3>
+    <span class="label label-default wday_0"><%= t 'abbr_day_names.Sun' %></span>
+    <span class="label label-default wday_1"><%= t 'abbr_day_names.Mon' %></span>
+    <span class="label label-default wday_2"><%= t 'abbr_day_names.Tue' %></span>
+    <span class="label label-default wday_3"><%= t 'abbr_day_names.Wed' %></span>
+    <span class="label label-default wday_4"><%= t 'abbr_day_names.Thu' %></span>
+    <span class="label label-default wday_5"><%= t 'abbr_day_names.Fri' %></span>
+    <span class="label label-default wday_6"><%= t 'abbr_day_names.Sat' %></span>
     <div class="box-tools pull-right">
       <!-- Buttons, labels, and many other things can be placed here! -->
       <%= link_to t('events.create_new_event'), new_event_path, class: 'btn btn-sm btn-primary btn-flat' %>
@@ -10,6 +17,7 @@
 </div><!-- /.box -->
 
 <!-- /.timeline-label -->
+<div class="row">
 <% @events.each_slice(2) do |events| %>
   <% events.each do |event| %>
     <div class="col-xs-12 col-md-6 event-resizing-div">
@@ -18,13 +26,13 @@
   <% end %>
     <div class="clearfix"></div>
 <% end %>
-<%= render partial: 'shared/pagination', locals: { object: @event} %>
+</div>
 
+<%= render partial: 'shared/pagination', locals: { object: @event} %>
 <%= render partial: 'handlebars/members_template' %>
 
 
 <script type="text/javascript" charset="utf-8">
-
   $('.event_description').on('click', function(){
     var eventWrapper = $(this).closest('.event-resizing-div');
     eventWrapper.toggleClass('col-md-6', 'col-md-12');

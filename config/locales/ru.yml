@@ -123,6 +123,14 @@ ru:
     many: "%{count} комментариев"
     one: "%{count} комментарий"
     other: "%{count} комментариев"
+  abbr_day_names:
+    Sun: Вс
+    Mon: Пн
+    Tue: Вт
+    Wed: Ср
+    Thu: Чт
+    Fri: Пт
+    Sat: Сб
   will_paginate:
     page_entries_info:
       single_page:
