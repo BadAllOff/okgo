@@ -19,6 +19,8 @@
       <% end %>
   <% end %>
   <span class="username">
+        <%= image_tag(event.language.flag_image.url(:micro), class: 'flag-micro') if  event.language.flag_image? %>
+        &nbsp;
         <%= link_to profile_path(event.user.profile) do %>
           <%= event.user.profile.firstname %> <%= event.user.profile.lastname %></a>
         <% end %>
@@ -50,10 +52,3 @@
   </dl>
 </div>
 <!-- /.user-block -->
-<div class="box-tools">
-  <button class="btn btn-flat btn-sm" style="background: none;">
-    <%= image_tag(event.language.flag_image.url(:micro), class: 'flag-micro') if  event.language.flag_image? %>
-  </button>
-  <!--<button type="button" class="btn btn-sm" data-widget="remove" style="background: none;"><i class="fa fa-times"></i></button>-->
-</div>
-<!-- /.box-tools -->
