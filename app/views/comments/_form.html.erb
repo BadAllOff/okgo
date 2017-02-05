@@ -1,4 +1,4 @@
-<%= form_for [commentable, Comment.new] do |f| %>
+<%= form_for [commentable, Comment.new], remote: true, format: :json, html: {class: 'create_new_comment'} do |f| %>
     <% if current_user.profile.photo?  %>
         <%= image_tag(current_user.profile.photo.url('micro'), class: "img-responsive img-circle img-sm", alt: 'User Image') %>
     <% else %>

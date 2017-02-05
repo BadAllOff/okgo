@@ -98,13 +98,15 @@ ready = function () {
         $(this).addClass('disabled');
     });
 
-    $('.destroy_comment').bind("ajax:success", function (e, data, status, xhr) {
-        var source = $("#alertInfoTemplate").html();
-        var context = $.parseJSON(xhr.responseText);
-        var template = Handlebars.compile(source);
-        var alertWarning = template(context);
-        $(this).closest('.box-comment').slideUp().after(alertWarning);
-    });
+    // $('.create_new_comment').bind("ajax:success", function (e, data, status, xhr) {
+    //     alert('new');
+    //     var source = $("#commentTemplate").html();
+    //     var context = $.parseJSON(xhr.responseText);
+    //     var template = Handlebars.compile(source);
+    //     var commentBox = template(context);
+    //     $(this).closest('.box-comments').end().prepend(commentBox);
+    // });
+
 
     // $(document).on("ajax:before", "a.event_participation_btn",function()
     // {
@@ -212,6 +214,23 @@ ready = function () {
     }
 
 };
+
+
+$(document).on('ajax:success', '.create_new_comment', function(e, data, status, xhr) {
+    var source = $("#commentTemplate").html();
+    var context = $.parseJSON(xhr.responseText);
+    var template = Handlebars.compile(source);
+    var commentBox = template(context);
+    $(this).closest('.box-comment').before(commentBox);
+});
+
+$(document).on('ajax:success', '.destroy_comment', function(e, data, status, xhr) {
+    var source = $("#alertInfoTemplate").html();
+    var context = $.parseJSON(xhr.responseText);
+    var template = Handlebars.compile(source);
+    var alertInfo = template(context);
+    $(this).closest('.box-comment').slideUp().after(alertInfo);
+});
 //
 $(document).ready(ready);
 $(document).on('page:load', ready);

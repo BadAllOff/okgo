@@ -1,0 +1,20 @@
+<script id="commentTemplate" type="text/x-handlebars-template">
+  <div class="box-comment">
+    <a href="/en/profiles/{{author_profile_id}}">
+      <img class="img-circle img-sm" alt="{{author_firstname}} {{author_lastname}}" data-toggle="tooltip" data-original-title="{{author_firstname}} {{author_lastname}}" src="{{author_profile_img}}">
+    </a>
+    <div class="comment-text">
+      <span class="username">
+        {{author_firstname}} {{author_lastname}}
+        <span class="text-muted pull-right" style="padding: 6px"></span>
+        <div class="box-tools pull-right">
+          <span class="text-muted">{{created_at}}</span>
+          <a format="json" class="btn btn-box-tool destroy_comment" data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/en/events/{{commentable_id}}/comments/{{id}}">
+            <i class="fa fa-times"></i>
+</a>
+        </div>
+      </span>
+      {{body}}
+    </div>
+  </div>
+</script>

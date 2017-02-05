@@ -7,10 +7,13 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new comment_params
     @comment.user = current_user
-    if @comment.save
-      increment_conters
-      respond_to do |format|
+    respond_to do |format|
+      if @comment.save
+        increment_conters
+        format.json { render partial: 'comments/create.json.jbuilder'}
         format.html { redirect_to @commentable, notice: t('events.comments.your_comment_was_successfully_posted') }
+      else
+        format.json { render nothing: true, status: 400}
       end
     end
   end
