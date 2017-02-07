@@ -468,3 +468,9 @@ ru:
       short: "%d %b, %H:%M"
       without_time: "%d %B %Y"
     pm: вечера
+  legal:
+    user_agreement: "Пользовательское соглашение"
+  devise:
+    by_clicking_sign_up_you_agree_to_our_terms: "Нажимая «Регистрация», вы соглашаетесь с нашими "
+  legal:
+    user_agreement: "Условиями использования"

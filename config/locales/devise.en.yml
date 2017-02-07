@@ -1,5 +1,6 @@
 en:
   devise:
+    by_clicking_sign_up_you_agree_to_our_terms: "By clicking Sign Up, you agree to our "
     or: 'OR'
     characters_minimum: 'characters minimum'
     sign_in_to_start_your_session: 'Sign in to start your session'

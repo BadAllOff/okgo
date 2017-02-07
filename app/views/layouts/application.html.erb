@@ -84,6 +84,8 @@ desired effect
 
     <!-- Default to the left -->
     <strong>Copyright &copy; 2016-2017 <a href="#">okgo.online</a>.</strong> All rights reserved. <%= DateTime.current.strftime('%B %d, %H:%M') %>
+    <hr>
+    <span class="text-sm"><%= link_to I18n.t('legal.user_agreement'), page_path('user_agreement') %></span>
   </footer>
 <%= render 'handlebars/alerts_template' %>
 <%= render partial: 'handlebars/event_like_btn_template' %>

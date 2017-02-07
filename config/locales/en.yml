@@ -130,3 +130,5 @@ en:
       short: "%d %b, %H:%M"
       without_time: "%d %B %Y"
     pm: pm
+  legal:
+    user_agreement: "User agreement"

@@ -1,5 +1,6 @@
 ru:
   devise:
+    by_clicking_sign_up_you_agree_to_our_terms: 'Нажимая «Регистрация», вы соглашаетесь с нашими '
     or: 'ИЛИ'
     characters_minimum: '- минимальное число символов'
     sign_in_to_start_your_session: 'Пожалуйста зарегистрируйтесь'
