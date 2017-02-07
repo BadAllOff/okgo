@@ -119,11 +119,13 @@ class EventsController < ApplicationController
   end
 
   def set_count_events
-    @count_events = Event.where('starts_at > ?', Time.zone.today).size
+    @count_events = Event.all.size
+    # @count_events = Event.where('starts_at > ?', Time.zone.today).size
   end
 
   def set_count_memberships
-    @count_memberships = Event.joins(:memberships).where('starts_at > ?', Time.zone.today).size
+    @count_memberships = EventMembership.all.size
+    # @count_memberships = Event.joins(:memberships).where('starts_at > ?', Time.zone.today).size
   end
 
   def set_event_index_breadcrumb
