@@ -44,6 +44,8 @@ gem 'groupdate', '3.1.1'
 gem 'unicorn', '5.2.0'
 gem 'will_paginate', '3.1.5'
 gem 'high_voltage', '3.0.0'
+gem 'omniauth', '~> 1.4.0'
+gem 'omniauth-facebook', '~> 4.0.0'
 
 # features in developent
 gem 'izitoast', '1.1.1'

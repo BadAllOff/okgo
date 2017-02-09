@@ -94,7 +94,7 @@ en:
         forgot_your_password: Forgot your password?
         sign_in: Sign in
         sign_in_with_provider: Sign in with %{provider}
-        sign_up: Sign up
+        sign_up: Register
     unlocks:
       new:
         resend_unlock_instructions: Resend unlock instructions

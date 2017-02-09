@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Omniauthable
+
   enum role: { guest: 0, user: 1, admin: 2 }
   # user should have profile immediately after create.
   # User can only edit profile but not DELETE it.
@@ -6,12 +8,13 @@ class User < ApplicationRecord
   after_create :create_profile
   has_many :events, dependent: :destroy
   has_many :event_memberships, dependent: :destroy
-  has_many :rated_memberships
+  has_many :rated_memberships, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :omniauthable, omniauth_providers: [:facebook]
   has_one :profile, dependent: :destroy
   has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :profile
@@ -48,6 +51,10 @@ class User < ApplicationRecord
     else
       false
     end
+  end
+
+  def active_for_authentication?
+    super && !self.blocked
   end
 
   private

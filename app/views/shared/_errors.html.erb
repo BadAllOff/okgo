@@ -1,10 +1,17 @@
+<%
+  if object.errors.any?
+  messages = object.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
+  sentence = I18n.t('errors.messages.not_saved',
+                    count: object.errors.count,
+                    resource: object.class.model_name.human.downcase)
+%>
 <div id="error_explanation" class="callout callout-danger ">
   <h4>
-    <%= "#{pluralize(object.errors.count, "error")} prohibited this #{object.class.name} from being saved:" %>
+    <%= sentence %>
   </h4>
   <ul>
-    <% object.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+    <%= messages.html_safe %>
   </ul>
 </div>
+
+<% end %>

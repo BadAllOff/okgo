@@ -85,6 +85,19 @@
 .wday_5{ border-top: 3px solid rgba(2, 101, 255, 0.4); }
 .wday_6{ border-top: 3px solid rgba(102, 0, 206, 0.4); }
 
+.event_box{
+  .event-btns{
+    .btn-default{
+      background-color: transparent;
+      border-color: transparent;
+    }
+    .btn-default:hover, .btn-default:active, .btn-default.hover{
+      background-color: #e7e7e7;
+    }
+  }
+
+}
+
 .members-list{
   .media{
     margin-top: 15px;

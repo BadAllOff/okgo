@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users, skip: [:session, :password, :registration], controllers: { omniauth_callbacks: "omniauth_callbacks" }
+  devise_scope :user do
+    get   '/users/auth/failure'   => 'omniauth_callbacks#failure'
+    post  '/finish_registration'  => 'omniauth_callbacks#finish_registration'
+    get   '/finish_registration'  => 'events#index'
+  end
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
-    devise_for :users, skip: :registrations
+    devise_for :users, skip: [:registrations, :omniauth_callbacks]
     devise_scope :user do
       resource :registration,
                only: [:new, :create, :edit, :update],

@@ -1,0 +1,41 @@
+<div class="login-box">
+  <div class="login-logo">
+    <%= link_to root_path do %>
+        ok<b>go</b>
+    <% end %>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg"><%= t('devise.sign_in_to_start_your_session') %></p>
+
+
+    <%= form_tag finish_registration_path, method: :post do |f| %>
+        <%= render 'shared/errors', object: user if user.errors.any? %>
+
+        <div class="field form-group has-feedback">
+              <%= label_tag I18n.t'profiles.firstname' %><br />
+              <%= text_field 'profile', :firstname, placeholder: true, class: 'form-control', value: ( auth.info.first_name ? auth.info.first_name : 'invalid firstname' ) %>
+            </div>
+
+            <div class="field form-group has-feedback">
+              <%= label_tag I18n.t'profiles.lastname', :lastname %><br />
+              <%= text_field 'profile', :lastname, placeholder: true, class: 'form-control', value: ( auth.info.last_name ? auth.info.last_name : 'invalid lastname' ) %>
+            </div>
+
+        <div class="field form-group has-feedback">
+          <%= label_tag  I18n.t'activerecord.attributes.user.email', :email %><br />
+          <%= email_field 'user', :email, class: 'form-control', placeholder: true, value: ( auth.info.email ? auth.info.email : 'invalid email' ) %>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <p class="text-sm text-gray">
+          <%= t'devise.by_clicking_sign_up_you_agree_to_our_terms' %> <%= link_to I18n.t('legal.user_agreement'), page_path('user_agreement') %>.
+        </p>
+
+        <div class="actions">
+          <%= submit_tag t('sign_up'), class: 'btn btn-primary btn-block btn-flat' %>
+        </div>
+    <% end %>
+  </div>
+  <!-- /.login-box-body -->
+</div>
