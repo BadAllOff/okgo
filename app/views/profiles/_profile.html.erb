@@ -66,51 +66,12 @@
   </div>
 
   <div class="col-md-9">
-    <div class="box box-info">
-      <div class="box-header with-border">
-        <h3 class="box-title"><%= t'profiles.progress_chart' %></h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-        </div>
-      </div>
-      <div class="box-body">
-          <%
-            data = {
-              labels: @r_labels,
-              datasets: [
-                {
-                  label: t('events.rate_members.language_level'),
-                  backgroundColor: "rgba(220,220,220,0.2)",
-                  borderColor: "rgba(220,220,220,1)",
-                  data: @r_lang_lvl
-                },
-                {
-                  label: t('events.rate_members.activity_level'),
-                  backgroundColor: "rgba(151,187,205,0.2)",
-                  borderColor: "rgba(151,187,205,1)",
-                  data: @r_activity_lvl
-                }
-              ]
-            }
-
-             options = {
-               id: 'ratingChart',
-               height: '200'
-             }
-          %>
-          <%= line_chart  data, options %>
-          <!--<canvas id="ratingChart"></canvas>-->
-      </div>
-      <!-- /.box-body -->
-    </div>
-
-
     <!-- Custom Tabs -->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><%= t'profiles.profile' %></a></li>
         <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true"><%= t'profiles.activity' %></a></li>
+        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="true"><%= t'profiles.progress_chart' %></a></li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab_1">
@@ -138,6 +99,34 @@
                   <%= render_activity activity %>
               <% end %>
           <% end %>
+        </div>
+        <!-- /.tab-pane -->
+        <div class="tab-pane" id="tab_3">
+          <%
+            data = {
+                labels: @r_labels,
+                datasets: [
+                    {
+                        label: t('events.rate_members.language_level'),
+                        backgroundColor: "rgba(220,220,220,0.2)",
+                        borderColor: "rgba(220,220,220,1)",
+                        data: @r_lang_lvl
+                    },
+                    {
+                        label: t('events.rate_members.activity_level'),
+                        backgroundColor: "rgba(151,187,205,0.2)",
+                        borderColor: "rgba(151,187,205,1)",
+                        data: @r_activity_lvl
+                    }
+                ]
+            }
+
+            options = {
+                id: 'ratingChart',
+                height: '200'
+            }
+          %>
+          <%= line_chart  data, options %>
         </div>
         <!-- /.tab-pane -->
       </div>
