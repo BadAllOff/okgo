@@ -16,6 +16,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.where('starts_at >= ?', Time.zone.now).order(starts_at: :asc).includes(:language, user: [:profile], comments: [:user] ).page(params[:page]).per(10)
+    @languages = Language.all.order(events_count: 'desc')
   end
 
   # GET /events/1

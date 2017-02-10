@@ -165,3 +165,18 @@
     border: none;
   }
 }
+
+.flag-with-count{
+  .btn{
+    background-color: white;
+    border: none;
+    padding: 0px 10px;
+  }
+  img{
+    border: 1px solid silver;
+  }
+  .btn:last-child{
+    color: #3c8dbc;
+    font-weight: 600;
+  }
+}

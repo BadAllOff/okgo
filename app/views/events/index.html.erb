@@ -2,16 +2,19 @@
 <div class="box box-widget">
   <div class="box-header with-border">
     <h3 class="box-title"></h3>
-    <span class="label label-default wday_0"><%= t 'abbr_day_names.Sun' %></span>
-    <span class="label label-default wday_1"><%= t 'abbr_day_names.Mon' %></span>
-    <span class="label label-default wday_2"><%= t 'abbr_day_names.Tue' %></span>
-    <span class="label label-default wday_3"><%= t 'abbr_day_names.Wed' %></span>
-    <span class="label label-default wday_4"><%= t 'abbr_day_names.Thu' %></span>
-    <span class="label label-default wday_5"><%= t 'abbr_day_names.Fri' %></span>
-    <span class="label label-default wday_6"><%= t 'abbr_day_names.Sat' %></span>
+    <!--<div class="box-footer">-->
+    <% @languages.each do |lang| %>
+      <% if lang.events_count > 0 %>
+            <div class="btn-group-vertical flag-with-count">
+              <button type="button" class="btn btn-default btn-flat"><%= image_tag(lang.flag_image.url(:micro), class: 'flag-micro') if  lang.flag_image? %></button>
+              <button type="button" class="btn btn-default btn-flat"><%= lang.events_count %></button>
+            </div>
+      <% end %>
+    <% end %>
+    <!--</div>-->
     <div class="box-tools pull-right">
       <!-- Buttons, labels, and many other things can be placed here! -->
-      <%= link_to t('events.create_new_event'), new_event_path, class: 'btn btn-sm btn-primary btn-flat' %>
+      <%= link_to t('events.create_new_event'), new_event_path, class: 'btn btn-primary btn-flat', style: 'padding: 24px 33px; font-size: 15px; line-height: 0;' %>
     </div><!-- /.box-tools -->
   </div><!-- /.box-header -->
 </div><!-- /.box -->
