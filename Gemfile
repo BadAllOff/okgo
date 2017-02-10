@@ -46,9 +46,9 @@ gem 'high_voltage', '3.0.0'
 gem 'omniauth', '~> 1.4.0'
 gem 'omniauth-facebook', '~> 4.0.0'
 gem 'kaminari', '~> 0.17'
-# features in developent
 gem 'izitoast', '1.1.1'
 
+gem 'rails_admin', '~> 1.1'
 
 # Performance & stats
 gem 'newrelic_rpm', '~> 3.18'
