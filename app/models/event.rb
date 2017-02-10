@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   tracked owner: Proc.new{ |controller, model| controller.current_user }
 
   belongs_to :user, counter_cache: true
-  belongs_to :language
+  belongs_to :language, counter_cache: true
   has_many :memberships,  class_name: 'EventMembership', dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 

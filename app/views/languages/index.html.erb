@@ -22,6 +22,9 @@
               <dt>Description:</dt>
               <dd><%= language.description %></dd>
 
+              <dt>Events total:</dt>
+              <dd><%= language.events_count %></dd>
+
               <dt>Micro image:</dt>
               <dd><%= image_tag(language.flag_image.url(:micro)) if language.flag_image? %></dd>
 

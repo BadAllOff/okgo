@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   # # GET /profiles
   # # GET /profiles.json
   def index
-    @profiles = Profile.all.includes(:user).page(params[:page]).per(10)
+    @profiles = Profile.all.includes(:user).page(params[:page]).per(12)
   end
 
   # GET /profiles/1
