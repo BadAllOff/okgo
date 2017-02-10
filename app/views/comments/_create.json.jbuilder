@@ -12,4 +12,4 @@ else
 end
 json.body                 @comment.body
 json.commentable_id       @comment.commentable.id
-json.msg                  t('events.comments.your_comment_was_successfully_posted')
+json.flash_msg            t('events.comments.your_comment_was_successfully_posted')

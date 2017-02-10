@@ -54,7 +54,6 @@ ready = function () {
         $('#event_like_btn_' + data.object_id).html(eventLikeBtn);
         $('.overlay').addClass('hidden');
     }).on("ajax:error", function (e, xhr, status, error) {
-        alert('error like btn');
         $('.overlay').addClass('hidden');
     });
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -69,7 +68,9 @@ ready = function () {
             //if you REMOVE element, ajax:complete will not trigger. It's better to hide it
             $('.event_join_btn_'+context.event_id+' .event_participation_btn').addClass('hide').append(eventLeaveBtn);
             $('.event_join_btn_'+context.event_id).append(eventLeaveBtn);
-
+            iziToast.success({
+                message: context.flash_msg
+            });
         }
         else if (context.status == 'leaved')
         {
@@ -79,13 +80,19 @@ ready = function () {
             //if you REMOVE element, ajax:complete will not trigger. It's better to hide it
             $('.event_join_btn_'+context.event_id+' .event_participation_btn').addClass('hide').append(eventJoinBtn);
             $('.event_join_btn_'+context.event_id).append(eventJoinBtn);
+            iziToast.success({
+                message: context.flash_msg
+            });
         }
         else if (context.status == 'warning')
         {
-            var source = $("#alertWarningTemplate").html();
-            var template = Handlebars.compile(source);
-            var alertWarning = template(context);
-            $('.flash_messages').append(alertWarning);
+            // var source = $("#alertWarningTemplate").html();
+            // var template = Handlebars.compile(source);
+            // var alertWarning = template(context);
+            // $('.flash_messages').append(alertWarning);
+            iziToast.error({
+                message: context.flash_msg
+            });
         }
     });
 
@@ -96,49 +103,6 @@ ready = function () {
         var eventId = $(this).context.dataset.eventId;
         $('#event-'+eventId).find('.box-body').append(data);
         $(this).addClass('disabled');
-    });
-
-    // $('.create_new_comment').bind("ajax:success", function (e, data, status, xhr) {
-    //     alert('new');
-    //     var source = $("#commentTemplate").html();
-    //     var context = $.parseJSON(xhr.responseText);
-    //     var template = Handlebars.compile(source);
-    //     var commentBox = template(context);
-    //     $(this).closest('.box-comments').end().prepend(commentBox);
-    // });
-
-
-    // $(document).on("ajax:before", "a.event_participation_btn",function()
-    // {
-    //     $('.overlay').toggleClass('hidden');
-    // });
-    // $(document).on("ajax:before", "span.like-btn",function()
-    // {
-    //     $('.overlay').toggleClass('hidden');
-    // });
-    // $(document).on("ajax:before", "a.load_members",function()
-    // {
-    //     $('.overlay').toggleClass('hidden');
-    // });
-    // $(document).on("ajax:before", "a.load-members-btn",function()
-    // {
-    //     $('.overlay').toggleClass('hidden');
-    // });
-
-    $(document).on("ajax:before", function()
-    {
-        $('.overlay').toggleClass('hidden');
-    });
-
-    $(document).on("ajax:complete", function(xhr, status)
-    {
-        $('.overlay').toggleClass('hidden');
-    });
-
-    $(document).on("ajax:error",function(xhr, status)
-    {
-
-        $('.overlay').toggleClass('hidden');
     });
 
     $('.load_members').bind("ajax:success", function (e, data, status, xhr) {
@@ -213,8 +177,11 @@ ready = function () {
         }
     }
 
-};
+    $(document).on("ajax:before", function(){$('.overlay').toggleClass('hidden');});
+    $(document).on("ajax:complete", function(xhr, status){$('.overlay').toggleClass('hidden');});
+    $(document).on("ajax:error",function(xhr, status){$('.overlay').toggleClass('hidden');});
 
+};
 
 $(document).on('ajax:success', '.create_new_comment', function(e, data, status, xhr) {
     var source = $("#commentTemplate").html();
@@ -225,11 +192,11 @@ $(document).on('ajax:success', '.create_new_comment', function(e, data, status, 
 });
 
 $(document).on('ajax:success', '.destroy_comment', function(e, data, status, xhr) {
-    var source = $("#alertInfoTemplate").html();
     var context = $.parseJSON(xhr.responseText);
-    var template = Handlebars.compile(source);
-    var alertInfo = template(context);
-    $(this).closest('.box-comment').slideUp().after(alertInfo);
+    $(this).closest('.box-comment').slideUp();
+    iziToast.success({
+        message: context.flash_msg
+    });
 });
 //
 $(document).ready(ready);

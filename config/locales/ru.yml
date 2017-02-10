@@ -47,7 +47,7 @@ ru:
     join: 'Пойду'
     leave: 'Отменить участие'
     show_on_map: 'На карте'
-    you_have_joined_to_the_event: 'Вы присоединились к мероприятию'
+    you_have_joined_to_the_event: 'Вы присоединились к мероприятию.'
     you_have_left_the_event: 'Вы покинули мероприятие'
     something_went_wrong: 'Что то пошло не так... Попробуйте присоединиться к другому мероприятию'
     drag_me_and_adjust_the_zoom_level: 'Потяни меня чтоб указать место.'
@@ -115,6 +115,9 @@ ru:
     past_events: 'Прошедшие мероприятия'
     event_description: 'Описание'
     did_he_attended_at_this_event: 'Пользователь присутсвовал(а) на мероприятии?'
+    you_have_joined_to_the_event_dont_be_late: "Вы присоединились к мероприятию. Не опоздывайте!"
+    you_have_left_the_event: "Вы покинули мероприятие."
+    you_cant_join_to_this_event_you_are_the_owner: "Вы не можете присоединиться. Вы создали это мероприятие."
   btns:
     yes_btn: "Да"
     no_btn: "Нет"
@@ -487,7 +490,6 @@ ru:
     pm: вечера
   legal:
     user_agreement: "Пользовательское соглашение"
+    with_user_agreement: "Условиями использования"
   devise:
     by_clicking_sign_up_you_agree_to_our_terms: "Нажимая «Регистрация», вы соглашаетесь с нашими "
-  legal:
-    user_agreement: "Условиями использования"

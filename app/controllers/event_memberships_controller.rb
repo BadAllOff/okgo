@@ -18,7 +18,7 @@ class EventMembershipsController < ApplicationController
         format.html { redirect_to @event, notice: t('events.you_have_joined_to_the_event') }
         format.json { render 'joined.json.jbuilder', status: :ok }
       else
-        @error_msg = t'events.something_went_wrong'
+        @error_msg =
         format.html { redirect_to @event, alert: t('events.something_went_wrong') }
         format.json { render 'shared/alert.json.jbuilder', status: :ok }
       end

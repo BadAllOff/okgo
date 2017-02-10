@@ -76,7 +76,7 @@ en:
       maximum_participants: 'Maximum participants'
     comments:
       your_comment_was_successfully_posted: 'Your comment was successfully posted.'
-      your_comment_was_successfully_destroyed: 'Your comment was successfully destroyed.'
+      your_comment_was_successfully_destroyed: 'Your comment was successfully deleted.'
     not_finished_yet: "Event not finished yet"
   profiles:
     profile: 'Profile'
@@ -97,6 +97,9 @@ en:
     past_events: 'Past events'
     event_description: 'Description'
     did_he_attended_at_this_event: 'Did he/she attended at this event?'
+    you_have_joined_to_the_event_dont_be_late: "You have joined to event. Don't be late."
+    you_have_left_the_event: "You have left the event."
+    you_cant_join_to_this_event_you_are_the_owner: "You are the owner of this event. You can't join."
   btns:
     yes_btn: "Yes"
     no_btn: "No"
