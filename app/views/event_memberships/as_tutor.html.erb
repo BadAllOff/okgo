@@ -11,7 +11,7 @@
               <%= render partial: 'event_memberships/event/as_tutor', locals: {event: event, past_events: true}%>
           <% end %>
       <% end %>
-      <%= render partial: 'shared/pagination', locals: { object: @past_events} %>
+      <%= paginate @past_events, window: 2 %>
 
     </div>
 
@@ -21,7 +21,7 @@
             <%= render partial: 'event_memberships/event/as_tutor', locals: {event: event, past_events: true}%>
         <% end %>
       <% end %>
-      <%= render partial: 'shared/pagination', locals: { object: @future_events} %>
+      <%= paginate @future_events, window: 2 %>
 
     </div>
   </div> <!-- /.tab-content -->

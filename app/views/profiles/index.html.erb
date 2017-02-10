@@ -5,4 +5,4 @@
   <div class="clearfix hide-xs-block"></div>
 <% end %>
 <div class="clearfix"></div>
-<%= render partial: 'shared/pagination', locals: { object: @profiles} %>
+<%= paginate @profiles, window: 2 %>

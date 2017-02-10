@@ -188,6 +188,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     jwt (1.5.6)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.11.0)
     libv8 (3.16.14.15)
     listen (3.0.8)
@@ -385,7 +388,6 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    will_paginate (3.1.5)
 
 PLATFORMS
   ruby
@@ -423,6 +425,7 @@ DEPENDENCIES
   izitoast (= 1.1.1)
   jbuilder (~> 2.5)
   jquery-rails (= 4.2.1)
+  kaminari (~> 0.17)
   listen (~> 3.0.5)
   md_simple_editor!
   momentjs-rails (= 2.15.1)
@@ -451,7 +454,6 @@ DEPENDENCIES
   unicorn (= 5.2.0)
   validates_timeliness (= 3.0.15)
   web-console
-  will_paginate (= 3.1.5)
 
 RUBY VERSION
    ruby 2.3.1p112

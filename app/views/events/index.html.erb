@@ -28,7 +28,7 @@
 <% end %>
 </div>
 
-<%= render partial: 'shared/pagination', locals: { object: @event} %>
+<%= paginate @events, window: 2 %>
 <%= render partial: 'handlebars/members_template' %>
 
 

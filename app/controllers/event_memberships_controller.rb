@@ -43,15 +43,15 @@ class EventMembershipsController < ApplicationController
   def as_tutor
     add_breadcrumb I18n.t('breadcrumbs.event_memberships.as_tutor'), as_tutor_event_memberships_path
 
-    @future_events = Event.where('(user_id= ? AND starts_at> ?)', current_user.id, Time.zone.now).includes(:language, user: [:profile]).order('starts_at').paginate(page: params[:page], per_page: 10)
-    @past_events = Event.where('(user_id= ? AND starts_at< ?)', current_user.id, Time.zone.now).includes(:language, user: [:profile]).order('starts_at').paginate(page: params[:page], per_page: 10)
+    @future_events = Event.where('(user_id= ? AND starts_at> ?)', current_user.id, Time.zone.now).includes(:language, user: [:profile]).order('starts_at').page(params[:page]).per(10)
+    @past_events = Event.where('(user_id= ? AND starts_at< ?)', current_user.id, Time.zone.now).includes(:language, user: [:profile]).order('starts_at').page(params[:page]).per(10)
   end
 
   def as_member
     add_breadcrumb I18n.t('breadcrumbs.event_memberships.as_member'), as_member_event_memberships_path
 
-    @future_event_memberships = EventMembership.joins(:event).where('(event_memberships.user_id= ? AND events.starts_at> ?)', current_user.id, Time.zone.now).includes(event: [:user, :language]).paginate(page: params[:page], per_page: 10)
-    @past_event_memberships = EventMembership.joins(:event).where('(event_memberships.user_id= ? AND events.starts_at< ?)', current_user.id, Time.zone.now).includes(event: [:user, :language]).paginate(page: params[:page], per_page: 10)
+    @future_event_memberships = EventMembership.joins(:event).where('(event_memberships.user_id= ? AND events.starts_at> ?)', current_user.id, Time.zone.now).includes(event: [:user, :language]).page(params[:page]).per(10)
+    @past_event_memberships = EventMembership.joins(:event).where('(event_memberships.user_id= ? AND events.starts_at< ?)', current_user.id, Time.zone.now).includes(event: [:user, :language]).page(params[:page]).per(10)
   end
 
   def member_attended

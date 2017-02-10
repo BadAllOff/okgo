@@ -10,14 +10,14 @@
           <!--<%= render partial: 'event_memberships/event/as_member', locals: {event: membership.event} if membership.event%>-->
           <%= render partial: 'events/event', locals: {event: membership.event} if membership.event%>
       <% end %>
-      <%= render partial: 'shared/pagination', locals: { object: @future_event_memberships} if !@future_event_memberships.blank? %>
+      <%= paginate @future_event_memberships, window: 2 %>
     </div>
     <!-- /.tab-pane -->
     <div class="tab-pane" id="tab_2">
       <% @past_event_memberships.each do |membership| %>
           <%= render partial: 'events/event', locals: {event: membership.event} if membership.event%>
       <% end %>
-      <%= render partial: 'shared/pagination', locals: { object: @past_event_memberships} if !@past_event_memberships.blank? %>
+      <%= paginate @past_event_memberships, window: 2 %>
     </div>
   </div>
   <!-- /.tab-content -->
