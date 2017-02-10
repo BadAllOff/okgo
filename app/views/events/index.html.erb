@@ -16,18 +16,15 @@
   </div><!-- /.box-header -->
 </div><!-- /.box -->
 
-<!-- /.timeline-label -->
-<div class="col-xs-12">
-  <div class="row">
-      <% @events.each_slice(2) do |events| %>
-        <% events.each do |event| %>
-          <div class="col-xs-12 col-md-6 event-resizing-div">
-            <%= render partial: 'events/event', locals: {event: event}%>
-          </div>
-        <% end %>
-          <div class="clearfix"></div>
+<div class="row">
+    <% @events.each_slice(2) do |events| %>
+      <% events.each do |event| %>
+        <div class="col-xs-12 col-md-6 event-resizing-div">
+          <%= render partial: 'events/event', locals: {event: event}%>
+        </div>
       <% end %>
-  </div>
+        <div class="clearfix"></div>
+    <% end %>
 </div>
 
 <%= paginate @events, window: 2 %>
