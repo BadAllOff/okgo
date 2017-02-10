@@ -77,6 +77,7 @@ en:
     comments:
       your_comment_was_successfully_posted: 'Your comment was successfully posted.'
       your_comment_was_successfully_destroyed: 'Your comment was successfully deleted.'
+      comment_body_cant_be_blank: "Comment body can't be blank."
     not_finished_yet: "Event not finished yet"
   profiles:
     profile: 'Profile'

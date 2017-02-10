@@ -1,0 +1,1 @@
+json.flash_msg  t('events.comments.comment_body_cant_be_blank')

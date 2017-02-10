@@ -95,6 +95,7 @@ ru:
     comments:
       your_comment_was_successfully_posted: 'Комментарий добавлен.'
       your_comment_was_successfully_destroyed: 'Комментарий удалён.'
+      comment_body_cant_be_blank: "Комментарий не может быть пустым."
     not_finished_yet: "Мероприятие еще не закончилось"
   profiles:
     profile: 'Профиль'

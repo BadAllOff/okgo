@@ -113,27 +113,9 @@ ready = function () {
         var context = $.parseJSON(xhr.responseText);
         var eventMembers = template(context);
         $('.members_list_'+context.event_id).append(eventMembers);
-        // $('.overlay').addClass('hidden');
     }).bind("ajax:error", function (e, data, status, xhr) {
         alert('error');
-        // $('.overlay').addClass('hidden');
-
     });
-
-    // $('body').toggleClass(localStorage.getItem("sidebarValue"), localStorage.getItem("sidebarStateVal"));
-    //
-    // $('.sidebar-toggle').on('click', function(){
-    //     if ($('body').hasClass('sidebar-collapse')) {
-    //         localStorage.setItem('sidebarValue', 'sidebar-collapse');
-    //         localStorage.setItem('sidebarStateVal', '');
-    //
-    //         alert(localStorage.getItem("sidebar"));
-    //     }else{
-    //         localStorage.setItem('sidebarValue', '');
-    //         localStorage.setItem('sidebarStateVal', 'sidebar-collapse');
-    //         alert(localStorage.getItem("sidebar"));
-    //     }
-    // });
 
     function compileEventLikeBtnTemplate() {
         eventLikebtnSource = $("#eventLikeBtnTemplate").html();
@@ -141,35 +123,30 @@ ready = function () {
             eventLikebtnSource = Handlebars.compile(eventLikebtnSource);
         }
     }
-
     function compileEventMembersTemplate() {
         eventMembersSource = $("#eventMembersTemplate").html();
         if (eventMembersSource !== undefined) {
             eventMembersSource = Handlebars.compile(eventMembersSource);
         }
     }
-
     function compileEventJoinBtnTemplate() {
         eventJoinBtnSource = $("#eventJoinBtnTemplate").html();
         if (eventJoinBtnSource !== undefined) {
             eventJoinBtnSource = Handlebars.compile(eventJoinBtnSource);
         }
     }
-
     function compileEventLeaveBtnTemplate() {
         eventLeaveBtnSource = $("#eventLeaveBtnTemplate").html();
         if (eventLeaveBtnSource !== undefined) {
             eventLeaveBtnSource = Handlebars.compile(eventLeaveBtnSource);
         }
     }
-
     function compileAlertInfoTemplate() {
         alertInfoSource = $("#alertInfoTemplate").html();
         if (alertInfoSource !== undefined) {
             alertInfoSource = Handlebars.compile(alertInfoSource);
         }
     }
-
     function compileAlertWarningTemplate() {
         alertWarningSource = $("#alertWarningTemplate").html();
         if (alertWarningSource !== undefined) {
@@ -189,6 +166,13 @@ $(document).on('ajax:success', '.create_new_comment', function(e, data, status, 
     var template = Handlebars.compile(source);
     var commentBox = template(context);
     $(this).closest('.box-comment').before(commentBox);
+});
+$(document).on("ajax:error", '.create_new_comment', function (e, xhr, status, error) {
+    var context = $.parseJSON(xhr.responseText);
+    iziToast.error({
+        message: context.flash_msg
+    });
+    $('.overlay').addClass('hidden');
 });
 
 $(document).on('ajax:success', '.destroy_comment', function(e, data, status, xhr) {

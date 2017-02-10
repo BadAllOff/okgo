@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
         format.json { render partial: 'comments/create.json.jbuilder'}
         format.html { redirect_to @commentable, notice: t('events.comments.your_comment_was_successfully_posted') }
       else
-        format.json { render nothing: true, status: 400}
+        format.json { render partial: 'comments/error.json.jbuilder', status: 422}
       end
     end
   end
