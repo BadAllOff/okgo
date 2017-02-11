@@ -1,4 +1,6 @@
 RailsAdmin.config do |config|
+  config.parent_controller = 'ApplicationController'
+  config.total_columns_width = 1200
 
   ### Popular gems integration
 
@@ -33,6 +35,7 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+    impersonate
 
     ## With an audit adapter, you can add:
     # history_index
@@ -42,6 +45,47 @@ RailsAdmin.config do |config|
   config.model 'Profile' do
     list do
       field :photo
+      field :user
+      include_all_fields
+    end
+  end
+
+  config.model 'User' do
+    list do
+      field :id
+      field :blocked do
+        column_width 30
+      end
+      configure :profile_img do
+        searchable [ :photo ]
+        column_width 70
+        pretty_value do
+          bindings[:view].tag(:img, { :src => bindings[:object].profile.photo.url(:micro) })
+        end
+      end
+      field :profile_img
+      configure :firstname do
+        searchable [ :firstname ]
+        pretty_value do
+          bindings[:object].profile.firstname
+        end
+      end
+      field :firstname
+      field :role
+      field :email
+      field :sign_in_count do
+        column_width 50
+      end
+      field :last_sign_in_at
+      field :events_count do
+        column_width 50
+      end
+      field :event_memberships_count do
+        column_width 50
+      end
+      field :comments_counter do
+        column_width 50
+      end
       include_all_fields
     end
   end

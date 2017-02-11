@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, error: exception.message
+    redirect_to main_app.new_user_session_path, error: exception.message
   end
 
   protected

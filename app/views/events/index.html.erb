@@ -1,7 +1,6 @@
 <%= render 'events/info_boxes' %>
 <div class="box box-widget">
-  <div class="box-header with-border">
-    <h3 class="box-title"></h3>
+  <div class="box-header hidden-xs with-border">
     <!--<div class="box-footer">-->
     <% @languages.each do |lang| %>
       <% if lang.events_count > 0 %>
@@ -17,6 +16,19 @@
       <%= link_to t('events.create_new_event'), new_event_path, class: 'btn btn-primary btn-flat', style: 'padding: 24px 33px; font-size: 15px; line-height: 0;' %>
     </div><!-- /.box-tools -->
   </div><!-- /.box-header -->
+  <div class="box-header visible-xs with-border">
+    <%= link_to t('events.create_new_event'), new_event_path, class: 'btn btn-block btn-primary btn-flat', style: 'padding: 24px 33px; font-size: 15px; line-height: 0;' %>
+  </div><!-- /.box-header -->
+  <div class="box-footer visible-xs">
+    <% @languages.each do |lang| %>
+        <% if lang.events_count > 0 %>
+            <div class="btn-group-vertical flag-with-count">
+              <button type="button" class="btn btn-default btn-flat"><%= image_tag(lang.flag_image.url(:micro), class: 'flag-micro') if  lang.flag_image? %></button>
+              <button type="button" class="btn btn-default btn-flat"><%= lang.events_count %></button>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
 </div><!-- /.box -->
 
 <div class="row">

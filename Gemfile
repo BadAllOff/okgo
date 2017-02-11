@@ -49,6 +49,7 @@ gem 'kaminari', '~> 0.17'
 gem 'izitoast', '1.1.1'
 
 gem 'rails_admin', '~> 1.1'
+gem 'rails_admin_impersonate', '0.0.5'
 
 # Performance & stats
 gem 'newrelic_rpm', '~> 3.18'
