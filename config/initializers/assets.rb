@@ -15,3 +15,5 @@ Rails.application.config.assets.version = '1.0'
   Rails.application.config.assets.precompile += ["#{controller}.js.coffee", "#{controller}.css"]
 end
 Rails.application.config.assets.precompile += %w( devise/registrations.js )
+Rails.application.config.assets.precompile += %w( msdropdown/jquery.dd.min.js )
+Rails.application.config.assets.precompile += %w( libs/dd/dd.css )

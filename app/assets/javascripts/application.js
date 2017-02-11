@@ -13,6 +13,7 @@
 //= require gmaps/google
 //= require data-confirm-modal
 //= require iziToast
+//= require msdropdown/jquery.dd.min
 //= require app
 
 

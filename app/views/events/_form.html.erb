@@ -6,7 +6,7 @@
   <div class="row">
     <div class="field form-group col-sm-12 col-md-6">
       <%= f.label :language %>
-      <%=  collection_select(:event, :language_id, Language.all, :id, :description, {}, { class: 'form-control' }) %>
+      <%= f.select(:language_id, options_for_select(Language.all.map {|p| [p.description, p.id, {'data-image' => p.flag_image.url(:micro)}]}), {}, { class: 'form-control' }) %>
     </div>
   </div>
 
@@ -62,6 +62,16 @@
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
 <script type="application/javascript">
+// flags in select
+  $(document).ready(function(e) {
+    try {
+      $("body select").msDropDown();
+    } catch(e) {
+      alert(e.message);
+    }
+  });
+//  /flags in select
+
   handler = Gmaps.build('Google');
   var markers_options = { draggable: true };
   handler.buildMap({
