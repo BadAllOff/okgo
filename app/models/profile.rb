@@ -19,4 +19,5 @@ class Profile < ApplicationRecord
   validates :lastname, length: { in: 1..20 }
   validates :about, length: { maximum: 3000 }
   validates :credo, length: { in: 1..250 }
+  validates_exclusion_of :firstname, in: %w( admin Admin Administrator Moderator moderator админ администратор Админ Администратор Модератор модератор )
 end
