@@ -1,8 +1,8 @@
-.borderRadius{-moz-border-radius:5px; border-radius:5px; }
+.borderRadius{-moz-border-radius:0px; border-radius:0px; }
 .borderRadiusTp{-moz-border-radius:5px 5px 0 0; border-radius:5px 5px 0 0;}
 .borderRadiusBtm{-moz-border-radius:0 0 5px 5px ; border-radius:0 0 5px 5px;}
 
-.ddcommon {position:relative;display:-moz-inline-stack; zoom:1; display:inline-block; *display:inline; cursor:default;cursor: pointer;}
+.ddcommon {position:relative;display:-moz-inline-stack; zoom:1; display:inline-block; *display:inline; cursor:default;cursor: pointer;border: 1px solid #d2d6de; height: 34px;}
 .ddcommon ul{padding:0;margin:0;}
 .ddcommon ul li{list-style-type:none;}
 .borderRadiusTp ul li:last-child{-moz-border-radius:0 0 5px 5px ; border-radius:0 0 5px 5px;border-bottom:0 none #c3c3c3; }
@@ -28,13 +28,14 @@ img.fnone{float:none !important}
 .ddcommon .divider{width:0; height:100%; position:absolute;}
 .ddcommon .ddArrow{display:inline-block; position:absolute; top:50%; right:4px;}
 .ddcommon .ddArrow:hover{background-position:0 100%;}
-.ddcommon .ddTitle{padding:0; position:relative; display:inline-block; width:100%}
+.ddcommon .ddTitle{padding: 6px 12px; position:relative; display:inline-block; width:100%}
 .ddcommon .ddTitle .ddTitleText{display:block;}
 .ddcommon .ddTitle .ddTitleText .ddTitleText{padding:0;}
 .ddcommon .ddTitle .description{display:block;}
 .ddcommon .ddTitle .ddTitleText img{position:relative; vertical-align:middle; float:left;margin-right:10px;border:1px solid silver;}
-.ddcommon .ddChild{position:absolute;display:none;width:100%;overflow-y:auto; overflow-x:hidden; zoom:1; z-index:9999; background-color:white;}
-.ddcommon .ddChild li{clear:both; padding-top:5px}
+.ddcommon .ddChild{position:absolute;display:none;width:100%;overflow-y:auto; overflow-x:hidden; zoom:1; z-index:9999; background-color:white;padding-top: 6px;}
+.ddcommon .ddChild li{clear:both; padding: 6px 12px;}
+.ddcommon .ddChild li:hover{ background-color: #c3c3c3 }
 .ddcommon .ddChild li .description{display:block;}
 .ddcommon .ddChild li img{border:1px solid silver; position:relative;vertical-align:middle;float:left;margin-right:10px;}
 .ddcommon .ddChild li.optgroup{padding:0;}
