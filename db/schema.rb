@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210064922) do
+ActiveRecord::Schema.define(version: 20170212070307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,15 @@ ActiveRecord::Schema.define(version: 20170210064922) do
     t.integer  "comments_counter",        default: 0
     t.index ["language_id"], name: "index_events_on_language_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "feedback",                        null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "status",     default: "positive"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
   end
 
   create_table "follows", force: :cascade do |t|
@@ -202,6 +211,7 @@ ActiveRecord::Schema.define(version: 20170210064922) do
   add_foreign_key "event_memberships", "users"
   add_foreign_key "events", "languages"
   add_foreign_key "events", "users"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "rated_memberships", "event_memberships"
   add_foreign_key "rated_memberships", "users"

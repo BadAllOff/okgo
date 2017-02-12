@@ -17,3 +17,4 @@ end
 Rails.application.config.assets.precompile += %w( devise/registrations.js )
 Rails.application.config.assets.precompile += %w( msdropdown/jquery.dd.min.js )
 Rails.application.config.assets.precompile += %w( libs/dd/dd.css )
+Rails.application.config.assets.precompile += %w( feedbacks.js )

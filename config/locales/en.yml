@@ -12,6 +12,7 @@ en:
     profiles: 'Profile'
     event_memberships: 'Memberships'
     activities: 'Recent activities'
+    feedbacks: "Feedbacks"
   breadcrumbs:
     homepage: 'Home'
     events:
@@ -31,6 +32,8 @@ en:
       as_member: 'As member'
     activity:
       index: 'Activity'
+    feedback:
+      index: "Feedbacks"
   sidebar_navigation:
     search: 'Search'
     navigation: 'NAVIGATION'
@@ -39,6 +42,7 @@ en:
     languages: 'Languages'
     event_memberships: 'Memberships'
     activities: 'Activities'
+    feedbacks: "Feedbacks and suggestions"
   events:
     create_new_event: 'Create new event'
     join: 'Join'
@@ -127,6 +131,9 @@ en:
         rated_membership:
           language_level: 'Language level'
           activity_level: 'Activity level'
+        feedback:
+          status: "Status"
+          feedback: "Your feedback or suggestion"
   time:
     am: am
     formats:
@@ -137,3 +144,9 @@ en:
     pm: pm
   legal:
     user_agreement: "User agreement"
+  feedbacks:
+    feedback:
+      new_feedback: "Leave feedback"
+      suggestion: "Suggestion"
+      positive: "Positive"
+      negative: "Negative"

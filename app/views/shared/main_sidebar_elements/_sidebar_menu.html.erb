@@ -45,6 +45,13 @@
         <i class="fa fa-hourglass-3"></i> <span><%= t 'sidebar_navigation.activities' %></span>
     <% end %>
   </li>
+
+  <li class="<%= active_link_to_class(feedbacks_path, :active => :inclusive) %>">
+    <%= link_to feedbacks_path do %>
+        <i class="fa fa-heart-o"></i> <span><%= t 'sidebar_navigation.feedbacks' %></span>
+    <% end %>
+  </li>
+
   <% if current_user && current_user.admin? %>
     <li class="<%= active_link_to_class(languages_path, :active => :inclusive) %>" >
       <%= link_to languages_path do %>

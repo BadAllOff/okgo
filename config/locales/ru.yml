@@ -12,6 +12,7 @@ ru:
     profiles: 'Профили'
     event_memberships: 'Участия'
     activities: 'Недавние действия'
+    feedbacks: "Отзывы"
   breadcrumbs:
     homepage: 'Главная'
     events:
@@ -31,6 +32,8 @@ ru:
       as_member: 'Как участник'
     activity:
       index: 'Недавние действия'
+    feedback:
+      index: "Отзывы"
   sidebar_navigation:
     search: 'Поиск'
     navigation: 'НАВИГАЦИЯ'
@@ -42,6 +45,7 @@ ru:
       as_tutor: 'Как организатор'
       as_member: 'Как участник'
     activities: 'Активити'
+    feedbacks: "Отзывы и предложения"
   events:
     create_new_event: 'Создать новое мероприятие'
     join: 'Пойду'
@@ -221,6 +225,9 @@ ru:
       rated_membership:
         language_level: 'Знание языка'
         activity_level: 'Общительность'
+      feedback:
+        status: "Статус"
+        feedback: "Ваш отзыв или предложение"
     errors:
       messages:
         record_invalid: 'Возникли ошибки: %{errors}'
@@ -494,3 +501,9 @@ ru:
     with_user_agreement: "Условиями использования"
   devise:
     by_clicking_sign_up_you_agree_to_our_terms: "Нажимая «Регистрация», вы соглашаетесь с нашими "
+  feedbacks:
+    feedback:
+      new_feedback: "Оставить отзыв"
+      positive: "Позитивное"
+      negative: "Негативное"
+      suggestion: "У меня есть идея!"

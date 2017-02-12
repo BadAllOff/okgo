@@ -16,7 +16,7 @@ class Ability
   end
 
   def guest_abilities
-    can :read, Event
+    can :read, Event, Feedback
     can :members, Event
   end
 
@@ -29,6 +29,7 @@ class Ability
   def user_abilities
     guest_abilities
     can :crud, Event, { user: user }
+    can :crud, Feedback, { user: user }
     can :read, Profile
     can :update, Profile, { user: user }
 
