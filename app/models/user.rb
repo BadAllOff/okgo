@@ -39,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def rated_membership?(membership)
-    RatedMembership.where(user_id: id, event_membership_id: membership.id).exists?
+    RatedMembership.where(user_id: id, event_membership_id: membership.id).first
   end
 
   def not_rated_membership?(membership)
