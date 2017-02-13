@@ -6,7 +6,7 @@
     <% opts = [positive: [name: 'Positive', id: 'positive'], negative:  [name: 'Negative', id: 'negative'], suggestion:  [name: 'Suggestion', id: 'suggestion']] %>
   <div class="field form-group">
     <%= f.label :status %>
-    <%= select_tag "status", "<option value='positive'>#{t'feedbacks.feedback.positive'}</option><option value='negative'>#{t'feedbacks.feedback.negative'}</option><option value='suggestion'>#{t'feedbacks.feedback.suggestion'}</option>".html_safe, class: 'form-control' %>
+    <%= select_tag "feedback[status]", "<option value='positive'>#{t'feedbacks.feedback.positive'}</option><option value='negative'>#{t'feedbacks.feedback.negative'}</option><option value='suggestion'>#{t'feedbacks.feedback.suggestion'}</option>".html_safe, class: 'form-control' %>
   </div>
 
   <div class="field form-group">

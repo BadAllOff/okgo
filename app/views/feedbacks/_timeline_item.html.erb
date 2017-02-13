@@ -9,8 +9,13 @@
     </div>
     <!-- /.user-block -->
     <div class="box-tools">
-      <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
-        <i class="fa fa-circle-o"></i></button>
+      <% if can?(:crud, feedback) %>
+      <!--<span class="pull-right">-->
+        <%= link_to 'Show', feedback, class:'btn btn-xs btn-default' %>
+        <%= link_to 'Edit', edit_feedback_path(feedback), class:'btn btn-xs btn-warning' %>
+        <%= link_to 'Destroy', feedback, method: :delete, class:'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %>
+      <!--</span>-->
+      <% end %>
       <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
       </button>
       <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -23,12 +28,7 @@
     <p>
       <%= feedback.feedback %>
     </p>
-    <span class="pull-right text-muted">45 likes - 2 comments</span>
-    <span class="pull-right">
-        <%= link_to 'Show', feedback, class:'btn btn-xs btn-default' %>
-        <%= link_to 'Edit', edit_feedback_path(feedback), class:'btn btn-xs btn-warning' %>
-        <%= link_to 'Destroy', feedback, method: :delete, class:'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %>
-    </span>
+    <!--<span class="pull-right text-muted">45 likes - 2 comments</span>-->
   </div>
   <!-- /.box-body -->
   <div class="box-footer">

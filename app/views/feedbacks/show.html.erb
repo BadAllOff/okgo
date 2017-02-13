@@ -1,12 +1,1 @@
-<p>
-  <strong>User:</strong>
-  <%= @feedback.user %>
-</p>
-
-<p>
-  <strong>Feedback:</strong>
-  <%= @feedback.feedback %>
-</p>
-
-<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
-<%= link_to 'Back', feedbacks_path %>
+<%= render partial: 'feedbacks/timeline_item', locals: {feedback: @feedback} %>
