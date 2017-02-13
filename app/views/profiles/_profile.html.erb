@@ -123,7 +123,20 @@
 
             options = {
                 id: 'ratingChart',
-                height: '200'
+                height: '200',
+                responsive: true,
+                scales: {
+                  yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                          }],
+                  xAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                          }],
+                }
             }
           %>
           <%= line_chart  data, options %>
