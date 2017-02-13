@@ -4,14 +4,8 @@
       <div class="media col-md-6" id="member-id-<%= member.id %>">
         <div class="member-box">
           <div class="media-left member-img">
-            <% if member.user.profile.photo?  %>
-                <%= image_tag(member.user.profile.photo.url('medium'),
-                              class: "img-circle media-object",
-                              alt: member.user.profile.firstname
-                    )
-                %>
-            <% else %>
-                <%= image_tag('medium_missing.png', class: "img-circle media-object", alt: 'User Image') %>
+            <%= link_to profile_path(member.user.profile) do %>
+                <%= show_profile_img(member.user, 'medium', 'media-object') %>
             <% end %>
           </div>
           <div class="media-body member-info">

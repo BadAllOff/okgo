@@ -1,26 +1,10 @@
 <div class="user-block">
   <%= link_to profile_path(event.user.profile) do %>
-      <% if event.user.profile.photo?  %>
-          <%= image_tag(event.user.profile.photo.url('medium'),
-                        class: "img-circle",
-                        alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}",
-                        data: {
-                            toggle: 'tooltip',
-                            original_title: "#{event.user.profile.firstname} #{event.user.profile.lastname}"
-                        }
-              )
-          %>
-      <% else %>
-          <%= image_tag('medium_missing.png',
-                        class: "img-circle",
-                        alt: "#{event.user.profile.firstname} #{event.user.profile.lastname}"
-              )
-          %>
-      <% end %>
+    <%= show_profile_img(event.user, 'medium') %>
   <% end %>
   <span class="username">
         <%= image_tag(event.language.flag_image.url(:micro), class: 'flag-micro') if  event.language.flag_image? %>
-        &nbsp;
+        &nbsp
         <%= link_to profile_path(event.user.profile) do %>
           <%= event.user.profile.firstname %> <%= event.user.profile.lastname %></a>
         <% end %>

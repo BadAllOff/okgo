@@ -11,8 +11,6 @@ class EventsController < ApplicationController
 
   authorize_resource
 
-  # GET /events  before_action :set_page_title
-
   # GET /events.json
   def index
     @events = Event.where('starts_at >= ?', Time.zone.now).order(starts_at: :asc).includes(:language, user: [:profile], comments: [:user] ).page(params[:page]).per(10)
