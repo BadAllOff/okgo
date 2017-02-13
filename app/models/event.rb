@@ -10,6 +10,7 @@ class Event < ApplicationRecord
   validates_presence_of :title, :description, :max_members, :starts_at, :ends_at, :language, :latitude, :longitude, :address
   validates_datetime :ends_at, :starts_at, after: DateTime.current + 24.hours
   validates_datetime :ends_at, after: :starts_at
+  validates_datetime :ends_at, before: DateTime.current + 1.month
   validates_numericality_of :latitude, :longitude
   validates :title, length: { in: 4..140 }
   validates :description, length: { in: 10..3000 }
