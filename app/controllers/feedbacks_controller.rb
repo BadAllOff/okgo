@@ -1,16 +1,18 @@
 class FeedbacksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   include Profiled
   include Breadcrumbed
+
+  authorize_resource
+
   before_action :set_feedback_index_breadcrumb
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
   before_action :set_page_title
 
-  authorize_resource
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    @feedbacks = Feedback.all
+    @feedbacks = Feedback.all.includes(:user)
   end
 
   # GET /feedbacks/1

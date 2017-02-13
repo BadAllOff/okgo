@@ -1,0 +1,38 @@
+<div class="box box-widget">
+  <div class="box-header with-border">
+    <div class="user-block">
+      <%= link_to profile_path(feedback.user.profile) do %>
+          <%= show_profile_img(feedback.user, :medium) %>
+      <% end %>
+      <span class="username"><a href="#"><%= feedback.user.profile.firstname %> <%=feedback.user.profile.lastname %></a></span>
+      <span class="description"><%= time_ago_in_words(feedback.created_at) %></span>
+    </div>
+    <!-- /.user-block -->
+    <div class="box-tools">
+      <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
+        <i class="fa fa-circle-o"></i></button>
+      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+    </div>
+    <!-- /.box-tools -->
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body">
+    <!-- post text -->
+    <p>
+      <%= feedback.feedback %>
+    </p>
+    <span class="pull-right text-muted">45 likes - 2 comments</span>
+    <span class="pull-right">
+        <%= link_to 'Show', feedback, class:'btn btn-xs btn-default' %>
+        <%= link_to 'Edit', edit_feedback_path(feedback), class:'btn btn-xs btn-warning' %>
+        <%= link_to 'Destroy', feedback, method: :delete, class:'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %>
+    </span>
+  </div>
+  <!-- /.box-body -->
+  <div class="box-footer">
+
+  </div>
+  <!-- /.box-footer -->
+</div>
