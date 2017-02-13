@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
+  before_create :create_unique_identifier
   # :placeholder-s initialized in paperclip.rb initializer
   has_attached_file :photo,
                     styles: { micro: '50x50#', small: '128x128#', medium: '160x160#', original: '250x250#' },
@@ -20,4 +21,12 @@ class Profile < ApplicationRecord
   validates :about, length: { maximum: 3000 }
   validates :credo, length: { in: 1..250 }
   validates_exclusion_of :firstname, in: %w( admin Admin Administrator Moderator moderator админ администратор Админ Администратор Модератор модератор )
+
+  private
+
+  def create_unique_identifier
+    begin
+      self.unique_identifier = SecureRandom.hex(7) # or whatever you chose like UUID tools
+    end while self.class.exists?(:unique_identifier => unique_identifier)
+  end
 end

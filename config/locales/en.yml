@@ -144,6 +144,7 @@ en:
     pm: pm
   legal:
     user_agreement: "User agreement"
+    with_user_agreement: "User agreement"
   feedbacks:
     feedback:
       new_feedback: "Leave feedback"
