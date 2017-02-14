@@ -113,6 +113,7 @@ en:
     your_comment_was_successfully_posted: 'Your comment was successfully posted.'
     your_comment_was_successfully_destroyed: 'Your comment was successfully deleted.'
     comment_body_cant_be_blank: "Comment body can't be blank."
+    leave_a_comment: 'Leave a comment'
   activerecord:
       attributes:
         profile:

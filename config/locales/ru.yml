@@ -131,6 +131,7 @@ ru:
     your_comment_was_successfully_posted: 'Комментарий добавлен.'
     your_comment_was_successfully_destroyed: 'Комментарий удалён.'
     comment_body_cant_be_blank: "Комментарий не может быть пустым."
+    leave_a_comment: 'Оставить комментарий'
   abbr_day_names:
     Sun: Вс
     Mon: Пн

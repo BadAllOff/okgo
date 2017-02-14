@@ -30,6 +30,8 @@ class SocializationsController < ApplicationController
         case
           when id = params[:event_id] # Must be before :item_id, since it's nested under it.
             Event.find(id)
+          when id = params[:feedback_id] # Must be before :item_id, since it's nested under it.
+            Feedback.find(id)
           else
             raise ArgumentError, 'Unsupported socializable model, params: ' +
                 params.keys.inspect

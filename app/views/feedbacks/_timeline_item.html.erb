@@ -1,4 +1,4 @@
-<div class="box box-widget collapsed-box">
+<div class="box box-widget">
   <div class="box-header with-border">
     <div class="user-block">
       <%= link_to profile_path(feedback.user.profile) do %>
@@ -28,9 +28,16 @@
     <p>
       <%= markdown(feedback.feedback) %>
     </p>
-    <!--<span class="pull-right text-muted">45 likes - 2 comments</span>-->
+    <% if user_signed_in?  %>
+      <%= render partial: 'feedbacks/like_btn', locals: { feedback: feedback } %>
+    <% else %>
+      <span class="pull-right text-muted"><%= feedback.likers_count %> likes </span>
+    <% end %>
   </div>
-  <!-- /.box-body -->
+
   <%= render partial: 'comments/comments', locals: { commentable: feedback } %>
-  <!-- /.box-footer -->
+
+  <div class="overlay hidden">
+    <i class="fa fa-refresh fa-spin"></i>
+  </div>
 </div>

@@ -40,7 +40,7 @@ ready = function () {
             $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
         });
     });
-
+//////// likes ////////////////////////////////////////////////////////////
     $(".like-btn").on("ajax:success", function (e, data, status, xhr) {
         var source = $("#eventLikeBtnTemplate").html();
         var template = Handlebars.compile(source);
@@ -57,7 +57,8 @@ ready = function () {
     }).on("ajax:error", function (e, xhr, status, error) {
         $('.overlay').addClass('hidden');
     });
-//////////////////////////////////////////////////////////////////////////////////////////
+//////// end of likes ////////////////////////////////////////////////////////////
+
     $(document).on("ajax:success","a.event_participation_btn", function (e, data, status, xhr) {
         var context = $.parseJSON(xhr.responseText);
 
@@ -96,7 +97,6 @@ ready = function () {
             });
         }
     });
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 
     // Show members on TUTOR page
@@ -107,7 +107,6 @@ ready = function () {
     });
 
     $('.load_members').bind("ajax:success", function (e, data, status, xhr) {
-        // alert('success');
         $(this).addClass('disabled');
         var source = $("#eventMembersTemplate").html();
         var template = Handlebars.compile(source);
@@ -166,7 +165,7 @@ $(document).on('ajax:success', '.create_new_comment', function(e, data, status, 
     var context = $.parseJSON(xhr.responseText);
     var template = Handlebars.compile(source);
     var commentBox = template(context);
-    $(this).closest('.box-comment').before(commentBox);
+    $(this).closest('#accordion').before(commentBox);
 });
 $(document).on("ajax:error", '.create_new_comment', function (e, xhr, status, error) {
     var context = $.parseJSON(xhr.responseText);
