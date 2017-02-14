@@ -19,7 +19,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :feedbacks
+    resources :feedbacks do
+      resources :comments, module: :feedbacks
+    end
     resources :activities
     resources :profiles, :languages
     resources :events do

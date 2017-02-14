@@ -12,7 +12,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    @feedbacks = Feedback.all.order(created_at: 'desc').includes(:user)
+    @feedbacks = Feedback.all.order(created_at: 'desc').includes(:comments, user: [:profile])
   end
 
   # GET /feedbacks/1

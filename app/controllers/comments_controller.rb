@@ -39,12 +39,12 @@ class CommentsController < ApplicationController
   end
 
   def increment_conters
-    @commentable.increment!(:comments_counter)
-    current_user.increment!(:comments_counter)
+    @commentable.increment!(:comments_count)
+    current_user.increment!(:comments_count)
   end
 
   def decrement_counters
-    @commentable.decrement!(:comments_counter)
-    current_user.decrement!(:comments_counter)
+    @commentable.decrement!(:comments_count)
+    current_user.decrement!(:comments_count)
   end
 end

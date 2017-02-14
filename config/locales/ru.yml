@@ -194,6 +194,12 @@ ru:
         few:   'Участий'
         many:  'Участий'
         other: 'Участий'
+      comment:
+        zero:  'Нет комментариев'
+        one:   'Комментарий'
+        few:   'Комментариев'
+        many:  'Комментариев'
+        other: 'Комментариев'
     attributes:
       user:
         current_password: "Текущий пароль"

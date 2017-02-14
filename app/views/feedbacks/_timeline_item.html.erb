@@ -31,8 +31,6 @@
     <!--<span class="pull-right text-muted">45 likes - 2 comments</span>-->
   </div>
   <!-- /.box-body -->
-  <div class="box-footer">
-
-  </div>
+  <%= render partial: 'comments/comments', locals: { commentable: feedback } %>
   <!-- /.box-footer -->
 </div>
