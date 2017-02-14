@@ -13,4 +13,4 @@ end
 json.body                 @comment.body
 json.commentable_id       @comment.commentable_id
 json.commentable_type     @comment.commentable_type.to_s.downcase.pluralize
-json.flash_msg            t('events.comments.your_comment_was_successfully_posted')
+json.flash_msg            t('comments.your_comment_was_successfully_posted')

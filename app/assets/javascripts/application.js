@@ -160,7 +160,7 @@ ready = function () {
     $(document).on("ajax:error",function(xhr, status){$('.overlay').toggleClass('hidden');});
 
 };
-
+// Comments ///////////////////////////////////////////////////////////////////////////////////////
 $(document).on('ajax:success', '.create_new_comment', function(e, data, status, xhr) {
     var source = $("#commentTemplate").html();
     var context = $.parseJSON(xhr.responseText);
@@ -183,6 +183,9 @@ $(document).on('ajax:success', '.destroy_comment', function(e, data, status, xhr
         message: context.flash_msg
     });
 });
+
+//  end of Comments ////////////////////////////////////////////////////////////////////////////////
+
 //
 $(document).ready(ready);
 $(document).on('page:load', ready);
