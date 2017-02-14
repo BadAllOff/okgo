@@ -9,6 +9,7 @@
           <%= event.user.profile.firstname %> <%= event.user.profile.lastname %></a>
         <% end %>
       </span>
+  <span class="description"><%= time_ago_in_words(event.created_at) %> | <%= t("comments",count: event.comments_count) %> | <%= event.likers_count %> likes</span>
   <div class="clearfix"></div>
   <dl class="dl-horizontal description">
 
