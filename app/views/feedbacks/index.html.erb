@@ -17,9 +17,7 @@
               <li>
                 <%= feedback_status(feedback.status).html_safe %>
                 <div class="timeline-item">
-                  <div class="box box-widget">
-                    <%= render partial: 'timeline_item', locals: {feedback: feedback} %>
-                  </div>
+                  <%= render partial: 'feedback', locals: {feedback: feedback} %>
                 </div>
               </li>
           <% end %>

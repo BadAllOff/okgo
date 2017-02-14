@@ -9,8 +9,9 @@ class SocializationsController < ApplicationController
                    like: true,
                    likers_count: @socializable.likers_count,
                    btn_class: 'btn-primary',
-                   link:  event_unlike_path(@socializable),
-                   method: 'delete' }
+                   link:  send("#{@socializable.class.name.downcase}_unlike_path", @socializable),
+                   method: 'delete',
+                   likable: @socializable.class.name.to_s.downcase }
   end
 
   def unlike
@@ -20,8 +21,9 @@ class SocializationsController < ApplicationController
                    like: false,
                    likers_count: @socializable.likers_count,
                    btn_class: 'btn-default',
-                   link:  event_like_path(@socializable),
-                   method: 'post' }
+                   link:  send("#{@socializable.class.name.downcase}_like_path", @socializable),
+                   method: 'post',
+                   likable: @socializable.class.name.to_s.downcase }
   end
 
   private

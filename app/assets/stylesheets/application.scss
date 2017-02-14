@@ -87,8 +87,8 @@
 .wday_5{ border-top: 3px solid rgba(2, 101, 255, 0.4); }
 .wday_6{ border-top: 3px solid rgba(102, 0, 206, 0.4); }
 
-.event_box{
-  .event-btns{
+.event_box, .feedback-box{
+  .event-btns, .feedback-btns{
     .btn-default{
       background-color: transparent;
       border-color: transparent;

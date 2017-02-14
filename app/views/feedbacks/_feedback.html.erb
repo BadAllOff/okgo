@@ -1,11 +1,11 @@
-<div class="box box-widget">
+<div class="box box-widget collapsed-box feedback-box">
   <div class="box-header with-border">
     <div class="user-block">
       <%= link_to profile_path(feedback.user.profile) do %>
           <%= show_profile_img(feedback.user, :medium) %>
       <% end %>
       <span class="username"><a href="#"><%= feedback.user.profile.firstname %> <%=feedback.user.profile.lastname %></a></span>
-      <span class="description"><%= time_ago_in_words(feedback.created_at) %></span>
+      <span class="description"><%= time_ago_in_words(feedback.created_at) %> | <%= t("comments",count: feedback.comments_count) %></span>
     </div>
     <!-- /.user-block -->
     <div class="box-tools">
@@ -28,12 +28,18 @@
     <p>
       <%= markdown(feedback.feedback) %>
     </p>
-    <% if user_signed_in?  %>
-      <%= render partial: 'feedbacks/like_btn', locals: { feedback: feedback } %>
-    <% else %>
-      <span class="pull-right text-muted"><%= feedback.likers_count %> likes </span>
-    <% end %>
   </div>
+  <% if user_signed_in?  %>
+      <div class="box-footer feedback-btns">
+        <span id="feedback_like_btn_<%= feedback.id %>" class="like-btn">
+          <%= render partial: 'feedbacks/like_btn', locals: { feedback: feedback } %>
+        </span>
+      </div>
+  <% else %>
+      <div class="box-footer feedback-btns">
+        <span class="pull-right text-muted"><%= feedback.likers_count %> likes </span>
+      </div>
+  <% end %>
 
   <%= render partial: 'comments/comments', locals: { commentable: feedback } %>
 

@@ -1,9 +1,9 @@
 <% if feedback.liked_by?(current_user) %>
-    <%= link_to feedback_unlike_path(feedback), method: :delete, remote: true, class: "btn btn-default btn-xs" do %>
+    <%= link_to feedback_unlike_path(feedback), method: :delete, remote: true, class: "btn btn-default btn-flat" do %>
         <i class="fa fa-thumbs-o-up"></i> <%= feedback.likers_count %> Like
     <% end %>
 <% else %>
-    <%= link_to feedback_like_path(feedback), method: :post, remote: true, class: "btn btn-default btn-xs" do %>
+    <%= link_to feedback_like_path(feedback), method: :post, remote: true, class: "btn btn-default btn-flat" do %>
         <i class="fa fa-thumbs-o-up"></i>  <%= feedback.likers_count if feedback.likers_count!=0 %> Like
     <% end %>
 <% end %>
