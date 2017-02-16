@@ -83,7 +83,7 @@ RailsAdmin.config do |config|
       field :event_memberships_count do
         column_width 50
       end
-      field :comments_counter do
+      field :comments_count do
         column_width 50
       end
       include_all_fields
