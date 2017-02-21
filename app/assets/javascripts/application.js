@@ -47,17 +47,8 @@ ready = function () {
         var template = Handlebars.compile(source);
         var context = $.parseJSON(xhr.responseText);
 
-        console.log(context);
-
-        // var context = {
-        //     btn_class: data.btn_class,
-        //     method: data.method,
-        //     link: data.link,
-        //     likers_count: data.likers_count
-        // };
         var LikeBtn = template(context);
-        $('#'+ context.likable +'_like_btn_' + data.object_id).html("");
-        $('#'+ context.likable +'_like_btn_' + data.object_id).html(LikeBtn);
+        $('#'+ context.likable +'_like_btn_' + context.obj_id).html(LikeBtn);
         $('.overlay').addClass('hidden');
     }).on("ajax:error", function (e, xhr, status, error) {
         $('.overlay').addClass('hidden');

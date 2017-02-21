@@ -1,29 +1,17 @@
 class SocializationsController < ApplicationController
   before_action :authenticate_user!
-  before_filter :load_socializable
+  before_action :load_socializable
 
   def like
     current_user.like!(@socializable)
     @socializable.update(likers_count: @socializable.likers(User).count)
-    render json: { object_id: @socializable.id,
-                   like: true,
-                   likers_count: @socializable.likers_count,
-                   btn_class: 'btn-primary',
-                   link:  send("#{@socializable.class.name.downcase}_unlike_path", @socializable),
-                   method: 'delete',
-                   likable: @socializable.class.name.to_s.downcase }
+    render 'socializations/like.json.jbuilder'
   end
 
   def unlike
     current_user.unlike!(@socializable)
     @socializable.update(likers_count: @socializable.likers(User).count)
-    render json: { object_id: @socializable.id,
-                   like: false,
-                   likers_count: @socializable.likers_count,
-                   btn_class: 'btn-default',
-                   link:  send("#{@socializable.class.name.downcase}_like_path", @socializable),
-                   method: 'post',
-                   likable: @socializable.class.name.to_s.downcase }
+    render 'socializations/unlike.json.jbuilder'
   end
 
   private
