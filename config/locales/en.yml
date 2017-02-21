@@ -79,6 +79,8 @@ en:
       ends_at: 'Ends at'
       maximum_participants: 'Maximum participants'
     not_finished_yet: "Event not finished yet"
+    event_was_successfully_created: "Event was successfully created"
+    event_was_successfully_updated: "Event was successfully updated"
   profiles:
     profile: 'Profile'
     activity: 'Activity'
@@ -152,3 +154,5 @@ en:
       positive: "Positive"
       negative: "Negative"
       leave_feedback: "Leave feedback or suggestion"
+  event:
+    event_was_successfully_destroyed: "Event was successfully destroyed"

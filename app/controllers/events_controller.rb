@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   before_action :set_event, only: [:edit, :update, :destroy, :members]
   before_action :set_count_events, only: [:index]
+  before_action :get_events, only: [:index]
   before_action :set_count_memberships, only: [:index]
   before_action :set_page_title
 
@@ -11,14 +12,10 @@ class EventsController < ApplicationController
 
   authorize_resource
 
-  # GET /events.json
   def index
-    @events = Event.where('starts_at >= ?', Time.zone.now).order(starts_at: :asc).includes(:language, user: [:profile], comments: [:user] ).page(params[:page]).per(10)
     @languages = Language.all.order(events_count: 'desc')
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
     @event = Event.where(id: params[:id]).includes(:language, user: [:profile], comments: [user: [:profile]]).first
     add_breadcrumb I18n.t('breadcrumbs.events.show'), event_path(@event)
@@ -58,7 +55,7 @@ class EventsController < ApplicationController
     end
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event, notice: I18n.t('events.event_was_successfully_created') }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -72,7 +69,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @event, notice: I18n.t('events.event_was_successfully_updated') }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -93,7 +90,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to events_url, notice: I18n.t('events.event_was_successfully_destroyed') }
       format.json { head :no_content }
     end
   end
@@ -120,6 +117,10 @@ class EventsController < ApplicationController
   def set_count_events
     @count_events = Event.all.size
     # @count_events = Event.where('starts_at > ?', Time.zone.today).size
+  end
+
+  def get_events
+    @events = Event.where('starts_at >= ?', Time.zone.now).order(starts_at: :asc).includes(:language, user: [:profile], comments: [:user] ).page(params[:page]).per(10)
   end
 
   def set_count_memberships
