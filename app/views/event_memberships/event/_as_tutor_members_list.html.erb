@@ -1,41 +1,44 @@
 <div class="no-padding members-list">
   <!-- members list-->
-  <% memberships.each do |member| %>
-      <div class="media col-md-12 col-lg-6" id="member-id-<%= member.id %>">
-        <div class="member-box col-xs-12" style="padding-top: 35px;">
-          <div class="media-left member-img col-xs-12 col-sm-4 col-md-3">
-            <%= show_profile_img(member.user, 'medium', 'media-object img-responsive center-block') %>
-            <p class="text-center">
-            <%= link_to profile_path(member.user.profile), target: '_blank' do  %>
-                <%= member.user.profile.firstname %>
-            <% end %>
-            </p>
-          </div>
-          <div class="media-body member-info">
-            <% rates = current_user.rated_membership?(member) %>
-            <% if rates %>
-                <div id="event-member-rate-<%= member.id %>">
-                  <%= render partial: 'event_memberships/event/rate_member_form', locals: {member: member, language: rates.language_level, activity: rates.activity_level } %>
+  <% memberships.each_slice(2) do |members| %>
+    <% members.each do |member| %>
+        <div class="media col-md-12 col-lg-6" id="member-id-<%= member.id %>">
+          <div class="member-box col-xs-12" style="padding-top: 35px;">
+            <div class="media-left member-img col-xs-12 col-sm-4 col-md-3">
+              <%= show_profile_img(member.user, 'medium', 'media-object img-responsive center-block') %>
+              <p class="text-center">
+              <%= link_to profile_path(member.user.profile), target: '_blank' do  %>
+                  <%= member.user.profile.firstname %>
+              <% end %>
+              </p>
+            </div>
+            <div class="media-body member-info">
+              <% rates = current_user.rated_membership?(member) %>
+              <% if rates %>
+                  <div id="event-member-rate-<%= member.id %>">
+                    <%= render partial: 'event_memberships/event/rate_member_form', locals: {member: member, language: rates.language_level, activity: rates.activity_level } %>
+                  </div>
+              <% else %>
+                <div id="event-member-attendance-<%= member.id %>">
+                  <% if member.attended == false && member.marked %>
+                    <p class="text-warning"><%= t('events.rate_members.previously_you_marked_this_user_as_absent') %></p>
+                  <% end %>
+                  <p><%= t('event_memberships.did_he_attended_at_this_event') %></p>
+                  <%= link_to t('btns.yes_btn'), member_attended_event_membership_path(member), class: 'member-attended-btn btn btn-default', method: :post, remote: true, data: { type: 'json' } %>
+                  <%= link_to t('btns.no_btn'), member_not_attended_event_membership_path(member), class: 'member-attended-btn btn btn-danger', method: :post, remote: true, data: { type: 'json' } %>
                 </div>
-            <% else %>
-              <div id="event-member-attendance-<%= member.id %>">
-                <% if member.attended == false && member.marked %>
-                  <p class="text-warning"><%= t('events.rate_members.previously_you_marked_this_user_as_absent') %></p>
-                <% end %>
-                <p><%= t('event_memberships.did_he_attended_at_this_event') %></p>
-                <%= link_to t('btns.yes_btn'), member_attended_event_membership_path(member), class: 'member-attended-btn btn btn-default', method: :post, remote: true, data: { type: 'json' } %>
-                <%= link_to t('btns.no_btn'), member_not_attended_event_membership_path(member), class: 'member-attended-btn btn btn-danger', method: :post, remote: true, data: { type: 'json' } %>
-              </div>
-              <div class="hide" id="event-member-rate-<%= member.id %>">
-                <%= render partial: 'event_memberships/event/rate_member_form', locals: {member: member, language: '50', activity: '50' } %>
-              </div>
-              <div class="hide thanks-for-feedback">
-                <h5><%= t('events.rate_members.thanks_for_feedback_it_is_important') %></h5>
-              </div>
-            <% end %>
+                <div class="hide" id="event-member-rate-<%= member.id %>">
+                  <%= render partial: 'event_memberships/event/rate_member_form', locals: {member: member, language: '50', activity: '50' } %>
+                </div>
+                <div class="hide thanks-for-feedback">
+                  <h5><%= t('events.rate_members.thanks_for_feedback_it_is_important') %></h5>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+    <% end %>
+      <div class="clearfix"></div>
   <% end %>
   <!-- /.members-list -->
 </div>
