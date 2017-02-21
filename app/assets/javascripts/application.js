@@ -4,15 +4,16 @@
 //= require plugins/slimScroll/jquery.slimscroll.min
 //= require plugins/fastclick/fastclick.min
 //= require plugins/icheck/icheck.min
+//= require plugins/knob/jquery.knob.min
 //= require moment
 //= require handlebars-v4.0.5
 //= require bootstrap-datetimepicker
-//= require bootstrap-slider
 //= require md_simple_editor
 //= require underscore
 //= require gmaps/google
 //= require data-confirm-modal
 //= require iziToast
+// jquery.dd.min - dropdown flags plugin
 //= require msdropdown/jquery.dd.min
 //= require app
 

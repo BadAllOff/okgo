@@ -47,7 +47,7 @@ class User < ApplicationRecord
   end
 
   def can_rate_membership?(membership)
-    if ( (author_of?(membership.event) || member_of?(membership.event)) && membership.attended? && not_rated_membership?(membership))
+    if author_of?(membership.event) && membership.attended?
       true
     else
       false

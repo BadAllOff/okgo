@@ -39,6 +39,7 @@ Rails.application.routes.draw do
         get 'as_tutor'
         get 'as_member'
         get 'show_event_members/:event_id' => 'event_memberships#show_event_members', as: :show_members
+        post 'update_rate/:event_id/:rate_id' => 'event_memberships#update_rate', as: :update_rate
       end
 
       member do

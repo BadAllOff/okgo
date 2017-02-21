@@ -1,29 +1,22 @@
 <div class="no-padding members-list">
   <!-- members list-->
   <% memberships.each do |member| %>
-      <div class="media col-md-6" id="member-id-<%= member.id %>">
-        <div class="member-box">
-          <div class="media-left member-img">
-            <%= link_to profile_path(member.user.profile) do %>
-                <%= show_profile_img(member.user, 'medium', 'media-object') %>
+      <div class="media col-md-12 col-lg-6" id="member-id-<%= member.id %>">
+        <div class="member-box col-xs-12" style="padding-top: 35px;">
+          <div class="media-left member-img col-xs-12 col-sm-4 col-md-3">
+            <%= show_profile_img(member.user, 'medium', 'media-object img-responsive center-block') %>
+            <p class="text-center">
+            <%= link_to profile_path(member.user.profile), target: '_blank' do  %>
+                <%= member.user.profile.firstname %>
             <% end %>
+            </p>
           </div>
           <div class="media-body member-info">
-            <p class="media-heading">
-              <%= link_to profile_path(member.user.profile), target: '_blank' do  %>
-                  <%= member.user.profile.firstname %>
-              <% end %>
-            </p>
-            <% member_rates = current_user.rated_membership?(member) %>
-            <% if member_rates %>
-              <div id="member-already-rated-<%= member.id %>">
-                <p>
-                  <%= t('events.rate_members.language_level') %>: <%= member_rates.language_level %>
-                </p>
-                <p>
-                  <%= t('events.rate_members.activity_level') %>: <%= member_rates.activity_level %>
-                </p>
-              </div>
+            <% rates = current_user.rated_membership?(member) %>
+            <% if rates %>
+                <div id="event-member-rate-<%= member.id %>">
+                  <%= render partial: 'event_memberships/event/rate_member_form', locals: {member: member, language: rates.language_level, activity: rates.activity_level } %>
+                </div>
             <% else %>
               <div id="event-member-attendance-<%= member.id %>">
                 <% if member.attended == false && member.marked %>
@@ -34,48 +27,7 @@
                 <%= link_to t('btns.no_btn'), member_not_attended_event_membership_path(member), class: 'member-attended-btn btn btn-danger', method: :post, remote: true, data: { type: 'json' } %>
               </div>
               <div class="hide" id="event-member-rate-<%= member.id %>">
-                <%= form_tag rate_event_membership_path(member),
-                             method: :post,
-                             class: "submit-rate form-horizontal",
-                             remote: true,
-                             data:
-                                 {
-                                     format: :json,
-                                     id: "rate-user-#{member.id}"
-                                 } do %>
-                    <div class="rateMessages"></div>
-                    <div class="form-group">
-                      <%= label_tag :language_level, t('events.rate_members.language_level'), class: "col-sm-4 control-label" %>
-                      <div class="col-sm-8">
-                        <%= text_field_tag :language_level, "", class: 'language_level',
-                                           data: {
-                                               slider_id: "language_level_#{member.id}",
-                                               slider_min: 1,
-                                               slider_max: 100,
-                                               slider_step: 1,
-                                               slider_value: 1
-                                           } %>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <%= label_tag :activity_level, t('events.rate_members.activity_level'), class: "col-sm-4 control-label" %>
-                      <div class="col-sm-8">
-                        <%= text_field_tag :activity_level, "", class: 'activity_level',
-                                           data: {
-                                               slider_id: "activity_level_#{member.id}",
-                                               slider_min: 1,
-                                               slider_max: 100,
-                                               slider_step: 1,
-                                               slider_value: 1
-                                           } %>
-                      </div>
-                    </div>
-
-                    <div class="col-sm-offset-4">
-                      <%= submit_tag t('events.rate_members.rate_btn'), class: 'btn btn-primary rate_user_submit_btn' %>
-                    </div>
-                <% end %>
+                <%= render partial: 'event_memberships/event/rate_member_form', locals: {member: member, language: '50', activity: '50' } %>
               </div>
               <div class="hide thanks-for-feedback">
                 <h5><%= t('events.rate_members.thanks_for_feedback_it_is_important') %></h5>
@@ -111,19 +63,17 @@
     });
   });
 
-  $(".activity_level, .language_level").slider({});
-
   $(function () {
     $('.submit-rate').bind('ajax:success', function (e, data, status, xhr) {
-      $(this).parent().addClass('hide').next().removeClass('hide').html("<span class='text-success'><%= t('events.rate_members.thanks_for_feedback_it_is_important') %> </span>");
+      $(this).find('.flash_msg').html("<span class='text-success'><%= t('events.rate_members.thanks_for_feedback_it_is_important') %> </span>");
       var response = $.parseJSON(xhr.responseText);
-      console.log(response);
     });
 
     $('.submit-rate').bind('ajax:error', function (e, data, status, xhr) {
-      $(this).parent().addClass('hide').next().removeClass('hide').html("<span class='text-warning'><%= j t('events.rate_members.you_already_had_left_feedback_about_this_user') %> </span>");
+      $(this).find('.flash_msg').html("<span class='text-warning'><%= j t('events.rate_members.you_already_had_left_feedback_about_this_user') %> </span>");
       var response = $.parseJSON(xhr.responseText);
-      console.log(response);
     });
   });
+
+  $(".jknob").knob({});
 </script>

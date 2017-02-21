@@ -31,7 +31,6 @@ class EventMembershipsController < ApplicationController
       format.html { redirect_to events_url, notice: t('events.you_have_left_the_event') }
       format.json { render 'leaved.json.jbuilder', status: :ok }
     end
-
   end
 
   def show_event_members
@@ -90,6 +89,14 @@ class EventMembershipsController < ApplicationController
 
   def rate_member
     if current_user.can_rate_membership?(@event_membership)
+      rated_user = RatedMembership.where(event_membership_id: @event_membership,rated_member_id: @event_membership.user.id).first
+      if rated_user
+        if rated_user.update(language_level: params[:language_level], activity_level: params[:activity_level]);
+          render json: rated_user
+        else
+          render json: rated_user.errors
+        end
+      else
         rate_user = current_user.rated_memberships.build(
             rated_member_id: @event_membership.user.id,
             language_level: params[:language_level],
@@ -102,11 +109,11 @@ class EventMembershipsController < ApplicationController
         else
           render json: rate_user.errors
         end
+      end
     else
-      render json: '{error: cannot rate membership}'
+      render json: "{error: can't rate membership}"
     end
   end
-
 
   private
     def set_membership_index_breadcrumb

@@ -69,8 +69,6 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bootstrap-slider-rails (9.2.0)
-      railties (>= 3.2, < 6.0)
     bootstrap3-datetimepicker-rails (4.15.35)
       momentjs-rails (>= 2.8.1)
     breadcrumbs_on_rails (3.0.1)
@@ -424,7 +422,6 @@ DEPENDENCIES
   activerecord-session_store (= 1.0.0)
   annotate
   bootstrap-sass (= 3.3.7)
-  bootstrap-slider-rails (= 9.2.0)
   bootstrap3-datetimepicker-rails (= 4.15.35)
   breadcrumbs_on_rails (= 3.0.1)
   bullet
