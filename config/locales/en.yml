@@ -40,7 +40,10 @@ en:
     events: 'Events'
     profile: 'Profile'
     languages: 'Languages'
-    event_memberships: 'Memberships'
+    event_memberships:
+      index: 'My events'
+      as_tutor: 'As tutor'
+      as_member: 'As member'
     activities: 'Activities'
     feedbacks: "Feedbacks and suggestions"
   events:
