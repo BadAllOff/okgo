@@ -2,8 +2,6 @@
   <ul class="timeline">
     <% @activities.each do |activity| %>
         <%= render_activity activity %>
-        <%= # render partial: 'activities/activity', locals: {activity: activity}
-        %>
     <% end %>
   </ul>
 </div>
