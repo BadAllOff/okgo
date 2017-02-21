@@ -96,6 +96,7 @@ en:
     count_memberships: 'Total Participations'
     progress_chart: 'Progress chart'
   event_memberships:
+    index: 'My events'
     future_events: 'Future Events'
     past_events: 'Past events'
     event_description: 'Description'
