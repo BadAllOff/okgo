@@ -5,28 +5,20 @@ class LanguagesController < ApplicationController
 
   authorize_resource
 
-  # GET /languages
-  # GET /languages.json
   def index
     @languages = Language.all
   end
 
-  # GET /languages/1
-  # GET /languages/1.json
   def show
   end
 
-  # GET /languages/new
   def new
     @language = Language.new
   end
 
-  # GET /languages/1/edit
   def edit
   end
 
-  # POST /languages
-  # POST /languages.json
   def create
     @language = Language.new(language_params)
 
