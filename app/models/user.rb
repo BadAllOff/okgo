@@ -21,6 +21,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
 
   acts_as_liker
+  acts_as_follower
 
   def profile
     super || build_profile

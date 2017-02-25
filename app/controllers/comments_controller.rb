@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         increment_conters
+        current_user.follow!(@commentable)
         format.json { render partial: 'comments/create.json.jbuilder'}
         format.html { redirect_to @commentable, notice: t('comments.your_comment_was_successfully_posted') }
       else

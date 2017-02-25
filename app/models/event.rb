@@ -17,6 +17,7 @@ class Event < ApplicationRecord
   validates :address, length: { in: 10..255 }
 
   acts_as_likeable
+  acts_as_followable
 
   def joinable?(membership)
     return false if user == membership.user
