@@ -63,6 +63,7 @@ class FeedbacksController < ApplicationController
   # DELETE /feedbacks/1.json
   def destroy
     @feedback.destroy
+    Follow.remove_followers(@feedback)
     respond_to do |format|
       format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully destroyed.' }
       format.json { head :no_content }

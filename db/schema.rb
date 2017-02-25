@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225115120) do
+ActiveRecord::Schema.define(version: 20170225120142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,18 +83,20 @@ ActiveRecord::Schema.define(version: 20170225115120) do
     t.integer  "gmap_zoom"
     t.integer  "event_memberships_count", default: 0
     t.integer  "comments_count",          default: 0
+    t.integer  "followers_count",         default: 0
     t.index ["language_id"], name: "index_events_on_language_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "feedbacks", force: :cascade do |t|
     t.integer  "user_id"
-    t.text     "feedback",                            null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "status",         default: "positive"
-    t.integer  "comments_count", default: 0
-    t.integer  "likers_count",   default: 0
+    t.text     "feedback",                             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "status",          default: "positive"
+    t.integer  "comments_count",  default: 0
+    t.integer  "likers_count",    default: 0
+    t.integer  "followers_count", default: 0
     t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
   end
 

@@ -43,6 +43,7 @@ class EventsController < ApplicationController
     build_markers_hash
     respond_to do |format|
       if @event.save
+        current_user.follow!(@event)
         format.html { redirect_to @event, notice: I18n.t('events.event_was_successfully_created') }
       else
         format.html { render :new }
@@ -73,6 +74,8 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     @event.destroy
+    Follow.remove_followers(@event)
+
     respond_to do |format|
       format.html { redirect_to events_url, notice: I18n.t('events.event_was_successfully_destroyed') }
       format.json { head :no_content }
