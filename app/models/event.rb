@@ -1,11 +1,11 @@
 class Event < ApplicationRecord
-  include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  include PublicActivity::Common
 
   belongs_to :user, counter_cache: true
   belongs_to :language, counter_cache: true
   has_many :memberships,  class_name: 'EventMembership', dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :activities, as: :trackable, class_name: 'PublicActivity::Activity', dependent: :destroy
 
   validates_presence_of :title, :description, :max_members, :starts_at, :ends_at, :language, :latitude, :longitude, :address
   validates_datetime :ends_at, :starts_at, after: DateTime.current + 24.hours

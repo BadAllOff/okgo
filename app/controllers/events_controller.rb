@@ -43,6 +43,7 @@ class EventsController < ApplicationController
     build_markers_hash
     respond_to do |format|
       if @event.save
+        @event.create_activity key: 'event.create', owner: current_user
         current_user.follow!(@event)
         format.html { redirect_to @event, notice: I18n.t('events.event_was_successfully_created') }
       else
@@ -56,6 +57,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
+        @event.create_activity key: 'event.update', owner: current_user
         format.html { redirect_to @event, notice: I18n.t('events.event_was_successfully_updated') }
       else
         format.html { render :edit }

@@ -5,12 +5,15 @@ class SocializationsController < ApplicationController
   def like
     current_user.like!(@socializable)
     @socializable.update(likers_count: @socializable.likers(User).count)
+    @socializable.create_activity key: "#{@socializable.class.name.downcase}.liked", owner: current_user, recipient: @socializable.user
     render 'socializations/like.json.jbuilder'
   end
 
   def unlike
     current_user.unlike!(@socializable)
     @socializable.update(likers_count: @socializable.likers(User).count)
+    @activity = PublicActivity::Activity.find_by(trackable_id: (@socializable.id), trackable_type: @socializable.class.name)
+    @activity.destroy
     render 'socializations/unlike.json.jbuilder'
   end
 

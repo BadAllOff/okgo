@@ -1,0 +1,42 @@
+<li>
+  <i class="fa fa-comment-o bg-blue-active"></i>
+
+  <div class="timeline-item">
+
+    <div class="box box-widget">
+      <div class="box-header with-border">
+        <div class="user-block">
+          <%= image_tag(activity.owner.profile.photo.url('medium'), class: 'img-circle img-bordered-sm', alt: 'User Avatar') %>
+          <span class="username"><a href="#"><%= link_to activity.owner.profile.firstname, profile_path(activity.owner) %></a></span>
+          <span class="description">Shared publicly - <%= time_ago_in_words(activity.created_at, include_seconds: true) %></span>
+        </div>
+        <!-- /.user-block -->
+        <!--        <div class="box-tools">
+                  <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
+                    <i class="fa fa-circle-o"></i></button>
+                </div>-->
+        <!-- /.box-tools -->
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <!-- post text -->
+        <p>
+          <% if activity.trackable %>
+              added an comment to <%= link_to 'event', event_path(activity.trackable) %>
+          <% else %>
+              added an comment to event, which has since been removed.
+          <% end %>
+        </p>
+        <!-- Attachment -->
+        <!-- Social sharing buttons -->
+        <!--<button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>-->
+        <!--<span class="pull-right text-muted">45 likes - 2 comments</span>-->
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+
+      </div>
+      <!-- /.box-footer -->
+    </div>
+  </div>
+</li>
