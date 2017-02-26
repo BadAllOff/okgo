@@ -135,6 +135,29 @@ ru:
     your_comment_was_successfully_destroyed: 'Комментарий удалён.'
     comment_body_cant_be_blank: "Комментарий не может быть пустым."
     leave_a_comment: 'Оставить комментарий'
+  notifications:
+    event:
+      created_an_event: "Создал(а) мероприятие"
+      created_an_event_which_has_since_been_removed: "Создал(а) мероприятие, которое более не существует."
+      liked_event: "Нравится мероприятие"
+      liked_event_which_has_since_been_removed: "Понравилось мериприятие, которое более не существует."
+      updated_an_event: "Обновил(а) мероприятие"
+      updated_an_event_which_has_since_been_removed: "Обновил мероприятие, которое более не существует."
+      deleted_an_event: "Удалил(а) мероприятие."
+      joined_event: "Присоединился(ась) к мероприятию"
+      joined_event_which_has_since_been_removed: "Присоединился(ась) к мероприятию, которое более не существует."
+      leaved_event: "Покинул(а) мероприятие"
+      leaved_event_which_has_since_been_removed: "Покинул(а) мероприятие, которое более не существует."
+      comment:
+        commented_to_event: 'Прокомментировал(а) мероприятие'
+        commented_to_event_which_has_since_been_removed:  "Прокомментировал(a) мероприятие, которое более не существует."
+    feedback:
+      feedback: 'отзыв'
+      liked_feedback: "Понравился"
+      liked_feedback_which_has_since_been_removed: "Понравился отзыв, который более не существует."
+      comment:
+        commented_to: 'Прокомментировал(а)'
+        commented_to_feedback_which_has_since_been_removed:  "Прокомментировал(a) отзыв, который более не существует."
   abbr_day_names:
     Sun: Вс
     Mon: Пн

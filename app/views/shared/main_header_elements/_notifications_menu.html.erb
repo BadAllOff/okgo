@@ -4,19 +4,25 @@
     <i class="fa fa-bell-o"></i>
     <span class="label label-warning">10</span>
   </a>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu" style="width: 340px;">
     <li class="header">You have 10 notifications</li>
     <li>
       <!-- Inner Menu: contains the notifications -->
       <ul class="menu">
-        <li><!-- start notification -->
-          <a href="#">
-            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-          </a>
-        </li>
+        <% if @activities %>
+            <% @activities.each do |activity| %>
+                <% activity.key = "#{activity.key}_notification" %>
+                <%= render_activity activity %>
+            <% end %>
+        <% end %>
         <!-- end notification -->
       </ul>
     </li>
-    <li class="footer"><a href="#">View all</a></li>
+
+    <li class="footer">
+      <%= link_to activities_path do %>
+          <i class="fa fa-hourglass-3"></i> <span><%= t 'sidebar_navigation.activities' %></span>
+      <% end %>
+    </li>
   </ul>
 </li>

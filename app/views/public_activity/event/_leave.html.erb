@@ -1,5 +1,5 @@
 <li>
-  <i class="fa fa-calendar bg-blue"></i>
+  <i class="fa fa-user-times bg-red"></i>
 
   <div class="timeline-item">
 
@@ -8,15 +8,15 @@
         <div class="user-block">
           <%= show_profile_img(activity.owner, 'medium', "img-circle img-bordered-sm") %>
           <span class="username"><a href="#"><%= link_to activity.owner.profile.firstname, profile_path(activity.owner) %></a></span>
-          <span class="description">Shared publicly - <%= time_ago_in_words(activity.created_at, include_seconds: true) %></span>
+          <span class="description"> <%= time_ago_in_words(activity.created_at, include_seconds: true) %></span>
         </div>
       </div>
       <div class="box-body">
         <p>
           <% if activity.trackable %>
-              CREATED an event <%= activity.trackable.title %>
+              <%= t'notifications.event.leaved_event' %> <%= link_to "#{activity.trackable.title}", event_path(activity.trackable) %>
           <% else %>
-              CREATED an event, which has since been removed.
+              <%= t'notifications.event.leaved_event_which_has_since_been_removed' %>
           <% end %>
         </p>
       </div>

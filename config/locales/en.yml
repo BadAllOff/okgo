@@ -120,6 +120,25 @@ en:
     your_comment_was_successfully_destroyed: 'Your comment was successfully deleted.'
     comment_body_cant_be_blank: "Comment body can't be blank."
     leave_a_comment: 'Leave a comment'
+  notifications:
+    event:
+      created_an_event: "Created an event"
+      created_an_event_which_has_since_been_removed: "Created an event, which has since removed."
+      liked_event: "Likes an event "
+      liked_event_which_has_since_been_removed: "Likes an event, which has since removed."
+      updated_an_event: "Updated an event"
+      updated_an_event_which_has_since_been_removed: "Updated an event, which has since removed."
+      deleted_an_event: "Удалил мероприятие."
+      comment:
+        commented_to_event: 'Commented on event'
+        commented_to_event_which_has_since_been_removed:  "Commented on event, which has since removed."
+    feedback:
+      feedback: 'feedback'
+      liked_feedback: "Likes"
+      liked_feedback_which_has_since_been_removed: "Likes feedback, which has since removed."
+      comment:
+        commented_to: 'Commented on'
+        commented_to_feedback_which_has_since_been_removed:  "Commented on feedback, which has since removed."
   activerecord:
       attributes:
         profile:

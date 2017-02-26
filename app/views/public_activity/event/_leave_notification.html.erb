@@ -1,0 +1,19 @@
+<li>
+  <div class="pull-left user-block col-xs-2">
+    <%= show_profile_img(activity.owner, 'small', "bg-red", "", false) %>
+  </div>
+  <div class="col-xs-10">
+    <h5>
+      <%= link_to activity.owner.profile.firstname, profile_path(activity.owner) %>
+      <small class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(activity.created_at, include_seconds: true) %></small>
+    </h5>
+    <p>
+      <% if activity.trackable %>
+          <%= t'notifications.event.leaved_event' %> <%= link_to "#{activity.trackable.title}", event_path(activity.trackable) %>
+      <% else %>
+          <%= t'notifications.event.leaved_event_which_has_since_been_removed' %>
+      <% end %>
+    </p>
+    <p class="clearfix"></p>
+  </div>
+</li>
