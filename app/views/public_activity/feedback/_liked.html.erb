@@ -12,9 +12,9 @@
       <div class="box-body">
         <p>
           <% if activity.trackable %>
-              Liked your <%= link_to 'feedback', feedback_path(activity.trackable) %>
+              <%= t'notifications.feedback.liked_feedback' %> <%= link_to (t'notifications.feedback.feedback'), feedback_path(activity.trackable) %>
           <% else %>
-              Liked your feedback, which has since been removed.
+              <%= t'notifications.feedback.liked_feedback_which_has_since_been_removed' %>
           <% end %>
         </p>
       </div>

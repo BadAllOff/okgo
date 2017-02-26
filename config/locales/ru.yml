@@ -540,3 +540,6 @@ ru:
       negative: "Негативное"
       suggestion: "У меня есть идея!"
       leave_feedback: 'Оставить отзыв или предложение'
+    feedback_was_successfully_created: "Ваш отзыв успешно создан."
+    feedback_was_successfully_updated: "Ваш отзыв успешно обновлен."
+    feedback_was_successfully_destroyed: "Ваш отзыв успешно удален."

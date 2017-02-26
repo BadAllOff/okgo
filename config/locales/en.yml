@@ -177,5 +177,8 @@ en:
       positive: "Positive"
       negative: "Negative"
       leave_feedback: "Leave feedback or suggestion"
+    feedback_was_successfully_created: "Feedback was successfully created."
+    feedback_was_successfully_updated: "Feedback was successfully updated."
+    feedback_was_successfully_destroyed: "Feedback was successfully destroyed."
   event:
     event_was_successfully_destroyed: "Event was successfully destroyed"

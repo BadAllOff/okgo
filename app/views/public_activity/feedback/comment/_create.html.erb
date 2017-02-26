@@ -12,9 +12,9 @@
       <div class="box-body">
         <p>
           <% if activity.trackable %>
-              CREATED an comment to <%= link_to 'feedback', feedback_path(activity.trackable) %>
+              <%= t'notifications.feedback.comment.commented_to' %> <%= link_to 'feedback', feedback_path(activity.trackable) %>
           <% else %>
-              CREATED an comment to feedback, which has since been removed.
+              <%= t'notifications.feedback.comment.commented_to_feedback_which_has_since_been_removed' %>
           <% end %>
         </p>
       </div>

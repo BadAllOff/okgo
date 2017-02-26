@@ -1,9 +1,11 @@
 class FeedbacksController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  authorize_resource
+
   include Profiled
   include Breadcrumbed
+  include Notified
 
-  authorize_resource
 
   before_action :set_feedback_index_breadcrumb
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
@@ -36,7 +38,8 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
+        current_user.follow!(@feedback)
+        format.html { redirect_to @feedback, notice: I18n.t('feedbacks.feedback_was_successfully_created') }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -50,7 +53,8 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       if @feedback.update(feedback_params)
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
+        current_user.follow!(@feedback)
+        format.html { redirect_to @feedback, notice: I18n.t('feedbacks.feedback_was_successfully_updated') }
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit }
@@ -65,7 +69,7 @@ class FeedbacksController < ApplicationController
     @feedback.destroy
     Follow.remove_followers(@feedback)
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully destroyed.' }
+      format.html { redirect_to feedbacks_url, notice: I18n.t('feedbacks.feedback_was_successfully_destroyed') }
       format.json { head :no_content }
     end
   end

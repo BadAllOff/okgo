@@ -12,9 +12,9 @@
       <div class="box-body">
         <p>
           <% if activity.trackable %>
-              added an comment to <%= link_to 'event', event_path(activity.trackable) %>
+              <%= t'notifications.event.comment.commented_to_event' %> <%= link_to "#{activity.trackable.title}", event_path(activity.trackable) %>
           <% else %>
-              added an comment to event, which has since been removed.
+              <%= t'notifications.event.comment.commented_to_event_which_has_since_been_removed' %>
           <% end %>
         </p>
       </div>

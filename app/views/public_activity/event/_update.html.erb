@@ -12,9 +12,9 @@
       <div class="box-body">
         <p>
           <% if activity.trackable %>
-              UPDATED an event <%= activity.trackable.title %>
+              <%= t'notifications.event.updated_an_event' %> <%= link_to "#{activity.trackable.title}", event_path(activity.trackable) %>
           <% else %>
-              UPDATED an event, which has since been removed.
+              <%= t'notifications.event.updated_an_event_which_has_since_been_removed' %>
           <% end %>
         </p>
       </div>

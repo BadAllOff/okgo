@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy]
 
   authorize_resource
+  include Notified
 
   def create
     @comment = @commentable.comments.new comment_params
@@ -12,7 +13,9 @@ class CommentsController < ApplicationController
         increment_conters
         current_user.follow!(@commentable)
         # Save record about activity
-        @commentable.create_activity key: "#{@commentable.class.name.downcase}.comment.create", owner: current_user
+        activity = @commentable.create_activity key: "#{@commentable.class.name.downcase}.comment.create", owner: current_user
+        notify_followers(activity, @commentable.followers(User))
+
         format.json { render partial: 'comments/create.json.jbuilder'}
         format.html { redirect_to @commentable, notice: t('comments.your_comment_was_successfully_posted') }
       else
