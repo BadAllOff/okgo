@@ -231,7 +231,6 @@ ActiveRecord::Schema.define(version: 20170226181949) do
   add_foreign_key "events", "languages"
   add_foreign_key "events", "users"
   add_foreign_key "feedbacks", "users"
-  add_foreign_key "notices", "activities"
   add_foreign_key "notices", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "rated_memberships", "event_memberships"

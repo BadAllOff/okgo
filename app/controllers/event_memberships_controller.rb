@@ -6,6 +6,7 @@ class EventMembershipsController < ApplicationController
   before_action :get_users_membership, only: [:member_attended, :member_not_attended, :rate_member]
 
   include Profiled
+  include Notified
   include Breadcrumbed
   before_action :set_membership_index_breadcrumb, only: [ :join, :leave, :as_tutor, :as_member]
 
@@ -15,8 +16,12 @@ class EventMembershipsController < ApplicationController
     @event_membership = EventMembership.new(user: current_user, event: @event)
     respond_to do |format|
       if @event.joinable?(@event_membership) && @event_membership.save
-        @event.create_activity key: 'event.join', owner: current_user
+        # notifie followers
+        activity = @event.create_activity key: 'event.join', owner: current_user
+        notify_followers(activity, @event.followers(User))
+        # then add user to event
         current_user.follow!(@event)
+
         format.html { redirect_to @event, notice: t('events.you_have_joined_to_the_event') }
         format.json { render 'joined.json.jbuilder', status: :ok }
       else
@@ -30,8 +35,12 @@ class EventMembershipsController < ApplicationController
   def leave
     @event_membership.destroy if !@event_membership.nil?
     respond_to do |format|
+      # take user out of event
       current_user.unfollow!(@event)
-      @event.create_activity key: 'event.leave', owner: current_user
+      # notifie followers
+      activity = @event.create_activity key: 'event.leave', owner: current_user
+      notify_followers(activity, @event.followers(User))
+
       format.html { redirect_to events_url, notice: t('events.you_have_left_the_event') }
       format.json { render 'leaved.json.jbuilder', status: :ok }
     end
@@ -120,6 +129,7 @@ class EventMembershipsController < ApplicationController
   end
 
   private
+
     def set_membership_index_breadcrumb
       add_breadcrumb I18n.t('breadcrumbs.event_memberships.index'), '#'
     end

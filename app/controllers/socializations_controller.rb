@@ -2,10 +2,13 @@ class SocializationsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_socializable
 
+  include Notified
+
   def like
     current_user.like!(@socializable)
     @socializable.update(likers_count: @socializable.likers(User).count)
-    @socializable.create_activity key: "#{@socializable.class.name.downcase}.liked", owner: current_user, recipient: @socializable.user
+    activity = @socializable.create_activity key: "#{@socializable.class.name.downcase}.liked", owner: current_user, recipient: @socializable.user
+    notify_followers(activity, @socializable.followers(User))
     render 'socializations/like.json.jbuilder'
   end
 

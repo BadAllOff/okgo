@@ -6,9 +6,8 @@ class ActivitiesController < ApplicationController
   before_action :set_page_title
 
   def index
-
-    @activities = PublicActivity::Activity.order('created_at desc').limit(10).includes(:trackable, :owner)
-    # @activities = PublicActivity::Activity.where(owner_type: User, owner_id: current_user).order('created_at desc').limit(10).includes(:trackable, :owner)
+    @notices = Notice.where(user: current_user).order('created_at desc').limit(10).pluck(:activity_id)
+    @activities = PublicActivity::Activity.where(id: @notices).order('created_at desc').includes(:trackable, :owner)
   end
 
   private
