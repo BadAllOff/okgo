@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225120142) do
+ActiveRecord::Schema.define(version: 20170226181949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,17 @@ ActiveRecord::Schema.define(version: 20170225120142) do
     t.index ["mentioner_id", "mentioner_type"], name: "fk_mentions", using: :btree
   end
 
+  create_table "notices", force: :cascade do |t|
+    t.integer  "user_id",                     null: false
+    t.integer  "activity_id",                 null: false
+    t.datetime "read_at"
+    t.boolean  "read",        default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["activity_id"], name: "index_notices_on_activity_id", using: :btree
+    t.index ["user_id"], name: "index_notices_on_user_id", using: :btree
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -208,6 +219,7 @@ ActiveRecord::Schema.define(version: 20170225120142) do
     t.integer  "comments_count",          default: 0
     t.boolean  "blocked",                 default: false
     t.integer  "followees_count",         default: 0
+    t.integer  "notices_count",           default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -219,6 +231,8 @@ ActiveRecord::Schema.define(version: 20170225120142) do
   add_foreign_key "events", "languages"
   add_foreign_key "events", "users"
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "notices", "activities"
+  add_foreign_key "notices", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "rated_memberships", "event_memberships"
   add_foreign_key "rated_memberships", "users"

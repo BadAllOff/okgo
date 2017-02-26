@@ -146,4 +146,5 @@ class EventMembershipsController < ApplicationController
       params.require(:event_membership).permit(:event_id, :attended)
     end
 
+
 end

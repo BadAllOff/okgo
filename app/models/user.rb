@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :event_memberships, dependent: :destroy
   has_many :rated_memberships, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
+  has_many :notices, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
