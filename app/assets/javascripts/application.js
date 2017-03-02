@@ -180,7 +180,10 @@ $(document).on('ajax:success', '.destroy_comment', function(e, data, status, xhr
 });
 
 $(document).on('ajax:success', '#get-notifications', function(e, data, status, xhr) {
-    $('.notifications-menu').find('.label-warning').html('');
+    notificationLabel = $('.notifications-menu').find('.label-warning')
+    notificationLabel.removeClass('flash-has-been-shown');
+    notificationLabel.html('');
+
     $(this).next().find('.menu').html(data);
 });
 
@@ -203,10 +206,22 @@ $(document).on('ajax:error', '#get-notifications', function(e, data, status, xhr
 // Use a named immediately-invoked function expression.
 (function worker() {
     $.get('/notifications_count.json', function(data) {
+        notificationLabel = $('.notifications-menu').find('.label-warning')
         // Now that we've completed the request schedule the next one.
         if (data > 0)
         {
-            $('.notifications-menu').find('.label-warning').html(data);
+            notificationLabel.html(data);
+            if ($(window).scrollTop() > 100)
+            {
+                if (!notificationLabel.hasClass('flash-has-been-shown'))
+                {
+                    flash_msg = "<a href='#get-notifications'><i class='fa fa-bell-o'></i> " + data + "</a>"
+                    iziToast.success({
+                        message: flash_msg
+                    });
+                }
+            }
+            notificationLabel.addClass('flash-has-been-shown');
         }
         setTimeout(worker, 10000);
     });
