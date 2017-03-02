@@ -180,6 +180,7 @@ $(document).on('ajax:success', '.destroy_comment', function(e, data, status, xhr
 });
 
 $(document).on('ajax:success', '#get-notifications', function(e, data, status, xhr) {
+    $('.notifications-menu').find('.label-warning').html('');
     $(this).next().find('.menu').html(data);
 });
 
@@ -198,6 +199,19 @@ $(document).on('ajax:error', '#get-notifications', function(e, data, status, xhr
 //  end of Comments ////////////////////////////////////////////////////////////////////////////////
 
 //
+
+// Use a named immediately-invoked function expression.
+(function worker() {
+    $.get('/notifications_count.json', function(data) {
+        // Now that we've completed the request schedule the next one.
+        if (data > 0)
+        {
+            $('.notifications-menu').find('.label-warning').html(data);
+        }
+        setTimeout(worker, 10000);
+    });
+})();
+
 $(document).ready(ready);
 $(document).on('page:load', ready);
 $(document).on('page:update', ready);

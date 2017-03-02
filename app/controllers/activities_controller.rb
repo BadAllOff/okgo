@@ -7,6 +7,7 @@ class ActivitiesController < ApplicationController
   before_action :get_notices, except: [ :notifications_count ]
   after_action :reset_notices_counter, except: [ :notifications_count ]
   after_action :set_notifications_as_read, except: [ :notifications_count ]
+  before_filter :set_cache_headers, only: [ :notifications_count ]
 
   def index
     # TODO Kaminari pagination
@@ -27,7 +28,7 @@ class ActivitiesController < ApplicationController
   end
 
   def notifications_count
-    render current_user.notices_count.to_json
+      render json: current_user.notices_count
   end
 
   private
@@ -51,4 +52,11 @@ class ActivitiesController < ApplicationController
   def set_notifications_as_read
     Notice.where(user: current_user, read: false).update(read_at: Time.zone.now, read: true)
   end
+
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+
 end
