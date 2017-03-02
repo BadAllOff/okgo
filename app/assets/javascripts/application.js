@@ -206,23 +206,30 @@ $(document).on('ajax:error', '#get-notifications', function(e, data, status, xhr
 // Use a named immediately-invoked function expression.
 (function worker() {
     $.get('/notifications_count.json', function(data) {
-        notificationLabel = $('.notifications-menu').find('.label-warning')
+        notificationLabel = $('.notifications-menu').find('.label-warning');
         // Now that we've completed the request schedule the next one.
         if (data > 0)
         {
-            notificationLabel.html(data);
+            notificationLabel.html(data); // add notifications number into label
             if ($(window).scrollTop() > 100)
             {
-                if (!notificationLabel.hasClass('flash-has-been-shown'))
+                if(previousNumber != data ) // if number of notifications changed
                 {
-                    flash_msg = "<a href='#get-notifications'><i class='fa fa-bell-o'></i> " + data + "</a>"
-                    iziToast.success({
-                        message: flash_msg
-                    });
+                    notificationLabel.removeClass('flash-has-been-shown'); //remove class to make next condition pass
+
+                    if (!notificationLabel.hasClass('flash-has-been-shown')) // if flash not shown - show it
+                    {
+                        flash_msg = "<a href='#get-notifications'><i class='fa fa-angle-double-up'></i> " + data + "</a>";
+                        iziToast.info({
+                            message: flash_msg
+                        });
+                    }
                 }
             }
             notificationLabel.addClass('flash-has-been-shown');
         }
+
+        previousNumber = data;
         setTimeout(worker, 10000);
     });
 })();
