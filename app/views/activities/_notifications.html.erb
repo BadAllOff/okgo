@@ -1,4 +1,6 @@
 <% if activities %>
+    <% @check_time = Time.now
+       @check_time = @check_time - 1.hours  %>
     <% activities.each do |activity| %>
         <% activity.key = "#{activity.key}_notification" %>
         <%= render_activity activity %>

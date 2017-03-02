@@ -16,7 +16,13 @@ class ActivitiesController < ApplicationController
   end
 
   def notifications
-    @activities = PublicActivity::Activity.where(id: @notices).order('created_at desc').includes(:trackable, :owner)
+    if current_user.notices_count > 9
+      notices_limit = current_user.notices_count
+    else
+      notices_limit = 10
+    end
+    @activities = PublicActivity::Activity.where(id: @notices).order('created_at desc').limit(notices_limit).includes(:trackable, :owner)
+    render partial: 'activities/notifications', locals: {activities: @activities}
   end
 
   private
@@ -30,7 +36,7 @@ class ActivitiesController < ApplicationController
   end
 
   def reset_notices_counter
-    User.reset_counters(current_user.id, :notices)
+    User.where(id: current_user.id).update(notices_count: 0)
   end
 
   def get_notices

@@ -8,6 +8,7 @@ module Notified
     followers.each do |follower|
       notice = Notice.new(activity: activity, user: follower);
       notice.save! unless current_user.id == follower.id
+      follower.update(notices_count: follower.notices_count+1) unless current_user.id == follower.id
     end
   end
 end

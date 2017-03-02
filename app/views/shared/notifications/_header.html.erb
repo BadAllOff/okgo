@@ -1,0 +1,8 @@
+<h5>
+  <%= link_to activity.owner.profile.firstname, profile_path(activity.owner) %>
+  <small class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(activity.created_at, include_seconds: true) %>
+  <% if activity.created_at > @check_time %>
+    NEW
+  <% end %>
+  </small>
+</h5>

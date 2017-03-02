@@ -24,7 +24,10 @@ Rails.application.routes.draw do
       delete 'unlike', to: 'socializations#unlike'
       resources :comments, module: :feedbacks
     end
-    resources :activities
+
+    match 'notifications' => 'activities#notifications', :via => :get
+
+    resources :activities, only: [:index]
     resources :profiles, :languages
     resources :events do
       member do

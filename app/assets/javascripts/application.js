@@ -179,6 +179,22 @@ $(document).on('ajax:success', '.destroy_comment', function(e, data, status, xhr
     });
 });
 
+$(document).on('ajax:success', '#get-notifications', function(e, data, status, xhr) {
+    $(this).next().find('.menu').html(data);
+});
+
+$(document).on('ajax:error', '#get-notifications', function(e, data, status, xhr) {
+    $(this).next().find('.menu').prepend('<li class="text-red"> Error. Please try again later. </li>');
+    $('.overlay').addClass('hidden');
+});
+
+// $('#get-notifications').on('show.bs.dropdown', function () {
+//     alert('dropdown show');
+// })
+//
+// $('#get-notifications').on('hide.bs.dropdown', function () {
+//     alert('dropdown hide');
+// })
 //  end of Comments ////////////////////////////////////////////////////////////////////////////////
 
 //

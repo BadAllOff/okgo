@@ -11,7 +11,7 @@ en:
     events: 'Events'
     profiles: 'Profile'
     event_memberships: 'Memberships'
-    activities: 'Recent activities'
+    activities: 'Recent notifications'
     feedbacks: "Feedbacks"
   breadcrumbs:
     homepage: 'Home'
@@ -31,7 +31,7 @@ en:
       as_tutor: 'As tutor'
       as_member: 'As member'
     activity:
-      index: 'Activity'
+      index: 'Notifications'
     feedback:
       index: "Feedbacks"
   sidebar_navigation:
@@ -44,7 +44,7 @@ en:
       index: 'My events'
       as_tutor: 'As tutor'
       as_member: 'As member'
-    activities: 'Activities'
+    activities: 'Notifications'
     feedbacks: "Feedbacks and suggestions"
   events:
     create_new_event: 'Create new event'
