@@ -4,4 +4,7 @@
         <%= render_activity activity %>
     <% end %>
   </ul>
+
+  <%= paginate @activities, window: 2 %>
+
 </div>

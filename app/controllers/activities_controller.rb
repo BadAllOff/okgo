@@ -2,14 +2,15 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_user!
   include Profiled
   include Breadcrumbed
-  before_action :set_activity_index_breadcrumb
-  before_action :set_page_title
-  before_action :get_notices
-  after_action :reset_notices_counter
-  after_action :set_notifications_as_read
+  before_action :set_activity_index_breadcrumb, except: [ :notifications_count ]
+  before_action :set_page_title, except: [ :notifications_count ]
+  before_action :get_notices, except: [ :notifications_count ]
+  after_action :reset_notices_counter, except: [ :notifications_count ]
+  after_action :set_notifications_as_read, except: [ :notifications_count ]
 
   def index
-    @activities = PublicActivity::Activity.where(id: @notices).order('created_at desc').includes(:trackable, :owner)
+    # TODO Kaminari pagination
+    @activities = PublicActivity::Activity.where(id: @notices).order('created_at desc').includes(:trackable, :owner).page(params[:page]).per(25)
     respond_to do |format|
       format.html { @activities }
     end
@@ -23,6 +24,10 @@ class ActivitiesController < ApplicationController
     end
     @activities = PublicActivity::Activity.where(id: @notices).order('created_at desc').limit(notices_limit).includes(:trackable, :owner)
     render partial: 'activities/notifications', locals: {activities: @activities}
+  end
+
+  def notifications_count
+    render current_user.notices_count.to_json
   end
 
   private

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
 
     match 'notifications' => 'activities#notifications', :via => :get
+    match 'notifications_count' => 'activities#notifications_count', :via => :get
 
     resources :activities, only: [:index]
     resources :profiles, :languages

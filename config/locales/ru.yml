@@ -44,7 +44,7 @@ ru:
       index: 'Мои мероприятия'
       as_tutor: 'Как организатор'
       as_member: 'Как участник'
-    activities: 'Активити'
+    activities: 'Оповещения'
     feedbacks: "Отзывы и предложения"
   events:
     create_new_event: 'Создать новое мероприятие'
