@@ -80,7 +80,10 @@ en:
       new_event: 'New Event'
       starts_at: 'Starts at'
       ends_at: 'Ends at'
-      maximum_participants: 'Maximum participants'
+      max_members: 'Max. members'
+      language: 'Language'
+      title: 'Title'
+      comments: "Comments"
     not_finished_yet: "Event not finished yet"
     event_was_successfully_created: "Event was successfully created"
     event_was_successfully_updated: "Event was successfully updated"

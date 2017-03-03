@@ -12,9 +12,14 @@
 @import "libs/dd/dd";
 @import "md_simple_editor";
 
-.user-block dl.description{
+.user-block ul.list-group {
   font-size: 14px;
-  color: black;
+
+  li.list-group-item{
+    padding: 3px 15px;
+    border: none;
+    //color: #6b6a6a;
+  }
 }
 
 .user-block img.flag-micro {

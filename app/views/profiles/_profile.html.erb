@@ -69,9 +69,9 @@
     <!-- Custom Tabs -->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><%= t'profiles.profile' %></a></li>
-        <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true"><%= t'profiles.activity' %></a></li>
-        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="true"><%= t'profiles.progress_chart' %></a></li>
+        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><i class="fa fa-user-o"></i> <%= t'profiles.profile' %></a></li>
+        <!--<li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true"><%= t'profiles.activity' %></a></li>-->
+        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="true"><i class="fa fa-area-chart"></i> <%= t'profiles.progress_chart' %></a></li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab_1">
@@ -93,13 +93,13 @@
           </dl>
         </div>
         <!-- /.tab-pane -->
-        <div class="tab-pane" id="tab_2">
-          <% if activitie %>
-              <% activitie.each do |activity| %>
-                  <%= render_activity activity %>
-              <% end %>
-          <% end %>
-        </div>
+        <!--<div class="tab-pane" id="tab_2">-->
+          <!--<% if activitie %>-->
+              <!--<% activitie.each do |activity| %>-->
+                  <!--<%= render_activity activity %>-->
+              <!--<% end %>-->
+          <!--<% end %>-->
+        <!--</div>-->
         <!-- /.tab-pane -->
         <div class="tab-pane" id="tab_3">
           <%

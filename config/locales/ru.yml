@@ -96,6 +96,7 @@ ru:
       language: 'Язык'
       title: 'Тема'
       create_event: 'Создать мероприятие'
+      comments: "Комментарии"
     not_finished_yet: "Мероприятие еще не закончилось"
     event_was_successfully_created: "Мероприятие успешно создано"
     event_was_successfully_updated: "Мероприятие успешно обновлено"
