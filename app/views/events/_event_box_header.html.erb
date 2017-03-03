@@ -13,14 +13,14 @@
   <div class="clearfix"></div>
   <h4><%= event.title %></h4>
   <ul class="list-group">
-    <li class="list-group-item"><i class="fa fa-language" data-original-title='<%= t 'events.event.language' %>' data-toggle="tooltip" ></i> - <%= event.language.description %></li>
-    <li class="list-group-item"><i class="fa fa-users" data-original-title='<%= t 'events.event.max_members' %>' data-toggle="tooltip" ></i> - <%= event.event_memberships_count %> / <%= event.max_members %>
+    <li class="list-group-item"><i class="fa fa-language" data-original-title='<%= t 'events.event.language' %>' data-toggle="tooltip" ></i>  <%= event.language.description %></li>
+    <li class="list-group-item"><i class="fa fa-users" data-original-title='<%= t 'events.event.max_members' %>' data-toggle="tooltip" ></i>  <%= event.event_memberships_count %> / <%= event.max_members %>
     </li>
-    <li class="list-group-item"><i class="fa fa-calendar-check-o" data-original-title='<%= t 'events.event.starts_at' %>' data-toggle="tooltip" ></i> -
-      <span class="label label-default wday_<%= event.starts_at.wday %>"><%= event.starts_at.strftime('%a') %></span>
+    <li class="list-group-item">
+      <span class="label label-default wday_<%= event.starts_at.wday %>"><%= I18n.l event.starts_at, format: '%a' %></span>
       <%= I18n.l event.starts_at, format: ("%b %d") %>,
       <%= t ('events.event.starts_at') %>
       <%= I18n.l event.starts_at, format: ("%H:%M") %></li>
-    <li class="list-group-item"><i class="fa fa-comments" data-original-title='<%= t 'events.event.comments' %>' data-toggle="tooltip" ></i> - <%= (t("comments",count: event.comments_count)).capitalize %></li>
+    <li class="list-group-item"><i class="fa fa-comments" data-original-title='<%= t 'events.event.comments' %>' data-toggle="tooltip" ></i>  <%= (t("comments",count: event.comments_count)).capitalize %></li>
   </ul>
 </div>
