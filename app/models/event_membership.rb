@@ -1,7 +1,7 @@
 class EventMembership < ApplicationRecord
   # before_validation :check_authorship
-  belongs_to :event, counter_cache: true
-  belongs_to :user, counter_cache: true
+  belongs_to :event, counter_cache: true, touch: true
+  belongs_to :user, counter_cache: true, touch: true
   has_one :profile, through: :user
   has_many :rated_memberships, dependent: :destroy
 

@@ -1,7 +1,7 @@
 class Feedback < ApplicationRecord
   include PublicActivity::Common
 
-  belongs_to :user
+  belongs_to :user, touch: true
   has_many :comments, as: :commentable, dependent: :destroy
 
   acts_as_likeable

@@ -1,8 +1,8 @@
 class Event < ApplicationRecord
   include PublicActivity::Common
 
-  belongs_to :user, counter_cache: true
-  belongs_to :language, counter_cache: true
+  belongs_to :user, counter_cache: true, touch: true
+  belongs_to :language, counter_cache: true, touch: true
   has_many :memberships,  class_name: 'EventMembership', dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :activities, as: :trackable, class_name: 'PublicActivity::Activity', dependent: :destroy

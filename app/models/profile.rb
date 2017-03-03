@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, touch: true
   before_create :create_unique_identifier
   # :placeholder-s initialized in paperclip.rb initializer
   has_attached_file :photo,
