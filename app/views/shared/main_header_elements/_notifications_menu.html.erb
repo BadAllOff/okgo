@@ -5,7 +5,7 @@
       <span class="label label-warning"><%= current_user.notices_count if current_user.notices_count != 0 %></span>
   <% end %>
   <ul class="dropdown-menu" style="width: 340px;">
-    <li class="header">Notifications</li>
+    <!--<li class="header">Notifications</li>-->
     <li class="box" style="border-top: 0px; margin-bottom: 1px;">
       <ul class="menu">
         <%= render partial: 'activities/notifications', locals: {activities: @activities} if @activities%>
