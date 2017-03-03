@@ -84,6 +84,7 @@ en:
       language: 'Language'
       title: 'Title'
       comments: "Comments"
+      address: "Address"
     not_finished_yet: "Event not finished yet"
     event_was_successfully_created: "Event was successfully created"
     event_was_successfully_updated: "Event was successfully updated"

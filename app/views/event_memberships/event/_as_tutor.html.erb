@@ -1,4 +1,4 @@
-<div class="box box-widget collapsed-box" id="event-<%= event.id %>"><!--collapsed-box-->
+<div class="box box-widget collapsed-box" id="event-<%= event.id %>">
   <div class="box-header with-border">
     <div class="user-block">
       <%= link_to profile_path(event.user.profile) do %>
@@ -30,12 +30,11 @@
       <%= t('event_memberships.event_description') %>
       <i class="fa fa-plus"></i>
     </button>
-  </div> <!-- /.box-header -->
+  </div>
 
   <div class="box-body">
-    <!-- post text -->
     <%= markdown(event.description) %>
-  </div><!-- /.box-body -->
+  </div>
 
   <div class="overlay hidden">
     <i class="fa fa-refresh fa-spin"></i>
@@ -67,17 +66,12 @@
     <%= link_to_unless_current('<i class="fa fa-map-marker"></i> Посмотреть на карте'.html_safe, event_path(event), class: 'btn btn-default') do
     end %>
 
-
-
     <span class="pull-right text-muted">
       <%= link_to 'Show', event, class: 'btn btn-xs btn-default' %> |
           <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-xs btn-primary' %> |
           <%= link_to 'Destroy', event, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('are_you_sure')} %>
-          <!--  <%= t('events.likes', count: event.likers(User).count) %> -
-      <%= t('events.joined', count: event.memberships.count) %>-->
     </span>
   </div>
-  <!-- /.box-footer -->
   <script id="eventLikeBtnTemplate" type="text/x-handlebars-template">
     <a class="btn {{btn_class}} like-btn" data-remote="true" rel="nofollow" data-method="{{method}}" href="{{link}}">
       <i class="fa fa-thumbs-o-up"></i> {{likers_count}} Like
