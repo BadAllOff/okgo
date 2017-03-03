@@ -1,7 +1,6 @@
 <%= render 'events/info_boxes' %>
 <div class="box box-widget">
   <div class="box-header hidden-xs with-border">
-    <!--<div class="box-footer">-->
     <% @languages.each do |lang| %>
       <% if lang.events_count > 0 %>
             <div class="btn-group-vertical flag-with-count">
@@ -10,15 +9,13 @@
             </div>
       <% end %>
     <% end %>
-    <!--</div>-->
     <div class="box-tools pull-right">
-      <!-- Buttons, labels, and many other things can be placed here! -->
       <%= link_to t('events.create_new_event'), new_event_path, class: 'btn btn-primary btn-flat', style: 'padding: 24px 33px; font-size: 15px; line-height: 0;' %>
-    </div><!-- /.box-tools -->
-  </div><!-- /.box-header -->
+    </div>
+  </div>
   <div class="box-header visible-xs with-border">
     <%= link_to t('events.create_new_event'), new_event_path, class: 'btn btn-block btn-primary btn-flat', style: 'padding: 24px 33px; font-size: 15px; line-height: 0;' %>
-  </div><!-- /.box-header -->
+  </div>
   <div class="box-footer visible-xs">
     <% @languages.each do |lang| %>
         <% if lang.events_count > 0 %>
@@ -29,7 +26,7 @@
         <% end %>
     <% end %>
   </div>
-</div><!-- /.box -->
+</div>
 
 <div class="row">
     <% @events.each_slice(2) do |events| %>
