@@ -1,4 +1,5 @@
-  <div class="box box-widget collapsed-box event_box" id="event_<%= event.id %>">
+<% cache [I18n.locale, event] do  %>
+<div class="box box-widget collapsed-box event_box" id="event_<%= event.id %>">
     <div class="box-header with-border">
     <%= render partial: 'events/event_box_header', locals: { event: event } %>
       <button type="button" class="btn btn-sm event_description" data-widget="collapse" style="background: none;"><%= t('event_memberships.event_description') %> <i class="fa fa-plus"></i>
@@ -19,3 +20,4 @@
       <i class="fa fa-refresh fa-spin"></i>
     </div>
   </div>
+<% end %>
