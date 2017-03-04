@@ -1,9 +1,7 @@
 <div>
   <ul class="timeline">
     <% @activities.each do |activity| %>
-      <% cache activity do %>
-        <%= render_activity activity %>
-      <% end %>
+      <%= render_activity activity %>
     <% end %>
   </ul>
 

@@ -1,4 +1,3 @@
-<!-- Custom Tabs -->
 <div class="nav-tabs-custom nav-tabs-memberships">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><%= t'event_memberships.future_events' %></a></li>
@@ -7,12 +6,10 @@
   <div class="tab-content">
     <div class="tab-pane active" id="tab_1">
       <% @future_event_memberships.each do |membership| %>
-          <!--<%= render partial: 'event_memberships/event/as_member', locals: {event: membership.event} if membership.event%>-->
           <%= render partial: 'events/event', locals: {event: membership.event} if membership.event%>
       <% end %>
       <%= paginate @future_event_memberships, window: 2 %>
     </div>
-    <!-- /.tab-pane -->
     <div class="tab-pane" id="tab_2">
       <% @past_event_memberships.each do |membership| %>
           <%= render partial: 'events/event', locals: {event: membership.event} if membership.event%>
@@ -20,7 +17,5 @@
       <%= paginate @past_event_memberships, window: 2 %>
     </div>
   </div>
-  <!-- /.tab-content -->
 </div>
-<!-- nav-tabs-custom -->
 <%= render partial: 'handlebars/members_template' %>

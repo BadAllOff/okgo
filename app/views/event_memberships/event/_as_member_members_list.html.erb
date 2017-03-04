@@ -1,7 +1,5 @@
 <div class="no-padding">
-  <!-- members list-->
   <% event.memberships.each do |member| %>
-
       <div class="media">
         <div class="media-left">
           <%= show_profile_img(member.user, 'medium', 'media-object img-responsive center-block') %>
@@ -20,5 +18,4 @@
         </div>
       </div>
   <% end %>
-  <!-- /.members-list -->
 </div>

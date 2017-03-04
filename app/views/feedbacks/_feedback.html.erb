@@ -7,24 +7,18 @@
       <span class="username"><a href="#"><%= feedback.user.profile.firstname %> <%=feedback.user.profile.lastname %></a></span>
       <span class="description"><%= time_ago_in_words(feedback.created_at) %> | <%= t("comments",count: feedback.comments_count) %> | <%= feedback.likers_count %> likes</span>
     </div>
-    <!-- /.user-block -->
     <div class="box-tools">
       <% if can?(:crud, feedback) %>
-      <!--<span class="pull-right">-->
         <%= link_to 'Show', feedback, class:'btn btn-xs btn-default' %>
         <%= link_to 'Edit', edit_feedback_path(feedback), class:'btn btn-xs btn-warning' %>
         <%= link_to 'Destroy', feedback, method: :delete, class:'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %>
-      <!--</span>-->
       <% end %>
       <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
       </button>
       <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
     </div>
-    <!-- /.box-tools -->
   </div>
-  <!-- /.box-header -->
   <div class="box-body">
-    <!-- post text -->
     <p>
       <%= markdown(feedback.feedback) %>
     </p>

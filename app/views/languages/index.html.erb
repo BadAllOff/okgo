@@ -2,11 +2,10 @@
   <div class="box-header with-border">
     <h3 class="box-title">Add new language</h3>
     <div class="box-tools pull-right">
-      <!-- Buttons, labels, and many other things can be placed here! -->
       <%= link_to 'New Language', new_language_path, class: 'btn btn-sm btn-primary' %>
-    </div><!-- /.box-tools -->
-  </div><!-- /.box-header -->
-</div><!-- /.box -->
+    </div>
+  </div>
+</div>
 
 <div class="row">
 
@@ -46,12 +45,12 @@
             <%= link_to 'Show', language %> |
             <%= link_to 'Edit', edit_language_path(language) %> |
             <%= link_to 'Destroy', language, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div><!-- box-footer -->
-        </div><!-- /.box -->
-      </div><!--/.col-md-6-->
+          </div>
+        </div>
+      </div>
 
     <% end %>
-</div><!--/.row-->
+</div>
 
 <br>
 

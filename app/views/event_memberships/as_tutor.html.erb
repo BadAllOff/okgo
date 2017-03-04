@@ -4,7 +4,6 @@
     <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true"><%= t'event_memberships.future_events' %></a></li>
   </ul>
   <div class="tab-content">
-    <!-- /.tab-pane -->
     <div class="tab-pane active" id="tab_1">
       <% if @past_events.present? %>
           <% @past_events.each do |event| %>
@@ -24,5 +23,5 @@
       <%= paginate @future_events, window: 2 %>
 
     </div>
-  </div> <!-- /.tab-content -->
-</div> <!-- / .nav-tabs-custom .nav-tabs-memberships -->
+  </div>
+</div>
