@@ -1,21 +1,23 @@
-<div class="box box-widget collapsed-box event_box" id="event_<%= event.id %>">
-  <div class="box-header with-border">
-  <%= render partial: 'events/event_box_header', locals: { event: event } %>
-    <button type="button" class="btn btn-sm event_description" data-widget="collapse" style="background: none;"><%= t('event_memberships.event_description') %> <i class="fa fa-plus"></i>
-    </button>
-  </div>
+<% cache event do %>
+  <div class="box box-widget collapsed-box event_box" id="event_<%= event.id %>">
+    <div class="box-header with-border">
+    <%= render partial: 'events/event_box_header', locals: { event: event } %>
+      <button type="button" class="btn btn-sm event_description" data-widget="collapse" style="background: none;"><%= t('event_memberships.event_description') %> <i class="fa fa-plus"></i>
+      </button>
+    </div>
 
-  <div class="box-body">
-    <%= render partial: 'events/event_box_body', locals: { event: event } %>
-  </div>
+    <div class="box-body">
+      <%= render partial: 'events/event_box_body', locals: { event: event } %>
+    </div>
 
-  <div class="box-footer event-btns">
-    <%= render partial: 'events/event_box_footer', locals: { event: event } %>
-  </div>
+    <div class="box-footer event-btns">
+      <%= render partial: 'events/event_box_footer', locals: { event: event } %>
+    </div>
 
-  <%= render partial: 'comments/comments', locals: { commentable: event } %>
+    <%= render partial: 'comments/comments', locals: { commentable: event } %>
 
-  <div class="overlay hidden">
-    <i class="fa fa-refresh fa-spin"></i>
+    <div class="overlay hidden">
+      <i class="fa fa-refresh fa-spin"></i>
+    </div>
   </div>
-</div>
+<% end %>

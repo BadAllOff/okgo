@@ -10,7 +10,6 @@ class ActivitiesController < ApplicationController
   before_filter :set_cache_headers, only: [ :notifications_count ]
 
   def index
-    # TODO Kaminari pagination
     @activities = PublicActivity::Activity.where(id: @notices).order('created_at desc').includes(:trackable, :owner).page(params[:page]).per(25)
     respond_to do |format|
       format.html { @activities }
