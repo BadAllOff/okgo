@@ -9,9 +9,9 @@
     </div>
     <div class="box-tools">
       <% if can?(:crud, feedback) %>
-        <%= link_to 'Show', feedback, class:'btn btn-xs btn-default' %>
-        <%= link_to 'Edit', edit_feedback_path(feedback), class:'btn btn-xs btn-warning' %>
-        <%= link_to 'Destroy', feedback, method: :delete, class:'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %>
+        <%= link_to t('show'), feedback, class:'btn btn-xs btn-default' %>
+        <%= link_to t('edit'), edit_feedback_path(feedback), class:'btn btn-xs btn-warning' %>
+        <%= link_to t('destroy'), feedback, method: :delete, class:'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %>
       <% end %>
       <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
       </button>

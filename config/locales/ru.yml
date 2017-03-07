@@ -4,6 +4,7 @@ ru:
   log_in: "Войти"
   edit: 'Редактировать'
   show: 'Просмотреть'
+  destroy: 'Удвлить'
   back: 'Назад'
   are_you_sure: 'Вы уверены?'
   the_counter_is_not_updated_immediately: 'Счётчик обновляеться не сразу'
