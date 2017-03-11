@@ -7,9 +7,9 @@ module ProfilesHelper
     if user.profile.photo?
       image_tag(user.profile.photo.url(img_size),
                 class: "img-circle #{classes}",
-                alt: "#{user.profile.firstname} #{user.profile.lastname}",
+                alt: "#{user.profile.firstname}",
                 style: "#{styles}",
-                data: { toggle: "#{tooltip}", original_title: "#{user.profile.firstname} #{user.profile.lastname}" })
+                data: { toggle: "#{tooltip}", original_title: "#{user.profile.firstname}" })
     else
       image_tag('medium_missing.png', class: "img-circle #{classes}", style: "#{styles}", alt: "#{user.profile.firstname} #{user.profile.lastname}")
     end

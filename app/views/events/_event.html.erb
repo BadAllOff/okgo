@@ -2,6 +2,14 @@
 %>
 <div class="box box-widget collapsed-box event_box" id="event_<%= event.id %>">
     <div class="box-header with-border">
+      <div class="widget-user" >
+        <div class="widget-user-header bg-black" style="background: url('http://placehold.it/550x150') center center;">
+        </div>
+        <div class="widget-user-image">
+          <%= show_profile_img(event.user, 'small', 'img-circle') %>
+        </div>
+      </div>
+
     <%= render partial: 'events/event_box_header', locals: { event: event } %>
       <button type="button" class="btn btn-sm event_description" data-widget="collapse" style="background: none;"><%= t('event_memberships.event_description') %> <i class="fa fa-plus"></i>
       </button>

@@ -62,8 +62,8 @@ class EventMembershipsController < ApplicationController
   def as_member
     add_breadcrumb I18n.t('breadcrumbs.event_memberships.as_member'), as_member_event_memberships_path
 
-    @future_event_memberships = EventMembership.joins(:event).where('(event_memberships.user_id= ? AND events.starts_at> ?)', current_user.id, Time.zone.now).includes(event: [:user, :language]).page(params[:page]).per(10)
-    @past_event_memberships = EventMembership.joins(:event).where('(event_memberships.user_id= ? AND events.starts_at< ?)', current_user.id, Time.zone.now).includes(event: [:user, :language]).page(params[:page]).per(10)
+    @future_event_memberships = EventMembership.joins(:event).where('(event_memberships.user_id= ? AND events.starts_at> ?)', current_user.id, Time.zone.now).includes(event: [:user, :language, comments: [:user]]).page(params[:page]).per(10)
+    @past_event_memberships = EventMembership.joins(:event).where('(event_memberships.user_id= ? AND events.starts_at< ?)', current_user.id, Time.zone.now).includes(event: [:user, :language, comments: [:user]]).page(params[:page]).per(10)
   end
 
   def member_attended
