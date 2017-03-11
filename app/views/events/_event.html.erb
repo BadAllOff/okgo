@@ -4,7 +4,7 @@
     <div class="box-header with-border">
       <div class="widget-user" >
         <% if event.event_bg_image? %>
-          <div class="widget-user-header" style="background: url('<%= event.event_bg_image.url %>') center center no-repeat;"></div>
+          <div class="widget-user-header" style="background: url('<%= event.event_bg_image.url %>') center center no-repeat; background-size: cover;"></div>
       <% else %>
           <div class="widget-user-header"></div>
       <% end %>
