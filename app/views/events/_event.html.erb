@@ -3,12 +3,11 @@
 <div class="box box-widget collapsed-box event_box" id="event_<%= event.id %>">
     <div class="box-header with-border">
       <div class="widget-user" >
-        <div class="widget-user-header" style="background: url('<%= if event.event_bg_image?
-              event.event_bg_image.url
-            else
-              image_path 'event_bg_image.png'
-            end %>') center center no-repeat;">
-        </div>
+        <% if event.event_bg_image? %>
+          <div class="widget-user-header" style="background: url('<%= event.event_bg_image.url %>') center center no-repeat;"></div>
+      <% else %>
+          <div class="widget-user-header"></div>
+      <% end %>
         <div class="widget-user-image">
           <%= show_profile_img(event.user, 'small', 'img-circle') %>
         </div>

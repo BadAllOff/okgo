@@ -251,7 +251,7 @@ ru:
         gender_other: 'Другое'
       event:
         language: 'Язык общения'
-        event_bg_image: 'Фото обложки'
+        event_bg_image: 'Фото обложки (1150x120)'
         title: 'Заголовок'
         description: 'Описание'
         address: 'Адрес'

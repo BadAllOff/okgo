@@ -8,7 +8,7 @@ class Event < ApplicationRecord
   has_many :activities, as: :trackable, class_name: 'PublicActivity::Activity', dependent: :destroy
 
   has_attached_file :event_bg_image,
-                    styles: { original: '550x150#' },
+                    styles: { original: '1150x150#' },
                     default_url: ':event_bg_image'
 
   validates_attachment :event_bg_image, content_type: { content_type: ['image/jpeg', 'image/png'] }

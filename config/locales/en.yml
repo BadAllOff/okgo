@@ -152,7 +152,7 @@ en:
           about: 'About me'
         event:
           title: 'Title'
-          event_bg_image: 'Cover image'
+          event_bg_image: 'Cover image (1150x120)'
           description: 'Description'
           address: 'Address'
           starts_at: 'Starts at'
