@@ -213,7 +213,7 @@ $(document).on('ajax:error', '#get-notifications', function(e, data, status, xhr
             notificationLabel.html(data); // add notifications number into label
             if ($(window).scrollTop() > 100)
             {
-                if(previousNumber != data ) // if number of notifications changed
+                if(typeof previousNumber !== typeof undefined && previousNumber != data ) // if number of notifications changed
                 {
                     notificationLabel.removeClass('flash-has-been-shown'); //remove class to make next condition pass
 

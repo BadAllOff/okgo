@@ -123,6 +123,12 @@
 .event_box{
   .user-block{
     margin-top: 10px;
+    .description{
+      margin-left: 40px;
+    }
+    .list-group > .list-group-item{
+      padding: 3px 0px;
+    }
   }
 }
 

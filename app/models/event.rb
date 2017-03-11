@@ -7,6 +7,13 @@ class Event < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :activities, as: :trackable, class_name: 'PublicActivity::Activity', dependent: :destroy
 
+  has_attached_file :event_bg_image,
+                    styles: { original: '550x150#' },
+                    default_url: ':event_bg_image'
+
+  validates_attachment :event_bg_image, content_type: { content_type: ['image/jpeg', 'image/png'] }
+  validates_with AttachmentSizeValidator, attributes: :event_bg_image, less_than: 1.megabytes
+
   validates_presence_of :title, :description, :max_members, :starts_at, :ends_at, :language, :latitude, :longitude, :address
   validates_datetime :ends_at, :starts_at, after: DateTime.current + 24.hours
   validates_datetime :ends_at, after: :starts_at

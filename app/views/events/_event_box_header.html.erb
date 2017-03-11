@@ -16,9 +16,6 @@
       <%= I18n.l event.starts_at, format: ("%H:%M") %>
     </li>
     <li class="list-group-item"><h4><%= event.title %></h4></li>
-    <li class="list-group-item"><i class="fa fa-language" data-original-title='<%= t 'events.event.language' %>' data-toggle="tooltip" ></i>  <%= event.language.description %></li>
-    <li class="list-group-item"><i class="fa fa-users" data-original-title='<%= t 'events.event.max_members' %>' data-toggle="tooltip" ></i>  <%= event.event_memberships_count %> / <%= event.max_members %>
-    </li>
-    <li class="list-group-item"><i class="fa fa-comments" data-original-title='<%= t 'events.event.comments' %>' data-toggle="tooltip" ></i>  <%= (t("comments",count: event.comments_count)).capitalize %></li>
+    <li class="list-group-item"><i class="fa fa-language" data-original-title='<%= t 'events.event.language' %>' data-toggle="tooltip" ></i>  <%= event.language.description %> | <i class="fa fa-users" data-original-title='<%= t 'events.event.max_members' %>' data-toggle="tooltip" ></i>  <%= event.event_memberships_count %> / <%= event.max_members %> | <i class="fa fa-comments" data-original-title='<%= t 'events.event.comments' %>' data-toggle="tooltip" ></i>  <%= (t("comments",count: event.comments_count)).capitalize %></li>
   </ul>
 </div>
