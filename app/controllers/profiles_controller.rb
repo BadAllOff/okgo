@@ -16,13 +16,7 @@ class ProfilesController < ApplicationController
     memberships = EventMembership.where(user: @profile.user, attended: true).pluck(:id)
     rated_memberships = RatedMembership.where(event_membership: memberships).includes(event_membership: [:event])
 
-    @r_activity_lvl, @r_labels, @r_lang_lvl = [], [], []
-
-    rated_memberships.each do |rate|
-        @r_labels << rate.event_membership.event.title
-        @r_lang_lvl << rate.language_level
-        @r_activity_lvl << rate.activity_level
-    end
+    set_profile_chart_data(rated_memberships)
   end
 
   def edit
@@ -55,6 +49,16 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:firstname, :lastname, :gender, :credo, :about, :photo, :cover_image)
+  end
+
+  def set_profile_chart_data(rated_memberships)
+    @r_activity_lvl, @r_labels, @r_lang_lvl = [], [], []
+
+    rated_memberships.each do |rate|
+      @r_labels << rate.event_membership.event.title
+      @r_lang_lvl << rate.language_level
+      @r_activity_lvl << rate.activity_level
+    end
   end
 
   def set_profile_index_breadcrumb

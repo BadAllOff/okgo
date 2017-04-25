@@ -196,7 +196,7 @@ $(document).on('ajax:error', '#get-notifications', function(e, data, status, xhr
 
 // Use a named immediately-invoked function expression.
 $(document).find()
-if ($("#get-notifications").length > 0)
+if ($('#get-notifications'))
 {
     (function worker() {
         $.get('/notifications_count.json', function(data) {
