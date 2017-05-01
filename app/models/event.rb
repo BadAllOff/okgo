@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   validates_attachment :event_bg_image, content_type: { content_type: ['image/jpeg', 'image/png'] }
   validates_with AttachmentSizeValidator, attributes: :event_bg_image, less_than: 1.megabytes
 
-  validates_presence_of :title, :description, :max_members, :starts_at, :ends_at, :language, :latitude, :longitude, :address
+  validates_presence_of :max_members, :language
   validates_datetime :ends_at, :starts_at, after: DateTime.current + 24.hours
   validates_datetime :ends_at, after: :starts_at
   validates_datetime :ends_at, before: DateTime.current + 1.month

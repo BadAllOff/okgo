@@ -144,26 +144,34 @@ en:
         commented_to: 'Commented on'
         commented_to_feedback_which_has_since_been_removed:  "Commented on feedback, which has since removed."
   activerecord:
-      attributes:
-        profile:
-          gender_female: 'Female'
-          gender_male: 'Male'
-          gender_other: 'Other'
-          about: 'About me'
+    attributes:
+      profile:
+        gender_female: 'Female'
+        gender_male: 'Male'
+        gender_other: 'Other'
+        about: 'About me'
+      event:
+        title: 'Title'
+        event_bg_image: 'Cover image (550x120)'
+        description: 'Description'
+        address: 'Address'
+        starts_at: 'Starts at'
+        ends_at: 'Ends at'
+        max_members: 'Maximum number of participants'
+      rated_membership:
+        language_level: 'Language level'
+        activity_level: 'Activity level'
+      feedback:
+        status: "Status"
+        feedback: "Your feedback or suggestion"
+    errors:
+      models:
         event:
-          title: 'Title'
-          event_bg_image: 'Cover image (550x120)'
-          description: 'Description'
-          address: 'Address'
-          starts_at: 'Starts at'
-          ends_at: 'Ends at'
-          max_members: 'Maximum number of participants'
-        rated_membership:
-          language_level: 'Language level'
-          activity_level: 'Activity level'
-        feedback:
-          status: "Status"
-          feedback: "Your feedback or suggestion"
+          attributes:
+            latitude:
+              blank: "Mark the place on map."
+            longitude:
+              blank: "Mark the place on map."
   time:
     am: am
     formats:

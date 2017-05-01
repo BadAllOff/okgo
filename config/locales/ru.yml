@@ -4,7 +4,7 @@ ru:
   log_in: "Войти"
   edit: 'Редактировать'
   show: 'Просмотреть'
-  destroy: 'Удвлить'
+  destroy: 'Удалить'
   back: 'Назад'
   are_you_sure: 'Вы уверены?'
   the_counter_is_not_updated_immediately: 'Счётчик обновляеться не сразу'
@@ -258,6 +258,8 @@ ru:
         starts_at: 'Начало'
         ends_at: 'Конец'
         max_members: 'Максимальное число участников'
+        latitude: 'Координаты широты'
+        longitude: 'Координаты долготы'
       rated_membership:
         language_level: 'Знание языка'
         activity_level: 'Общительность'
@@ -270,6 +272,13 @@ ru:
         restrict_dependent_destroy:
           has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
           has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+      models:
+        event:
+          attributes:
+            latitude:
+              blank: "отметьте на карте"
+            longitude:
+              blank: "отметьте на карте"
   date:
     abbr_day_names:
     - Вс
