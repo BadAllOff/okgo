@@ -4,3 +4,7 @@
 <p><%= t('.instruction') %></p>
 
 <p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: (Devise::VERSION.start_with?('3.') ? @token : @resource.confirmation_token)) %></p>
+<p></p>
+<p></p>
+<p><%= t('.alternative_instruction') %></p>
+<p><%= confirmation_url(@resource, confirmation_token: (Devise::VERSION.start_with?('3.') ? @token : @resource.confirmation_token)) %></p>
