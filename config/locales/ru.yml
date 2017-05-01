@@ -229,6 +229,12 @@ ru:
         few:   'Комментариев'
         many:  'Комментариев'
         other: 'Комментариев'
+      feedback:
+        zero:  'Нет отзывов'
+        one:   'отзыв'
+        few:   'отзывов'
+        many:  'отзывов'
+        other: 'отзыва'
     attributes:
       user:
         current_password: "Текущий пароль"
