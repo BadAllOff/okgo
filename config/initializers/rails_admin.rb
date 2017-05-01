@@ -50,6 +50,18 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Event' do
+    configure :starts_at, :date do
+      # date_format :default
+      strftime_format '%Y-%m-%d %H:%M'
+    end
+
+    configure :ends_at, :date do
+      # date_format :default
+      strftime_format '%Y-%m-%d %H:%M'
+    end
+  end
+
   config.model 'User' do
     list do
       field :id
