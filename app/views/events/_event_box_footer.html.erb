@@ -32,7 +32,7 @@ end%>
 <% if user_signed_in? && can?(:crud, event) %>
   <span class="pull-right text-muted">
     <%= link_to t('show'), event, class: 'btn btn-xs btn-default btn-flat' %> |
-    <%= link_to t('edit'), edit_event_path(event), class: 'btn btn-xs btn-primary btn-flat' %> |
+    <%= link_to t('edit'), edit_event_path(event), class: 'btn btn-xs btn-warning btn-flat' %> |
     <%= link_to t('destroy'), event, method: :delete, class: 'btn btn-xs btn-danger btn-flat', data: { confirm: t('are_you_sure')} %>
   </span>
 <% end %>
