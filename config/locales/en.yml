@@ -64,6 +64,7 @@ en:
       thanks_for_feedback_it_is_important: "Thanks for feedback. It's important for all of us."
       you_have_confirmed_absence_of_participant: 'You have confirmed absence of participant'
       previously_you_marked_this_user_as_absent: 'Previously, you marked this user as absent.'
+      pull_the_ring_in_need_direction_to_indicate_rating_of_member_then_push_the_rate_member_button: "Pull the ring in need direction to indicate rating of member. Then, push the 'Rate member' button."
     active_events:
       zero: "No events"
       few: "events"

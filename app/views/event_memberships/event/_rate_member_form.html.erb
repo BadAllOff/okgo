@@ -7,7 +7,7 @@
                      format: :json,
                      id: "rate-user-#{member.id}"
                  } do %>
-    <div class="flash_msg"></div>
+    <div class="flash_msg"><span class="text-muted"><%= t('events.rate_members.pull_the_ring_in_need_direction_to_indicate_rating_of_member_then_push_the_rate_member_button') %></span></div>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-6 text-center">
       <%= text_field_tag :language_level, language, class: 'jknob',
                          data: {

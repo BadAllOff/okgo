@@ -65,6 +65,7 @@ ru:
       thanks_for_feedback_it_is_important: 'Спасибо, Ваш отзыв очень важен для всего сообщества.'
       you_have_confirmed_absence_of_participant: 'Вы отметили что пользователь отсутствовал на мероприятии.'
       previously_you_marked_this_user_as_absent: 'Ранее вы отметили что пользователь отсутствовал.'
+      pull_the_ring_in_need_direction_to_indicate_rating_of_member_then_push_the_rate_member_button: "Потяните за цветное кольцо что бы оставить отзыв. Затем нажмите на 'Оценить'."
     likes:
       zero: "%{count} лайков"
       few: "%{count} лайков"
