@@ -17,17 +17,17 @@ RSpec.describe Event, type: :model do
 
     it do
       should validate_length_of(:title).
-          is_at_least(4).is_at_most(140)
+        is_at_least(4).is_at_most(140)
     end
 
     it do
       should validate_length_of(:description).
-          is_at_least(10).is_at_most(3000)
+        is_at_least(10).is_at_most(3000)
     end
 
     it do
       should validate_length_of(:address).
-          is_at_least(10).is_at_most(255)
+        is_at_least(10).is_at_most(255)
     end
   end
 end

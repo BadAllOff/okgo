@@ -15,7 +15,7 @@ class Profile < ApplicationRecord
   validates_with AttachmentSizeValidator, attributes: :cover_image, less_than: 1.megabytes
   validates_uniqueness_of :user_id
   validates_inclusion_of :gender, in: %w( Female Male Other )
-  validates_presence_of :firstname, :lastname, :gender
+  validates_presence_of :gender
   validates :firstname, length: { in: 1..20 }
   validates :lastname, length: { in: 1..20 }
   validates :about, length: { maximum: 3000 }
