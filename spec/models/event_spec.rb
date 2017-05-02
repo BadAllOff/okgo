@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   describe 'Associations' do
-
+    it { should belong_to :user }
+    it { should belong_to :language }
+    it { should have_many(:memberships).dependent(:destroy) }
+    it { should have_many(:comments).dependent(:destroy) }
+    it { should have_many(:activities).dependent(:destroy) }
   end
 
   describe 'Validations' do
