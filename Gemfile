@@ -28,7 +28,7 @@ gem 'bootstrap3-datetimepicker-rails', '4.15.35'
 gem 'redcarpet', '3.3.4'
 # gem 'markitup-rails'
 gem 'md_simple_editor', github: 'BadAllOff/md_simple_editor', ref: 'f926c9f'
-gem 'validates_timeliness', '3.0.15'
+gem 'validates_timeliness', '4.0.2'
 gem 'public_activity', '1.5.0'
 gem 'active_link_to', '1.0.3'
 gem 'socialization', '1.2.0'
@@ -86,6 +86,7 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-validates_timeliness', '0.1.1'
   gem 'shoulda-matchers'
   gem 'nyan-cat-formatter'
 end
