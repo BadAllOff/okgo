@@ -66,6 +66,7 @@ group :development, :test do
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
   gem 'capistrano-rake', require: false
+  gem 'rails-controller-testing'
 end
 
 group :development do

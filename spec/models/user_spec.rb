@@ -12,5 +12,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Validations' do
+    it { should accept_nested_attributes_for :profile }
   end
 end
