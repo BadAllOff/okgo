@@ -2,7 +2,7 @@ class User < ApplicationRecord
   include Omniauthable
 
   enum role: { guest: 0, user: 1, admin: 2 }
-  # user should have profile immediately after create.
+  # User should have profile immediately after create.
   # User can only edit profile but not DELETE it.
   # Profile is crucial for app
   after_create :create_profile
