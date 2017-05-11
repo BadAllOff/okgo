@@ -7,6 +7,7 @@ RSpec.describe Profile, type: :model do
 
   describe 'Validations' do
     it { should validate_presence_of :gender }
+    # it { should validate_presence_of :user }
     # it { should validate_uniqueness_of(:user) }
 
     it do

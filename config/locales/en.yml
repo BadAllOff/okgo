@@ -1,6 +1,7 @@
 en:
   sign_out: 'Sign Out'
   sign_up: 'Register'
+  sign_in: 'Sign in'
   log_in: "Log in"
   edit: 'Edit'
   show: 'Show'
@@ -146,11 +147,23 @@ en:
         commented_to_feedback_which_has_since_been_removed:  "Commented on feedback, which has since removed."
   activerecord:
     attributes:
+      user:
+        current_password: "Current password"
+        email: Email
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        remember_me: "Remember me"
+        firstname: 'Firstname'
       profile:
+        firstname: 'Firstname'
+        lastname: 'Lastname'
+        photo: 'Your photo'
+        cover_image: 'Cover image'
+        about: 'About me'
+        credo: 'Credo'
         gender_female: 'Female'
         gender_male: 'Male'
         gender_other: 'Other'
-        about: 'About me'
       event:
         title: 'Title'
         event_bg_image: 'Cover image (550x120)'

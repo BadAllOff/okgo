@@ -88,7 +88,9 @@ end
 
 group :test do
   gem 'rspec-validates_timeliness', '0.1.1'
+  gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'nyan-cat-formatter'
 end
