@@ -1,36 +1,32 @@
-<% # cache [I18n.locale, event] do
-%>
 <div class="box box-widget collapsed-box event_box" id="event_<%= event.id %>">
-    <div class="box-header with-border">
-      <div class="widget-user" >
-        <% if event.event_bg_image? %>
-          <div class="widget-user-header" style="background: url('<%= event.event_bg_image.url %>') center center no-repeat; background-size: cover;"></div>
-      <% else %>
-          <div class="widget-user-header"></div>
-      <% end %>
-        <div class="widget-user-image">
-          <%= show_profile_img(event.user, 'small', 'img-circle') %>
-        </div>
+  <div class="box-header with-border">
+    <div class="widget-user" >
+      <% if event.event_bg_image? %>
+        <div class="widget-user-header" style="background: url('<%= event.event_bg_image.url %>') center center no-repeat; background-size: cover;"></div>
+    <% else %>
+        <div class="widget-user-header"></div>
+    <% end %>
+      <div class="widget-user-image">
+        <%= show_profile_img(event.user, 'small', 'img-circle') %>
       </div>
-
-    <%= render partial: 'events/event_box_header', locals: { event: event } %>
-      <button type="button" class="btn btn-sm btn-block event_description" data-widget="collapse" style="background: none;"><%= t('event_memberships.event_description') %> <i class="fa fa-plus"></i>
-      </button>
     </div>
 
-    <div class="box-body">
-      <%= render partial: 'events/event_box_body', locals: { event: event } %>
-    </div>
-
-    <div class="box-footer event-btns">
-      <%= render partial: 'events/event_box_footer', locals: { event: event } %>
-    </div>
-
-    <%= render partial: 'comments/comments', locals: { commentable: event } %>
-
-    <div class="overlay hidden">
-      <i class="fa fa-refresh fa-spin"></i>
-    </div>
+  <%= render partial: 'events/event_box_header', locals: { event: event } %>
+    <button type="button" class="btn btn-sm btn-block event_description" data-widget="collapse" style="background: none;"><%= t('event_memberships.event_description') %> <i class="fa fa-plus"></i>
+    </button>
   </div>
-<% # end
-%>
+
+  <div class="box-body">
+    <%= render partial: 'events/event_box_body', locals: { event: event } %>
+  </div>
+
+  <div class="box-footer event-btns">
+    <%= render partial: 'events/event_box_footer', locals: { event: event } %>
+  </div>
+
+  <%= render partial: 'comments/comments', locals: { commentable: event } %>
+
+  <div class="overlay hidden">
+    <i class="fa fa-refresh fa-spin"></i>
+  </div>
+</div>

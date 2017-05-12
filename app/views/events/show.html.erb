@@ -1,14 +1,17 @@
 <%= render partial: 'events/event', locals: {event: @event}%>
+
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- okgo on event page -->
 <ins class="adsbygoogle"
-     style="display:block"
+     style="display:block;margin-bottom:15px;"
      data-ad-client="ca-pub-5677662134676433"
      data-ad-slot="4466714395"
      data-ad-format="auto"></ins>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+<div class="clearfix"></div>
+
 <%= render partial: 'events/show_gmap', locals: {event: @event, coordinates: @hash }%>
 <%= render partial: 'handlebars/event_like_btn_template' %>
 <%= render partial: 'handlebars/members_template' %>
