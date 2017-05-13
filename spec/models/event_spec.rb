@@ -29,5 +29,12 @@ RSpec.describe Event, type: :model do
       should validate_length_of(:address).
         is_at_least(10).is_at_most(255)
     end
+
+    # Common European Framework of Reference for Languages
+    it do
+      should validate_inclusion_of(:cefrl).
+        in_array(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])
+    end
+
   end
 end

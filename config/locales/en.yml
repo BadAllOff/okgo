@@ -87,6 +87,13 @@ en:
       title: 'Title'
       comments: "Comments"
       address: "Address"
+      cefrl_options:
+        A1: "Beginner"
+        A2: "Elementary"
+        B1: "Intermediate"
+        B2: "Upper intermediate"
+        C1: "Advanced"
+        C2: "Proficient"
     not_finished_yet: "Event not finished yet"
     event_was_successfully_created: "Event was successfully created"
     event_was_successfully_updated: "Event was successfully updated"
@@ -172,6 +179,7 @@ en:
         starts_at: 'Starts at'
         ends_at: 'Ends at'
         max_members: 'Maximum number of participants'
+        cefrl: 'Language level'
       rated_membership:
         language_level: 'Language level'
         activity_level: 'Activity level'

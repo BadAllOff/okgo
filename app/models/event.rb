@@ -19,6 +19,7 @@ class Event < ApplicationRecord
   validates_datetime :ends_at, after: :starts_at
   validates_datetime :ends_at, before: DateTime.current + 1.month
   validates_numericality_of :latitude, :longitude
+  validates_inclusion_of :cefrl, in: %w( A1 A2 B1 B2 C1 C2 ) # Common European Framework of Reference for Languages
   validates :title, length: { in: 4..140 }
   validates :description, length: { in: 10..3000 }
   validates :address, length: { in: 10..255 }

@@ -100,6 +100,13 @@ ru:
       create_event: 'Создать мероприятие'
       comments: "Комментарии"
       address: "Адрес"
+      cefrl_options:
+        A1: "Начинающий"
+        A2: "Элементарный"
+        B1: "Средний"
+        B2: "Продвинутый"
+        C1: "Профессиональный"
+        C2: "В совершенстве"
     not_finished_yet: "Мероприятие еще не закончилось"
     event_was_successfully_created: "Мероприятие успешно создано"
     event_was_successfully_updated: "Мероприятие успешно обновлено"
@@ -267,6 +274,7 @@ ru:
         max_members: 'Максимальное число участников'
         latitude: 'Координаты широты'
         longitude: 'Координаты долготы'
+        cefrl: 'Требуемый уровень знание языка'
       rated_membership:
         language_level: 'Знание языка'
         activity_level: 'Общительность'

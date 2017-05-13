@@ -27,6 +27,7 @@ group 'specs' do
     watch(rails.controllers) do |m|
       [
         rspec.spec.call("controllers/#{m[1]}_controller"),
+        rspec.spec.call("acceptance/#{m[1]}"),
         rspec.spec.call("models/#{m[1]}"),
         rspec.spec.call("factories/#{m[1]}")
       ]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311075853) do
+ActiveRecord::Schema.define(version: 20170512230427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 20170311075853) do
     t.string   "address"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "user_id"
     t.integer  "language_id",                 default: 1
     t.integer  "max_members",                 default: 10
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20170311075853) do
     t.string   "event_bg_image_content_type"
     t.integer  "event_bg_image_file_size"
     t.datetime "event_bg_image_updated_at"
+    t.string   "cefrl",                       default: "A1"
     t.index ["language_id"], name: "index_events_on_language_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end

@@ -8,7 +8,25 @@
       <%= f.label :language %>
       <%= f.select(:language_id, options_for_select(Language.all.order(events_count: 'desc' ).map {|p| [p.description, p.id, {'data-image' => p.flag_image.url(:micro)}]}), {}, { class: 'form-control' }) %>
     </div>
+
+    <div class="field form-group col-sm-12 col-md-6">
+      <%= f.label :cefrl %>
+      <%= f.select(:cefrl, options_for_select(
+            [
+              [I18n.t('events.event.cefrl_options.A1'),'A1'],
+              [I18n.t('events.event.cefrl_options.A2'),'A2'],
+              [I18n.t('events.event.cefrl_options.B1'),'B1'],
+              [I18n.t('events.event.cefrl_options.B2'),'B2'],
+              [I18n.t('events.event.cefrl_options.C1'),'C1'],
+              [I18n.t('events.event.cefrl_options.C2'),'C2']
+            ],
+            [event.cefrl]
+          ), {include_blank: false}, {class: "form-control"})
+      %>
+    </div>
   </div>
+
+
 
   <div class="field form-group">
     <%= f.label :title %>
@@ -70,7 +88,7 @@
 // flags in select
   $(document).ready(function(e) {
     try {
-      $("body select").msDropDown();
+      $("body select#event_language_id").msDropDown();
     } catch(e) {
       alert(e.message);
     }
