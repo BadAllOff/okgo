@@ -29,6 +29,7 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/1/edit
   def edit
+    add_breadcrumb I18n.t('breadcrumbs.feedbacks.edit_feedback'), event_path(@feedback)
   end
 
   # POST /feedbacks
@@ -57,6 +58,7 @@ class FeedbacksController < ApplicationController
         format.html { redirect_to @feedback, notice: I18n.t('feedbacks.feedback_was_successfully_updated') }
         format.json { render :show, status: :ok, location: @feedback }
       else
+        add_breadcrumb I18n.t('breadcrumbs.feedbacks.edit_feedback'), event_path(@feedback)
         format.html { render :edit }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }
       end

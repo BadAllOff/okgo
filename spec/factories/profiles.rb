@@ -1,23 +1,24 @@
-# FactoryGirl.define do
+FactoryGirl.define do
 #
 #   sequence :email do |n|
 #     "user#{n}@test.com"
 #   end
 #
-#   sequence :firstname do |n|
-#     "firstname#{n}"
-#   end
-#
-#   sequence :lastname do |n|
-#     "lastname#{n}"
-#   end
-#
-#   factory :profile do
-#     firstname firstname
-#     lastname lastname
-#     gender 'Male'
-#   end
-#
+  sequence :firstname do |n|
+    "firstname#{n}"
+  end
+
+  sequence :lastname do |n|
+    "lastname#{n}"
+  end
+
+  factory :profile do
+    user
+    firstname
+    lastname
+    gender 'Male'
+  end
+
 #
 #   factory :user do
 #     email
@@ -37,4 +38,4 @@
 #   end
 #
 #
-# end
+end

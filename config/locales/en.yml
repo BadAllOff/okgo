@@ -35,6 +35,8 @@ en:
       index: 'Notifications'
     feedback:
       index: "Feedbacks"
+    feedbacks:
+      edit_feedback: "Edit feedback"
   sidebar_navigation:
     search: 'Search'
     navigation: 'NAVIGATION'
@@ -85,6 +87,7 @@ en:
       max_members: 'Max. members'
       language: 'Language'
       title: 'Title'
+      create_event: 'Create event'
       comments: "Comments"
       address: "Address"
       cefrl_options:
@@ -212,6 +215,7 @@ en:
       positive: "Positive"
       negative: "Negative"
       leave_feedback: "Leave feedback or suggestion"
+      edit_feedback: "Edit feedback"
     feedback_was_successfully_created: "Feedback was successfully created."
     feedback_was_successfully_updated: "Feedback was successfully updated."
     feedback_was_successfully_destroyed: "Feedback was successfully destroyed."

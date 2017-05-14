@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :feature
-  # config.include AcceptanceMacros, type: :feature
+  config.include AcceptanceMacros, type: :feature
 
   config.use_transactional_fixtures = false
 
