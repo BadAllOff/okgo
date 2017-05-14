@@ -8,7 +8,6 @@ RSpec.describe Feedback, type: :model do
 
   describe 'Validations' do
     it { should validate_presence_of :user }
-    it { should validate_presence_of :feedback }
     it { should validate_presence_of :status }
 
     it do

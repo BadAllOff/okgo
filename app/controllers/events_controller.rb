@@ -47,6 +47,7 @@ class EventsController < ApplicationController
         current_user.follow!(@event)
         format.html { redirect_to @event, notice: I18n.t('events.event_was_successfully_created') }
       else
+        add_breadcrumb I18n.t('breadcrumbs.events.new'), new_event_path
         format.html { render :new }
       end
     end
@@ -117,8 +118,8 @@ class EventsController < ApplicationController
 
   def build_markers_hash
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
-      marker.lat event.latitude || Rails.application.secrets.default_latitude
-      marker.lng event.longitude || Rails.application.secrets.default_longitude
+      marker.lat event.latitude ||= Rails.application.secrets.default_latitude
+      marker.lng event.longitude ||= Rails.application.secrets.default_longitude
     end
   end
 end
