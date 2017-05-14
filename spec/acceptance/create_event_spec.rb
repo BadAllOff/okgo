@@ -24,13 +24,10 @@ feature 'User creates event ', %q{
         fill_in I18n.t('activerecord.attributes.event.description'), with: 'Event Decription'
         fill_in I18n.t('activerecord.attributes.event.max_members'), with: 10
         fill_in I18n.t('activerecord.attributes.event.address'), with: 'A. Akhundov 21 (21 studio)'
-
         click_on I18n.t('helpers.submit.create', model: Event)
 
-        save_and_open_page
-
         expect(page).to have_content I18n.t'errors.messages.blank'
-        expect(current_path).to eq new_event_path(locale: I18n.locale)
+        expect(current_path).to eq events_path(locale: I18n.locale)
 
       end
     end
