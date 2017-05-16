@@ -6,7 +6,7 @@ RSpec.configure do |config|
 
   config.use_transactional_fixtures = false
 
-  Capybara.default_max_wait_time = 5
+  # Capybara.default_max_wait_time = 2
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

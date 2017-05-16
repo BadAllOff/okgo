@@ -5,6 +5,7 @@ en:
   log_in: "Log in"
   edit: 'Edit'
   show: 'Show'
+  destroy: 'Destroy'
   back: 'Back'
   are_you_sure: 'Are you sure?'
   the_counter_is_not_updated_immediately: 'The counter is not updated immediately'

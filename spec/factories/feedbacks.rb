@@ -5,7 +5,7 @@ FactoryGirl.define do
 
   factory :feedback do
     user
-    feedback_description
+    feedback "This is the long description for FEEDBACK number"
   end
 
 end
