@@ -10,8 +10,8 @@ feature 'User edits his own profile ', %q{
   given!(:another_user) { create(:user) }
   given!(:another_user_profile) { create(:profile, user: another_user) }
 
-  describe 'Authenticated user' do
-    context 'tries to edit his own profile' do
+  describe 'Authenticated user tries to edit' do
+    context 'his own profile' do
       before do
         sign_in(user)
         visit edit_profile_path(id: profile.id, locale: I18n.locale)
@@ -50,7 +50,7 @@ feature 'User edits his own profile ', %q{
       end
     end
 
-    context 'tries to edit his own profile' do
+    context 'other users profile' do
       before do
         sign_in(another_user)
       end

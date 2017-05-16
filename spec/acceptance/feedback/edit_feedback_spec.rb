@@ -11,8 +11,8 @@ feature 'User edits his own feedback ', %q{
   given!(:another_user_profile) { create(:profile, user: another_user) }
   given!(:feedback) { create(:feedback, user: user) }
 
-  describe 'Authenticated user' do
-    context 'tries to edit his own feedback' do
+  describe 'Authenticated user tries to edit ' do
+    context 'his own feedback' do
 
       before do
         sign_in(user)
@@ -45,7 +45,7 @@ feature 'User edits his own feedback ', %q{
 
     end
 
-    context 'tries to edit other users feedback' do
+    context 'other users feedback' do
 
       before do
         sign_in(another_user)

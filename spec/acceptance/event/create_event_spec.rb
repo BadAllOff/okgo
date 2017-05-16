@@ -36,7 +36,6 @@ feature 'User creates event ', %q{
       end
 
       scenario 'succeeds with correct input' do
-        # save_and_open_page
         within '#event_language_id' do
           find("option[value='1']").click
         end

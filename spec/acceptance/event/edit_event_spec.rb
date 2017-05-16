@@ -12,8 +12,8 @@ feature 'User edits event ', %q{
   given!(:another_user_profile) { create(:profile, user: another_user) }
   given!(:event) {create(:event, user: user, language: language)}
 
-  describe 'Authenticated user' do
-    context 'tries to edit his own event' do
+  describe 'Authenticated user tries to edit' do
+    context 'his own event' do
       before do
         sign_in(user)
         visit events_path(locale: I18n.locale)
@@ -53,7 +53,7 @@ feature 'User edits event ', %q{
       end
     end
 
-    context 'tries to edit other users event' do
+    context 'other users event' do
       before do
         sign_in(another_user)
         visit events_path(locale: I18n.locale)

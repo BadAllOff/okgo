@@ -11,8 +11,8 @@ feature 'User deletes his own feedback ', %q{
   given!(:another_user_profile) { create(:profile, user: another_user) }
   given!(:feedback) { create(:feedback, user: user) }
 
-  describe 'Authenticated user' do
-    context 'tries to delete his feedback' do
+  describe 'Authenticated user tries to delete' do
+    context 'his feedback' do
 
       before do
         sign_in(user)
@@ -28,7 +28,7 @@ feature 'User deletes his own feedback ', %q{
       end
     end
 
-    context 'tries to delete other users feedback' do
+    context 'other users feedback' do
 
       before do
         sign_in(another_user)
