@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Language.create(description: 'English')
+Language.create(description: 'Russian')
+Language.create(description: 'Japanese')

@@ -6,8 +6,8 @@ feature 'User deletes his own feedback ', %q{
 } do
 
   given(:user) { create(:user) }
-  given(:another_user) { create(:user) }
   given!(:profile) { create(:profile, user: user) }
+  given(:another_user) { create(:user) }
   given!(:another_user_profile) { create(:profile, user: another_user) }
   given!(:feedback) { create(:feedback, user: user) }
 
