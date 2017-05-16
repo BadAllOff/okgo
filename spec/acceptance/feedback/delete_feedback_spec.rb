@@ -1,6 +1,6 @@
 require 'acceptance/acceptance_helper'
 
-feature 'User deletes feedback ', %q{
+feature 'User deletes his own feedback ', %q{
   In order to delete feedback
   As an Authenticated user
 } do
