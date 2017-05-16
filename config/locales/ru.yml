@@ -127,6 +127,9 @@ ru:
     count_events: 'Мероприятий'
     count_memberships: 'Участий'
     progress_chart: 'Диаграмма прогресса'
+    profile_was_successfully_created: "Профайл успешно создан"
+    profile_was_successfully_updated: "Профайл успешно обновлен"
+    profile_was_successfully_destroyed: "Профайл успешно удален"
   event_memberships:
     future_events: 'Будущие мероприятия'
     past_events: 'Прошедшие мероприятия'

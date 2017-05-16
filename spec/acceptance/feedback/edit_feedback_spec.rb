@@ -1,7 +1,7 @@
 require 'acceptance/acceptance_helper'
 
 feature 'User edits his own feedback ', %q{
-  In order to edit my his own feedback
+  In order to edit my own feedback
   As an Authenticated user
 } do
 

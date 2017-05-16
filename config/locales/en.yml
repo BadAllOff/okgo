@@ -115,6 +115,9 @@ en:
     count_events: 'Total Events'
     count_memberships: 'Total Participations'
     progress_chart: 'Progress chart'
+    profile_was_successfully_created: "Profile was successfully created."
+    profile_was_successfully_updated: "Profile was successfully updated."
+    profile_was_successfully_destroyed: "Profile was successfully deleted."
   event_memberships:
     index: 'My events'
     future_events: 'Future Events'
