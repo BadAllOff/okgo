@@ -17,7 +17,8 @@ class Event < ApplicationRecord
   validates_presence_of :max_members, :language
   validates_datetime :ends_at, :starts_at, after: DateTime.current + 24.hours
   validates_datetime :ends_at, after: :starts_at
-  validates_datetime :ends_at, before: DateTime.current + 1.month
+  # events should be no more than one month ahead
+  # validates_datetime :ends_at, before: DateTime.current + 1.month
   validates_numericality_of :latitude, :longitude
   validates_inclusion_of :cefrl, in: %w( A1 A2 B1 B2 C1 C2 ) # Common European Framework of Reference for Languages
   validates :title, length: { in: 4..140 }
