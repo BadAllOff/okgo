@@ -1,4 +1,4 @@
-<div id="feedback_<%= feedback.id %>" class="box box-widget collapsed-box feedback-box">
+<div id="feedback_<%= feedback.id %>" class="box box-widget feedback-box">
   <div class="box-header with-border">
     <div class="user-block">
       <%= link_to profile_path(feedback.user.profile) do %>
@@ -26,7 +26,7 @@
           <% end %>
         </div>
       <% end %>
-      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
       </button>
       <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
     </div>
