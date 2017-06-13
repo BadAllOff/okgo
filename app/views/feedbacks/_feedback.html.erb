@@ -4,7 +4,7 @@
       <%= link_to profile_path(feedback.user.profile) do %>
           <%= show_profile_img(feedback.user, :medium) %>
       <% end %>
-      <span class="username"><a href="#"><%= feedback.user.profile.firstname %> <%=feedback.user.profile.lastname %></a></span>
+      <span class="username"><a href="<%= profile_path(feedback.user.profile) %>"><%= feedback.user.profile.firstname %> <%=feedback.user.profile.lastname %></a></span>
       <span class="description"><%= time_ago_in_words(feedback.created_at) %> | <%= t("comments",count: feedback.comments_count) %> | <%= feedback.likers_count %> likes</span>
     </div>
     <div class="box-tools">
