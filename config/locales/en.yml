@@ -6,6 +6,7 @@ en:
   edit: 'Edit'
   show: 'Show'
   back: 'Back'
+  close: 'Close'
   destroy: 'Delete'
   are_you_sure: 'Are you sure?'
   the_counter_is_not_updated_immediately: 'The counter is not updated immediately'

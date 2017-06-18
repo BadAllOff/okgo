@@ -5,6 +5,7 @@ ru:
   edit: 'Редактировать'
   show: 'Просмотреть'
   destroy: 'Удалить'
+  close: 'Закрыть'
   back: 'Назад'
   are_you_sure: 'Вы уверены?'
   the_counter_is_not_updated_immediately: 'Счётчик обновляеться не сразу'
