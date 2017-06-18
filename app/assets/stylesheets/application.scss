@@ -232,6 +232,10 @@
   margin: 0 auto;
 }
 
+.cropit-preview-image-container{
+  border-radius: 200px;
+}
+
 /* Show load indicator when image is being loaded */
 .cropit-preview.cropit-image-loading .spinner {
   opacity: 1;

@@ -71,64 +71,65 @@
             </button>
             <%= link_to "#{t('edit')} #{t('profiles.profile')}", edit_profile_path(profile), class: 'btn btn-primary btn-block' %>
             <%= link_to t('devise.passwords.edit.change_my_password',), edit_user_registration_path, class: 'btn btn-primary btn-block' %>
-        <% end %>
-        <!-- Button trigger modal -->
-
 
         <!-- Modal -->
-        <div class="modal fade" id="uploadPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel"><%= "#{t('profiles.editing_your_photo')}" %>
-                </h4>
-              </div>
-              <div class="modal-body">
-                <div id="image-cropper">
-                  <div class="cropit-preview img-circle"></div>
-                  <div class="cropit-slide-wrapper">
-                    <span style="top: -6px;margin-right: 10px;position: relative;"><i class="fa fa-image fa-1x"></i></span>
-                    <input type="range" class="cropit-image-zoom-input" />
-                    <span style="margin-left: 10px;"><i class="fa fa-image fa-2x"></i></span>
+            <div class="modal fade" id="uploadPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><%= "#{t('profiles.editing_your_photo')}" %>
+                    </h4>
                   </div>
-                  <!-- The actual file input will be hidden -->
-                  <input type="file" class="cropit-image-input" />
+                  <div class="modal-body">
+
+                    <div id="image-cropper">
+                      <div class="cropit-preview img-circle"></div>
+                      <div class="cropit-slide-wrapper">
+                        <span style="top: -6px;margin-right: 10px;position: relative;"><i class="fa fa-image fa-1x"></i></span>
+                        <input type="range" class="cropit-image-zoom-input" />
+                        <span style="margin-left: 10px;"><i class="fa fa-image fa-2x"></i></span>
+                      </div>
+                      <!-- And clicking on this button will open up select file dialog -->
+                      <div class="select-image-btn btn btn-default" style="position: relative;">Select new image</div>
+                      <!-- The actual file input will be hidden -->
+                      <input type="file" class="cropit-image-input" />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <%= form_tag "/en/profiles/#{profile.id}/save_photo", method: :patch, class: 'profile_photo_form', html: { multipart: true }  do |f| %>
+                        <input type="hidden" id="cropped_photo_input" class="cropit-image-input" name="profile[photo]" value="shit" />
+                        <%= submit_tag 'Save photo', class: 'btn btn-primary submit-photo-btn',  style: "position: relative;" %>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <% end %>
+                  </div>
                 </div>
               </div>
-              <div class="modal-footer">
-                <!-- And clicking on this button will open up select file dialog -->
-                <div class="select-image-btn btn btn-default">Select new image</div>
-                <div class="btn btn-success download-btn"><span class="icon icon-box-add"></span>Download cropped image</div>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
             </div>
-          </div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/cropit/0.5.1/jquery.cropit.min.js"></script>
-        <script type="text/javascript">
-          $('#image-cropper').cropit({ imageBackground: true });
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/cropit/0.5.1/jquery.cropit.min.js"></script>
+            <script type="text/javascript">
+              $('#image-cropper').cropit({ imageBackground: true, imageBackgroundBorderWidth: 20, allowDragNDrop: true });
 
-          // When user clicks select image button,
-          // open select file dialog programmatically
-          $('.select-image-btn').click(function() {
-            $('.cropit-image-input').click();
-          });
+              // When user clicks select image button,
+              // open select file dialog programmatically
+              $('.select-image-btn').click(function() {
+                $('.cropit-image-input').click();
+              });
 
-          // Handle rotation
-          $('.rotate-cw-btn').click(function() {
-            $('#image-cropper').cropit('rotateCW');
-          });
-          $('.rotate-ccw-btn').click(function() {
-            $('#image-cropper').cropit('rotateCCW');
-          });
-
-          // Exporting cropped image
-          $('.download-btn').click(function() {
-            var imageData = $('#image-cropper').cropit('export');
-            window.open(imageData);
-          });
-        </script>
+              $('form.profile_photo_form').one('submit', function(e) {
+                e.preventDefault();
+                // do your things ...
+                var imageData = $('#image-cropper').cropit('export', {
+                  type: 'image/jpeg',
+                  quality: .9
+                });
+                $('#cropped_photo_input').val(imageData);
+                // and when you done:
+                $(this).submit();
+              });
+            </script>
+        <% end %>
+        <!-- Button trigger modal -->
 
       </div>
       <!-- /.box-body -->

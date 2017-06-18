@@ -29,7 +29,11 @@ Rails.application.routes.draw do
     match 'notifications_count' => 'activities#notifications_count', :via => :get
 
     resources :activities, only: [:index]
-    resources :profiles, :languages
+    resources :languages
+    resources :profiles do
+      patch 'save_photo', to: 'profiles#save_photo'
+    end
+
     resources :events do
       member do
         post 'members', to: 'events#members'
