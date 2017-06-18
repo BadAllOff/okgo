@@ -123,6 +123,7 @@ ru:
     credo: 'Кредо'
     email: 'Email'
     editing_profile: 'Редактировать Профайл'
+    editing_your_photo: 'Редактировать Фото'
     created_at: 'Зарегистрирован(а)'
     count_events: 'Мероприятий'
     count_memberships: 'Участий'

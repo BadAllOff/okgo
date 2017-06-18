@@ -223,3 +223,65 @@
     font-weight: 600;
   }
 }
+
+// CROPIT plugin to crop image
+.cropit-preview {
+  /* You can specify preview size in CSS */
+  width: 280px;
+  height: 280px;
+  margin: 0 auto;
+}
+
+/* Show load indicator when image is being loaded */
+.cropit-preview.cropit-image-loading .spinner {
+  opacity: 1;
+}
+
+/* Show move cursor when image has been loaded */
+.cropit-preview.cropit-image-loaded .cropit-preview-image-container {
+  cursor: move;
+}
+
+/* Gray out zoom slider when the image cannot be zoomed */
+.cropit-image-zoom-input[disabled] {
+  opacity: .2;
+}
+
+/* Hide default file input button if you want to use a custom button */
+input.cropit-image-input {
+  visibility: hidden;
+}
+
+/* The following styles are only relevant to when background image is enabled */
+
+/* Translucent background image */
+.cropit-preview-background {
+  opacity: .2;
+}
+
+/*
+ * If the slider or anything else is covered by the background image,
+ * use non-static position on it
+ */
+input.cropit-image-zoom-input {
+  position: relative;
+  width: 75%;
+  display: inline;
+}
+
+/* Limit the background image by adding overflow: hidden */
+#image-cropper {
+  overflow: hidden;
+}
+
+
+.cropit-slide-wrapper{
+  width: 75%;
+  margin:0 auto;
+}
+
+/* Translucent background image */
+.cropit-preview-background {
+  opacity: .2;
+}
+// \ - CROPIT plugin to crop image

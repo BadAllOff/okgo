@@ -66,9 +66,70 @@
         <h3 class="profile-username text-center"><%= profile.firstname %> <%= profile.lastname %></h3>
         <p class="text-muted text-center"><%= t('events.rate_members.language_level') %></p>
         <% if can? :update, profile %>
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#uploadPhoto">
+              <i class="fa fa-user-circle-o"></i> <%= "#{t('profiles.editing_your_photo')}" %>
+            </button>
             <%= link_to "#{t('edit')} #{t('profiles.profile')}", edit_profile_path(profile), class: 'btn btn-primary btn-block' %>
             <%= link_to t('devise.passwords.edit.change_my_password',), edit_user_registration_path, class: 'btn btn-primary btn-block' %>
         <% end %>
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="uploadPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><%= "#{t('profiles.editing_your_photo')}" %>
+                </h4>
+              </div>
+              <div class="modal-body">
+                <div id="image-cropper">
+                  <div class="cropit-preview img-circle"></div>
+                  <div class="cropit-slide-wrapper">
+                    <span style="top: -6px;margin-right: 10px;position: relative;"><i class="fa fa-image fa-1x"></i></span>
+                    <input type="range" class="cropit-image-zoom-input" />
+                    <span style="margin-left: 10px;"><i class="fa fa-image fa-2x"></i></span>
+                  </div>
+                  <!-- The actual file input will be hidden -->
+                  <input type="file" class="cropit-image-input" />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <!-- And clicking on this button will open up select file dialog -->
+                <div class="select-image-btn btn btn-default">Select new image</div>
+                <div class="btn btn-success download-btn"><span class="icon icon-box-add"></span>Download cropped image</div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cropit/0.5.1/jquery.cropit.min.js"></script>
+        <script type="text/javascript">
+          $('#image-cropper').cropit({ imageBackground: true });
+
+          // When user clicks select image button,
+          // open select file dialog programmatically
+          $('.select-image-btn').click(function() {
+            $('.cropit-image-input').click();
+          });
+
+          // Handle rotation
+          $('.rotate-cw-btn').click(function() {
+            $('#image-cropper').cropit('rotateCW');
+          });
+          $('.rotate-ccw-btn').click(function() {
+            $('#image-cropper').cropit('rotateCCW');
+          });
+
+          // Exporting cropped image
+          $('.download-btn').click(function() {
+            var imageData = $('#image-cropper').cropit('export');
+            window.open(imageData);
+          });
+        </script>
+
       </div>
       <!-- /.box-body -->
     </div>
