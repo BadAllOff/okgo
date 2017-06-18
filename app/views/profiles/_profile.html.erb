@@ -91,7 +91,7 @@
                         <span style="margin-left: 10px;"><i class="fa fa-image fa-2x"></i></span>
                       </div>
                       <!-- And clicking on this button will open up select file dialog -->
-                      <div class="select-image-btn btn btn-default" style="position: relative;">Select new image</div>
+                      <div class="select-image-btn btn btn-default" style="position: relative;"><i class="fa fa-folder-open-o"></i> <%= t'profiles.select_new_image' %></div>
                       <!-- The actual file input will be hidden -->
                       <input type="file" class="cropit-image-input" />
                     </div>
@@ -99,8 +99,10 @@
                   <div class="modal-footer">
                     <%= form_tag "/en/profiles/#{profile.id}/save_photo", method: :patch, class: 'profile_photo_form', html: { multipart: true }  do |f| %>
                         <input type="hidden" id="cropped_photo_input" class="cropit-image-input" name="profile[photo]" value="shit" />
-                        <%= submit_tag 'Save photo', class: 'btn btn-primary submit-photo-btn',  style: "position: relative;" %>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <%= button_tag(type: "submit", class: "btn btn-primary submit-photo-btn", style: "position: relative;") do %>
+                            <i class="fa fa-check"></i> <%= t'profiles.save_photo' %>
+                        <% end %>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
                   <% end %>
                   </div>
                 </div>

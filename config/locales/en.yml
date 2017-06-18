@@ -110,18 +110,20 @@ en:
     about: 'About me'
     credo: 'Credo'
     email: 'Email'
-    editing_profile: 'Editing Profile'
-    editing_your_photo: 'Editing Profile Photo'
+    editing_profile: 'Editing profile'
+    editing_your_photo: 'Editing profile photo'
+    select_new_image: 'Select new image'
+    save_photo: 'Save photo'
     created_at: 'Registration date'
-    count_events: 'Total Events'
-    count_memberships: 'Total Participations'
+    count_events: 'Total events'
+    count_memberships: 'Total participations'
     progress_chart: 'Progress chart'
     profile_was_successfully_created: "Profile was successfully created."
     profile_was_successfully_updated: "Profile was successfully updated."
     profile_was_successfully_destroyed: "Profile was successfully deleted."
   event_memberships:
     index: 'My events'
-    future_events: 'Future Events'
+    future_events: 'Future events'
     past_events: 'Past events'
     event_description: 'Description'
     did_he_attended_at_this_event: 'Did he/she attended at this event?'
@@ -149,7 +151,7 @@ en:
       liked_event_which_has_since_been_removed: "Likes an event, which has since removed."
       updated_an_event: "Updated an event"
       updated_an_event_which_has_since_been_removed: "Updated an event, which has since removed."
-      deleted_an_event: "Удалил мероприятие."
+      deleted_an_event: "Deleted an event."
       comment:
         commented_to_event: 'Commented on event'
         commented_to_event_which_has_since_been_removed:  "Commented on event, which has since removed."

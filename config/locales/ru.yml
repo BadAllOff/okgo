@@ -122,15 +122,17 @@ ru:
     about: 'Обо мне'
     credo: 'Кредо'
     email: 'Email'
-    editing_profile: 'Редактировать Профайл'
-    editing_your_photo: 'Редактировать Фото'
+    editing_profile: 'Редактировать профиль'
+    editing_your_photo: 'Редактировать фото'
+    select_new_image: 'Выбрать фотографию'
+    save_photo: 'Сохранить фото'
     created_at: 'Зарегистрирован(а)'
     count_events: 'Мероприятий'
     count_memberships: 'Участий'
     progress_chart: 'Диаграмма прогресса'
-    profile_was_successfully_created: "Профайл успешно создан"
-    profile_was_successfully_updated: "Профайл успешно обновлен"
-    profile_was_successfully_destroyed: "Профайл успешно удален"
+    profile_was_successfully_created: "Профиль успешно создан"
+    profile_was_successfully_updated: "Профиль успешно обновлен"
+    profile_was_successfully_destroyed: "Профиль успешно удален"
   event_memberships:
     future_events: 'Будущие мероприятия'
     past_events: 'Прошедшие мероприятия'
