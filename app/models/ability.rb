@@ -34,6 +34,7 @@ class Ability
     can :read, Profile
     can :update, Profile, { user: user }
     can :save_photo, Profile, { user: user }
+    can :save_cover_img, Profile, { user: user }
 
     can :join, EventMembership
     can :as_tutor, EventMembership

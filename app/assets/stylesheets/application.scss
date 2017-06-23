@@ -359,10 +359,14 @@
   text-align:center;
 }
 
-.edit_btn_overlay_image {
+.edit_btn_overlay_photo {
   position:absolute;
   bottom:10px;
   left: 10px;
+}
+.edit_btn_overlay_cover{
+  top: 75px;
+  position: relative;
 }
 
 // Round btns

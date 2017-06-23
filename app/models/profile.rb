@@ -6,7 +6,7 @@ class Profile < ApplicationRecord
                     styles: { micro: '50x50#', small: '128x128#', medium: '160x160#', original: '250x250#' },
                     default_url: ':photo_placeholder'
   has_attached_file :cover_image,
-                    styles: { original: '1380x120#', thumb: '305x100#' },
+                    styles: { original: '1170x120#', thumb: '305x100#' },
                     default_url: ':cover_image_placeholder'
 
   validates_attachment :photo, content_type: { content_type: ['image/jpeg', 'image/png'] }

@@ -22,7 +22,7 @@
         end
        %>') center center;">
         <% if can? :update, profile %>
-            <button type="button" title="<%= "#{t('profiles.editing_your_photo')}" %>" class="btn btn-primary btn-circle btn-lg" data-toggle="modal" data-target="#uploadCoverImg">
+            <button type="button" title="<%= "#{t('profiles.editing_your_photo')}" %>" class="btn btn-primary btn-circle btn-lg edit_btn_overlay_cover" data-toggle="modal" data-target="#uploadCoverImg">
               <i class="fa fa-image" title="<%= "#{t('profiles.editing_your_photo')}" %>" data-toggle="tooltip"></i>
             </button>
         <% end %>
@@ -71,7 +71,7 @@
         <div id="img_container">
           <%= image_tag(profile.photo.url('original'), class: 'img-circle profile-user-img img-responsive', alt: 'User Avatar', style: 'width: 200px') %>
           <% if can? :update, profile %>
-            <button type="button" title="<%= "#{t('profiles.editing_your_photo')}" %>" class="btn btn-primary btn-circle btn-lg edit_btn_overlay_image" data-toggle="modal" data-target="#uploadPhoto">
+            <button type="button" title="<%= "#{t('profiles.editing_your_photo')}" %>" class="btn btn-primary btn-circle btn-lg edit_btn_overlay_photo" data-toggle="modal" data-target="#uploadPhoto">
               <i class="fa fa-image" title="<%= "#{t('profiles.editing_your_photo')}" %>" data-toggle="tooltip"></i>
             </button>
           <% end %>
@@ -222,7 +222,7 @@
 
     <!-- COVER IMAGE-->
     <div class="modal fade" id="uploadCoverImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document" style="width: 100%;">
+      <div class="modal-dialog" role="document" style="width: 100%; max-width: 1280px;">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -250,7 +250,7 @@
           </div>
           <div class="modal-footer">
             <%= form_tag "/#{locale}/profiles/#{profile.id}/save_cover_img", method: :patch, class: 'profile_cover_img_form', html: { multipart: true }  do |f| %>
-                <input type="hidden" id="cropped_cover_image_input" class="cropit-image-input" name="profile[cover_img]" value="no_value" />
+                <input type="hidden" id="cropped_cover_image_input" class="cropit-image-input" name="profile[cover_image]" value="no_value" />
                 <%= button_tag(type: "submit", data: { disable_with: t('wait_please') }, class: "btn btn-primary submit-photo-btn", style: "position: relative;") do %>
                     <i class="fa fa-check"></i> <%= t'profiles.save_photo' %>
                 <% end %>
@@ -264,14 +264,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropit/0.5.1/jquery.cropit.min.js"></script>
     <script type="text/javascript">
-
-      $('#image-cropper').on('shown.bs.modal', function () {
-        $(this).find('.modal-body').css({
-          width:'auto', //probably not needed
-          height:'auto', //probably not needed
-          'max-height':'100%'
-        });
-      });
 
       (function(){
         $('#photo-cropper').cropit({ imageBackground: true, imageBackgroundBorderWidth: 20, allowDragNDrop: true });
@@ -288,7 +280,6 @@
             type: 'image/jpeg',
             quality: .9
           });
-          alert(imageData);
           $('#cropped_photo_input').val(imageData);
           // and when you done:
           $(this).submit();
@@ -296,7 +287,7 @@
       })();
 
       (function(){
-        $('#image-cropper').cropit({ imageBackground: true, imageBackgroundBorderWidth: 40, allowDragNDrop: true });
+        $('#image-cropper').cropit({ imageBackground: true, imageBackgroundBorderWidth: 40, allowDragNDrop: true, smallImage: 'stretch' });
         // When user clicks select image button,
         // open select file dialog programmatically
         $('.select-cover-image-btn').click(function() {
@@ -311,7 +302,6 @@
             quality: .9
           });
           $('#cropped_cover_image_input').val(imageData);
-          alert($('#cropped_cover_image_input').val());
           // and when you done:
           $(this).submit();
         });

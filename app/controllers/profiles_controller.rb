@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_profile, only: [:show, :edit, :update, :save_photo]
+  before_action :set_profile, only: [:show, :edit, :update, :save_photo, :save_cover_img]
   before_action :set_page_title
 
   include Breadcrumbed
@@ -41,7 +41,16 @@ class ProfilesController < ApplicationController
     else
       redirect_to @profile, flash: { success: I18n.t('profiles.profile_was_not_updated') }
     end
+  end
 
+  def save_cover_img
+    image = Paperclip.io_adapters.for(photo_params[:cover_image])
+    image.original_filename = "cover_image.jpeg"
+    if @profile.update!(cover_image: image)
+      redirect_to @profile, flash: { success: I18n.t('profiles.profile_was_successfully_updated') }
+    else
+      redirect_to @profile, flash: { success: I18n.t('profiles.profile_was_not_updated') }
+    end
   end
 
   private
@@ -67,7 +76,7 @@ class ProfilesController < ApplicationController
   end
 
   def photo_params
-    params.require(:profile).permit(:photo)
+    params.require(:profile).permit(:photo, :cover_image)
   end
 
   def set_profile_chart_data(rated_memberships)

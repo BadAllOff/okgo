@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :languages
     resources :profiles do
       patch 'save_photo', to: 'profiles#save_photo'
+      patch 'save_cover_img', to: 'profiles#save_cover_img'
     end
 
     resources :events do
