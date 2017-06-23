@@ -40,7 +40,7 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       if @feedback.save
         current_user.follow!(@feedback)
-        format.html { redirect_to @feedback, notice: I18n.t('feedbacks.feedback_was_successfully_created') }
+        format.html { redirect_to @feedback, flash: { success: I18n.t('feedbacks.feedback_was_successfully_created') }}
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       if @feedback.update(feedback_params)
         current_user.follow!(@feedback)
-        format.html { redirect_to @feedback, notice: I18n.t('feedbacks.feedback_was_successfully_updated') }
+        format.html { redirect_to @feedback, flash: { success: I18n.t('feedbacks.feedback_was_successfully_updated') }}
         format.json { render :show, status: :ok, location: @feedback }
       else
         add_breadcrumb I18n.t('breadcrumbs.feedbacks.edit_feedback'), event_path(@feedback)
@@ -71,7 +71,7 @@ class FeedbacksController < ApplicationController
     @feedback.destroy
     Follow.remove_followers(@feedback)
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: I18n.t('feedbacks.feedback_was_successfully_destroyed') }
+      format.html { redirect_to feedbacks_url, flash: { success: I18n.t('feedbacks.feedback_was_successfully_destroyed') }}
       format.json { head :no_content }
     end
   end

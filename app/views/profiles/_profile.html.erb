@@ -76,68 +76,6 @@
         <% if can? :update, profile %>
             <%= link_to "#{t('edit')} #{t('profiles.profile')}", edit_profile_path(profile), class: 'btn btn-default btn-block' %>
             <%= link_to t('devise.passwords.edit.change_my_password',), edit_user_registration_path, class: 'btn btn-default btn-block' %>
-        <!-- Modal -->
-            <div class="modal fade" id="uploadPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"><%= "#{t('profiles.editing_your_photo')}" %>
-                    </h4>
-                  </div>
-                  <div class="modal-body">
-
-                    <div id="image-cropper">
-                      <div class="cropit-preview img-circle"></div>
-
-                      <div class="col-xs-1 pull-left"><i class="fa fa-image fa-1x"></i></div>
-
-                      <div class="col-xs-8 col-md-9">
-                        <input type="range" class="cropit-image-zoom-input col-xs-8" />
-                      </div>
-
-                      <div class="col-xs-2 col-md-1" ><i class="fa fa-image fa-2x"></i></div>
-
-                      <!-- And clicking on this button will open up select file dialog -->
-                      <div class="select-image-btn btn btn-default" style="position: relative;"><i class="fa fa-folder-open-o"></i> <%= t'profiles.select_new_image' %></div>
-                      <!-- The actual file input will be hidden -->
-                      <input type="file" class="cropit-image-input" />
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <%= form_tag "/#{locale}/profiles/#{profile.id}/save_photo", method: :patch, class: 'profile_photo_form', html: { multipart: true }  do |f| %>
-                        <input type="hidden" id="cropped_photo_input" class="cropit-image-input" name="profile[photo]" value="shit" />
-                        <%= button_tag(type: "submit", data: { disable_with: t('wait_please') }, class: "btn btn-primary submit-photo-btn", style: "position: relative;") do %>
-                            <i class="fa fa-check"></i> <%= t'profiles.save_photo' %>
-                        <% end %>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> <%= t'close' %></button>
-                  <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/cropit/0.5.1/jquery.cropit.min.js"></script>
-            <script type="text/javascript">
-              $('#image-cropper').cropit({ imageBackground: true, imageBackgroundBorderWidth: 20, allowDragNDrop: true });
-
-              // When user clicks select image button,
-              // open select file dialog programmatically
-              $('.select-image-btn').click(function() {
-                $('.cropit-image-input').click();
-              });
-
-              $('form.profile_photo_form').one('submit', function(e) {
-                e.preventDefault();
-                // do your things ...
-                var imageData = $('#image-cropper').cropit('export', {
-                  type: 'image/jpeg',
-                  quality: .9
-                });
-                $('#cropped_photo_input').val(imageData);
-                // and when you done:
-                $(this).submit();
-              });
-            </script>
         <% end %>
         <!-- Button trigger modal -->
 
@@ -230,3 +168,72 @@
 
   </div><!--/.col-md-9-->
 </div><!--/.row-->
+
+
+<% if can? :update, profile %>
+    <!-- Modal -->
+    <div class="modal fade" id="uploadPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><%= "#{t('profiles.editing_your_photo')}" %>
+            </h4>
+          </div>
+          <div class="modal-body">
+
+            <div id="image-cropper">
+              <div class="cropit-preview img-circle"></div>
+
+              <div class="col-xs-1 pull-left"><i class="fa fa-image fa-1x"></i></div>
+
+              <div class="col-xs-8 col-md-9">
+                <input type="range" class="cropit-image-zoom-input col-xs-8" />
+              </div>
+
+              <div class="col-xs-2 col-md-1" ><i class="fa fa-image fa-2x"></i></div>
+
+              <!-- And clicking on this button will open up select file dialog -->
+              <div class="select-image-btn btn btn-default" style="position: relative;"><i class="fa fa-folder-open-o"></i> <%= t'profiles.select_new_image' %></div>
+              <!-- The actual file input will be hidden -->
+              <input type="file" class="cropit-image-input" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= form_tag "/#{locale}/profiles/#{profile.id}/save_photo", method: :patch, class: 'profile_photo_form', html: { multipart: true }  do |f| %>
+                <input type="hidden" id="cropped_photo_input" class="cropit-image-input" name="profile[photo]" value="shit" />
+                <%= button_tag(type: "submit", data: { disable_with: t('wait_please') }, class: "btn btn-primary submit-photo-btn", style: "position: relative;") do %>
+                    <i class="fa fa-check"></i> <%= t'profiles.save_photo' %>
+                <% end %>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> <%= t'close' %></button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropit/0.5.1/jquery.cropit.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+        $('#image-cropper').cropit({ imageBackground: true, imageBackgroundBorderWidth: 20, allowDragNDrop: true });
+
+        // When user clicks select image button,
+        // open select file dialog programmatically
+        $('.select-image-btn').click(function() {
+          $('.cropit-image-input').click();
+        });
+
+        $('form.profile_photo_form').one('submit', function(e) {
+          e.preventDefault();
+          // do your things ...
+          var imageData = $('#image-cropper').cropit('export', {
+            type: 'image/jpeg',
+            quality: .9
+          });
+          $('#cropped_photo_input').val(imageData);
+          // and when you done:
+          $(this).submit();
+        });
+      })();
+
+    </script>
+<% end %>

@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to @profile, flash: { success: I18n.t('profiles.profile_was_successfully_updated') }}
       else
         format.html { render :edit }
       end
@@ -36,7 +36,12 @@ class ProfilesController < ApplicationController
   def save_photo
     image = Paperclip.io_adapters.for(photo_params[:photo])
     image.original_filename = "user_photo.jpeg"
-    redirect_to @profile if @profile.update!(photo: image)
+    if @profile.update!(photo: image)
+      redirect_to @profile, flash: { success: I18n.t('profiles.profile_was_successfully_updated') }
+    else
+      redirect_to @profile, flash: { success: I18n.t('profiles.profile_was_not_updated') }
+    end
+
   end
 
   private

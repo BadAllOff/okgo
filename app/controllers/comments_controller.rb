@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
         notify_followers(activity, @commentable.followers(User))
 
         format.json { render partial: 'comments/create.json.jbuilder'}
-        format.html { redirect_to @commentable, notice: t('comments.your_comment_was_successfully_posted') }
+        format.html { redirect_to @commentable, flash: { success: t('comments.your_comment_was_successfully_posted') }}
       else
         format.json { render partial: 'comments/error.json.jbuilder', status: 422}
       end
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
       decrement_counters
       respond_to do |format|
         format.json { render partial: 'comments/destroy.json.jbuilder'}
-        format.html { redirect_to @commentable, notice: t('comments.your_comment_was_successfully_destroyed') }
+        format.html { redirect_to @commentable, flash: { success: t('comments.your_comment_was_successfully_destroyed') }}
       end
     end
   end

@@ -134,6 +134,7 @@ ru:
     progress_chart: 'Диаграмма прогресса'
     profile_was_successfully_created: "Профиль успешно создан"
     profile_was_successfully_updated: "Профиль успешно обновлен"
+    profile_was_not_updated: "Профиль не обновлен обновлен"
     profile_was_successfully_destroyed: "Профиль успешно удален"
   event_memberships:
     future_events: 'Будущие мероприятия'

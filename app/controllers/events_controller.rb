@@ -45,7 +45,7 @@ class EventsController < ApplicationController
       if @event.save
         @event.create_activity key: 'event.create', owner: current_user
         current_user.follow!(@event)
-        format.html { redirect_to @event, notice: I18n.t('events.event_was_successfully_created') }
+        format.html { redirect_to @event, flash: { success: I18n.t('events.event_was_successfully_created') }}
       else
         add_breadcrumb I18n.t('breadcrumbs.events.new'), new_event_path
         format.html { render :new }
@@ -59,7 +59,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         @event.create_activity key: 'event.update', owner: current_user
-        format.html { redirect_to @event, notice: I18n.t('events.event_was_successfully_updated') }
+        format.html { redirect_to @event, flash: { success: I18n.t('events.event_was_successfully_updated') }}
       else
         format.html { render :edit }
       end
@@ -80,7 +80,7 @@ class EventsController < ApplicationController
     Follow.remove_followers(@event)
 
     respond_to do |format|
-      format.html { redirect_to events_url, notice: I18n.t('events.event_was_successfully_destroyed') }
+      format.html { redirect_to events_url, flash: { success: I18n.t('events.event_was_successfully_destroyed') }}
       format.json { head :no_content }
     end
   end
