@@ -47,7 +47,6 @@ gem 'omniauth', '~> 1.4.0'
 gem 'omniauth-facebook', '~> 4.0.0'
 gem 'kaminari', '~> 0.17'
 gem 'izitoast', '1.1.1'
-gem 'rails_cropit', '0.1.1'
 
 gem 'rails_admin', '~> 1.1'
 gem 'rails_admin_impersonate', '0.0.5'

@@ -321,7 +321,6 @@ GEM
     rails_admin_impersonate (0.0.5)
       rails (>= 3.2.13)
       rails_admin
-    rails_cropit (0.1.1)
     railties (5.0.2)
       actionpack (= 5.0.2)
       activesupport (= 5.0.2)
@@ -492,7 +491,6 @@ DEPENDENCIES
   rails-controller-testing
   rails_admin (~> 1.1)
   rails_admin_impersonate (= 0.0.5)
-  rails_cropit (= 0.1.1)
   redcarpet (= 3.3.4)
   rspec-rails
   rspec-validates_timeliness (= 0.1.1)
