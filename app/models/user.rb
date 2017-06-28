@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :rated_memberships, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
   has_many :notices, dependent: :destroy
+  has_many :language_sessions_counters, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

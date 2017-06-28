@@ -33,7 +33,7 @@ class EventMembershipsController < ApplicationController
   end
 
   def leave
-    @event_membership.destroy if !@event_membership.nil?
+    @event_membership.destroy unless @event_membership.nil?
     respond_to do |format|
       # take user out of event
       current_user.unfollow!(@event)

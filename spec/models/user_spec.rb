@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:feedbacks).dependent(:destroy) }
     it { should have_many(:notices).dependent(:destroy) }
     it { should have_many(:comments).dependent(:destroy) }
+    it { should have_many(:language_sessions_counters).dependent(:destroy) }
     it { should have_one(:profile).dependent(:destroy) }
   end
 

@@ -8,7 +8,8 @@ class EventMembership < ApplicationRecord
   validates_uniqueness_of :user_id, scope: [:event_id]
   validates_numericality_of :user_id
 
-  # after_save :increment_members_counter
+  after_save :increment_language_session_counter
+  before_destroy :decrement_language_session_counter
   # before_destroy :decrement_members_counter
 
   def joinable?
@@ -18,6 +19,16 @@ class EventMembership < ApplicationRecord
   end
 
   private
+
+  def increment_language_session_counter
+    lang_session = LanguageSessionsCounter.where(user: self.user_id, language: self.event.language_id).first_or_create
+    lang_session.increment!(:events_count)
+  end
+
+  def decrement_language_session_counter
+    lang_session = LanguageSessionsCounter.where(user: self.user_id, language: self.event.language_id).first
+    lang_session.decrement!(:events_count) unless lang_session.blank?
+  end
 
   # def increment_members_counter
   #   Event.increment_counter(:members_count, self.event)

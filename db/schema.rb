@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512230427) do
+ActiveRecord::Schema.define(version: 20170628100359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,28 @@ ActiveRecord::Schema.define(version: 20170512230427) do
     t.datetime "created_at"
     t.index ["followable_id", "followable_type"], name: "fk_followables", using: :btree
     t.index ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+  end
+
+  create_table "language_sessions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "language_id"
+    t.integer  "count_sessions", default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["language_id"], name: "index_language_sessions_on_language_id", using: :btree
+    t.index ["user_id", "language_id"], name: "index_language_sessions_on_user_id_and_language_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_language_sessions_on_user_id", using: :btree
+  end
+
+  create_table "language_sessions_counters", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "language_id"
+    t.integer  "count_sessions", default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["language_id"], name: "index_language_sessions_counters_on_language_id", using: :btree
+    t.index ["user_id", "language_id"], name: "index_language_sessions_counters_on_user_id_and_language_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_language_sessions_counters_on_user_id", using: :btree
   end
 
   create_table "languages", force: :cascade do |t|
@@ -236,6 +258,10 @@ ActiveRecord::Schema.define(version: 20170512230427) do
   add_foreign_key "events", "languages"
   add_foreign_key "events", "users"
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "language_sessions", "languages"
+  add_foreign_key "language_sessions", "users"
+  add_foreign_key "language_sessions_counters", "languages"
+  add_foreign_key "language_sessions_counters", "users"
   add_foreign_key "notices", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "rated_memberships", "event_memberships"
