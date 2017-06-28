@@ -83,7 +83,15 @@
             <%= link_to t('devise.passwords.edit.change_my_password',), edit_user_registration_path, class: 'btn btn-default btn-block' %>
         <% end %>
         <!-- Button trigger modal -->
-
+        <hr>
+        <% profile.user.language_sessions_counters.each do |lang| %>
+            <% if lang.events_count > 0 %>
+                <div class="btn-group-vertical flag-with-count">
+                  <button type="button" class="btn btn-default btn-flat"><%= image_tag(lang.language.flag_image.url(:micro), class: 'flag-micro') if  lang.language.flag_image? %></button>
+                  <button type="button" class="btn btn-default btn-flat"><%= lang.events_count %></button>
+                </div>
+            <% end %>
+        <% end %>
       </div>
       <!-- /.box-body -->
     </div>

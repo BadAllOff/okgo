@@ -57,9 +57,9 @@ class ProfilesController < ApplicationController
 
   def set_profile
     if params[:profile_id]
-      @profile = Profile.includes(:user).find(params[:profile_id])
+      @profile = Profile.includes(user: [language_sessions_counters: [:language]]).find(params[:profile_id])
     else
-      @profile = Profile.includes(:user).find(params[:id])
+      @profile = Profile.includes(user: [language_sessions_counters: [:language]]).find(params[:id])
     end
   end
 

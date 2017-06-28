@@ -28,6 +28,7 @@ class EventMembership < ApplicationRecord
   def decrement_language_session_counter
     lang_session = LanguageSessionsCounter.where(user: self.user_id, language: self.event.language_id).first
     lang_session.decrement!(:events_count) unless lang_session.blank?
+    lang_session.destroy! if lang_session.events_count <= 0
   end
 
   # def increment_members_counter
