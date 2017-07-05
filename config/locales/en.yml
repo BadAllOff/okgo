@@ -155,6 +155,10 @@ en:
       updated_an_event: "Updated an event"
       updated_an_event_which_has_since_been_removed: "Updated an event, which has since removed."
       deleted_an_event: "Deleted an event."
+      joined_event: "Joined the event"
+      joined_event_which_has_since_been_removed: "Joined the event, which has since removed."
+      leaved_event: "Left the event"
+      leaved_event_which_has_since_been_removed: "Left the event, which has since removed."
       comment:
         commented_to_event: 'Commented on event'
         commented_to_event_which_has_since_been_removed:  "Commented on event, which has since removed."

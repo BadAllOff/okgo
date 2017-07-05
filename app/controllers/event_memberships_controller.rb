@@ -17,8 +17,7 @@ class EventMembershipsController < ApplicationController
     respond_to do |format|
       if @event.joinable?(@event_membership) && @event_membership.save
         # notifie followers
-        activity = @event.create_activity key: 'event.join', owner: current_user
-        notify_followers(activity, @event.followers(User))
+        notify_event_followers(@event, 'event.join', current_user)
         # then add user to event
         current_user.follow!(@event)
 
@@ -38,8 +37,7 @@ class EventMembershipsController < ApplicationController
       # take user out of event
       current_user.unfollow!(@event)
       # notifie followers
-      activity = @event.create_activity key: 'event.leave', owner: current_user
-      notify_followers(activity, @event.followers(User))
+      notify_event_followers(@event, 'event.leave', current_user)
 
       format.html { redirect_to events_url, notice: t('events.you_have_left_the_event') }
       format.json { render 'leaved.json.jbuilder', status: :ok }
@@ -129,6 +127,11 @@ class EventMembershipsController < ApplicationController
   end
 
   private
+
+    def notify_event_followers(event, action, owner)
+      activity = event.create_activity key: action, owner: owner
+      notify_followers(activity, event.followers(User))
+    end
 
     def set_membership_index_breadcrumb
       add_breadcrumb I18n.t('breadcrumbs.event_memberships.index'), '#'

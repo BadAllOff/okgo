@@ -13,8 +13,7 @@ class CommentsController < ApplicationController
         increment_conters
         current_user.follow!(@commentable)
         # Save record about activity
-        activity = @commentable.create_activity key: "#{@commentable.class.name.downcase}.comment.create", owner: current_user
-        notify_followers(activity, @commentable.followers(User))
+        save_activity_record(@commentable)
 
         format.json { render partial: 'comments/create.json.jbuilder'}
         format.html { redirect_to @commentable, flash: { success: t('comments.your_comment_was_successfully_posted') }}
@@ -42,6 +41,11 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def save_activity_record(commentable)
+    activity = commentable.create_activity key: "#{commentable.class.name.downcase}.comment.create", owner: current_user
+    notify_followers(activity, commentable.followers(User))
   end
 
   def increment_conters
