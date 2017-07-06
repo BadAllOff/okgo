@@ -108,21 +108,14 @@ class EventMembershipsController < ApplicationController
           render json: rated_user.errors
         end
       else
-        rate_user = current_user.rated_memberships.build(
-            rated_member_id: @event_membership.user.id,
-            language_level: params[:language_level],
-            activity_level: params[:activity_level],
-            language_id: @event_membership.event.language.id,
-            event_membership: @event_membership
-        )
-        if rate_user.save
-          render json: rate_user
+        if rated_memebership.save
+          render json: rated_memebership
         else
-          render json: rate_user.errors
+          render json: rated_memebership.errors
         end
       end
     else
-      render json: "{error: can't rate membership}"
+      render json: "{error: #{I18n.t('event_memberships.cant_rate_membership')}}"
     end
   end
 
@@ -131,6 +124,17 @@ class EventMembershipsController < ApplicationController
     def notify_event_followers(event, action, owner)
       activity = event.create_activity key: action, owner: owner
       notify_followers(activity, event.followers(User))
+    end
+
+    def rated_memebership
+      return current_user.rated_memberships.build(
+          rated_member_id: @event_membership.user.id,
+          language_level: params[:language_level],
+          activity_level: params[:activity_level],
+          language_id: @event_membership.event.language.id,
+          event_membership: @event_membership,
+          # event_cefrl: @event_membership.event.cefrl
+      )
     end
 
     def set_membership_index_breadcrumb

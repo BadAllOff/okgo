@@ -144,6 +144,8 @@ ru:
     you_have_joined_to_the_event_dont_be_late: "Вы присоединились к мероприятию. Не опоздывайте!"
     you_have_left_the_event: "Вы покинули мероприятие."
     you_cant_join_to_this_event_you_are_the_owner: "Вы не можете присоединиться. Вы создали это мероприятие."
+    you_cant_join_to_this_event_you_are_the_owner: "Вы не можете присоединиться. Вы создали это мероприятие."
+    cant_rate_membership: "Невозможно оценить участника"
   btns:
     yes_btn: "Да"
     no_btn: "Нет"

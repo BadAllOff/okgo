@@ -133,6 +133,7 @@ en:
     you_have_joined_to_the_event_dont_be_late: "You have joined to event. Don't be late."
     you_have_left_the_event: "You have left the event."
     you_cant_join_to_this_event_you_are_the_owner: "You are the owner of this event. You can't join."
+    cant_rate_membership: "can't rate membership"
   btns:
     yes_btn: "Yes"
     no_btn: "No"
